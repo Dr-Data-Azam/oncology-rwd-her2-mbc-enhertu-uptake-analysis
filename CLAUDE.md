@@ -6,7 +6,7 @@
 
 1. **`../external/` is STRICTLY READ-ONLY.** Never write, edit, rename, move, delete, or
    unzip into it. Never run any command whose output could land there. Read it only to
-   verify SHA-256 hashes (via `src/her2rwd/io.py`).
+   verify SHA-256 hashes (via `src/her2rwd/data_loader.py`).
 
 2. **`data/raw/` is also read-only.** These are byte-identical working copies of the
    originals. No pipeline step, script, or edit ever modifies them. All outputs go to
@@ -53,17 +53,17 @@ Claude Code as builder.
 data/raw/          ← READ-ONLY input (5 CSVs + data_dictionary.xlsx)
      │
      ▼
-io.py              load + SHA-256 integrity check → DuckDB
+data_loader.py     load + SHA-256 integrity check → DuckDB
      │
      ▼
-dq.py              DQ checks → outputs/dq/dq_log.csv
+data_quality.py    DQ checks → outputs/dq/dq_log.csv
      │
      ▼
 cohort.py          eligibility + index date + de novo/recurrent → outputs/tables/cohort.csv
      │             attrition.csv
      ▼
 her2.py            variant mapping + window + tie-break → outputs/tables/patient_her2.csv
-hr.py              ER/PR % → outputs/tables/patient_hr.csv
+hormone_receptor.py  ER/PR % → outputs/tables/patient_hr.csv
      │
      ▼
 treatment.py       regimens + lines → outputs/tables/patient_lines.csv
@@ -73,7 +73,7 @@ treatment.py       regimens + lines → outputs/tables/patient_lines.csv
      └── sensitivity.py      → outputs/tables/sensitivity_*.csv
      │
      ▼
-validate.py        invariant checks → audit/validation_report.md
+validation.py      invariant checks → audit/validation_report.md
      │
      ▼
 report.py          notebook → HTML; outputs → .pptx → reports/
@@ -86,19 +86,19 @@ pipeline.py        orchestrates all stages → outputs/run_manifest.json
 
 | Module | Responsibility |
 |---|---|
-| `io.py` | Load raw data; SHA-256 integrity check vs ../external/ |
-| `dq.py` | DQ checks → dq_log.csv |
-| `cohort.py` | Eligibility, index date, de novo/recurrent, attrition |
-| `her2.py` | HER2 variant → category, window, tie-break, audit columns |
-| `hr.py` | ER/PR % → HR status, ER-low flag |
+| `data_loader.py` | Load raw CSVs into DuckDB; SHA-256 integrity check vs ../external/ |
+| `data_quality.py` | Data-quality checks → outputs/dq/dq_log.csv |
+| `cohort.py` | Eligibility, metastatic index date, de novo/recurrent, attrition |
+| `her2.py` | HER2 variant → category, biomarker window, tie-break, audit columns |
+| `hormone_receptor.py` | ER/PR % → HR status, ER-low flag |
 | `treatment.py` | Regimen grouping, line-of-therapy approximation |
-| `q1_distribution.py` | HER2 distribution, strata, benchmarks |
-| `q2_uptake.py` | Subindications, Enhertu uptake, competitors, discordance |
-| `sensitivity.py` | Re-runs under alternative rule sets |
-| `stats.py` | Wilson CI, small-cell flagging |
-| `validate.py` | Invariant checks → validation_report.md |
-| `report.py` | Notebook → HTML; pipeline outputs → .pptx |
-| `pipeline.py` | End-to-end orchestration → run_manifest.json |
+| `q1_distribution.py` | HER2 distribution, strata, literature benchmarks |
+| `q2_uptake.py` | Subindications, Enhertu uptake, competitors, discordance list |
+| `sensitivity.py` | Re-runs pipeline under alternative rule sets |
+| `statistics.py` | Wilson 95% CI, small-cell (n<11) flagging |
+| `validation.py` | Invariant checks → audit/validation_report.md |
+| `report.py` | Notebook → HTML (nbconvert); outputs → .pptx (python-pptx) |
+| `pipeline.py` | End-to-end orchestration → outputs/run_manifest.json |
 
 ---
 

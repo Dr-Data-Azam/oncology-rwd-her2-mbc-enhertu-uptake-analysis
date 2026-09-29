@@ -1,4 +1,4 @@
-"""Tests for io.py — input integrity check and raw data loading.
+"""Tests for data_loader.py — input integrity check and raw data loading.
 
 Covers:
 - check_input_integrity() passes when data/raw/ files match ../external/ originals
@@ -18,7 +18,7 @@ from pathlib import Path
 
 import pytest
 
-from her2rwd.io import check_input_integrity, load_raw
+from her2rwd.data_loader import check_input_integrity, load_raw
 
 _CSV_NAMES = ["patient", "diagnosis", "staging", "biomarker", "medication"]
 _TINY_CSV = b"patient_id,date_of_birth\nPAT_001,1980-01-01\n"

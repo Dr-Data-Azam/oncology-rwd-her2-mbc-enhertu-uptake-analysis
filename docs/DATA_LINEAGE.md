@@ -9,11 +9,11 @@
 
 | Output file | Produced by | Config keys used | ADRs | Raw source tables |
 |---|---|---|---|---|
-| `outputs/dq/dq_log.csv` | `dq.py` | `dq.*` | ADR-003 | patient, diagnosis, staging, biomarker, medication |
+| `outputs/dq/dq_log.csv` | `data_quality.py` | `dq.*` | ADR-003 | patient, diagnosis, staging, biomarker, medication |
 | `outputs/tables/cohort.csv` | `cohort.py` | `eligibility.*`, `index_date.*`, `cohort.*` | ADR-002, ADR-004, ADR-005 | patient, diagnosis, staging |
 | `outputs/tables/attrition.csv` | `cohort.py` | `eligibility.*` | ADR-002 | patient, diagnosis, staging |
 | `outputs/tables/patient_her2.csv` | `her2.py` | `her2.*` | ADR-006, ADR-007, ADR-008 | biomarker |
-| `outputs/tables/patient_hr.csv` | `hr.py` | `hr.*` | ADR-009 | biomarker |
+| `outputs/tables/patient_hr.csv` | `hormone_receptor.py` | `hr.*` | ADR-009 | biomarker |
 | `outputs/tables/patient_lines.csv` | `treatment.py` | `treatment.*` | ADR-010 | medication |
 | `outputs/tables/q1_overall.csv` | `q1_distribution.py` | `stats.*`, `benchmarks.*` | ADR-012, ADR-014 | patient_her2, patient_hr, cohort |
 | `outputs/tables/q1_by_*.csv` | `q1_distribution.py` | `stats.*` | ADR-012 | patient_her2, patient_hr, cohort |
@@ -24,7 +24,7 @@
 | `outputs/tables/q2_discordance.csv` | `q2_uptake.py` | `discordance.*` | ADR-013 | patient_her2, patient_hr, patient_lines |
 | `outputs/tables/sensitivity_*.csv` | `sensitivity.py` | alt config overrides | ADR-006, ADR-007 | biomarker, cohort |
 | `outputs/run_manifest.json` | `pipeline.py` | all | all | all |
-| `audit/validation_report.md` | `validate.py` | — | — | all outputs |
+| `audit/validation_report.md` | `validation.py` | — | — | all outputs |
 | `reports/analysis_notebook.html` | `report.py` (nbconvert) | — | — | notebooks/analysis.ipynb |
 | `reports/HER2_mBC_Enhertu_Assessment.pptx` | `report.py` (python-pptx) | — | — | all q1/q2 outputs |
 

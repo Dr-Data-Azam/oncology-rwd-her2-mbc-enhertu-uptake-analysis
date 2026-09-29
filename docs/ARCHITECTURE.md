@@ -10,21 +10,21 @@
 data/raw/                     ← READ-ONLY: 5 CSVs + data_dictionary.xlsx
      │
      ▼
-io.py           SHA-256 integrity check + load into DuckDB
+data_loader.py  SHA-256 integrity check + load into DuckDB
      │
      ▼
-dq.py           DQ checks → outputs/dq/dq_log.csv
+data_quality.py DQ checks → outputs/dq/dq_log.csv
      │
      ▼
 cohort.py       Eligibility + index date + de novo/recurrent
                 → outputs/tables/cohort.csv
                 → outputs/tables/attrition.csv
      │
-     ├── her2.py    HER2 variant mapping + window + tie-break
-     │              → outputs/tables/patient_her2.csv
+     ├── her2.py             HER2 variant mapping + window + tie-break
+     │                       → outputs/tables/patient_her2.csv
      │
-     └── hr.py      HR status from ER/PR %
-                    → outputs/tables/patient_hr.csv
+     └── hormone_receptor.py HR status from ER/PR %
+                             → outputs/tables/patient_hr.csv
      │
      ▼
 treatment.py    Regimen grouping + line-of-therapy
@@ -35,7 +35,7 @@ treatment.py    Regimen grouping + line-of-therapy
      └── sensitivity.py       → outputs/tables/sensitivity_*.csv
      │
      ▼
-validate.py     Invariant checks → audit/validation_report.md
+validation.py   Invariant checks → audit/validation_report.md
      │
      ▼
 report.py       Notebook → HTML; outputs → .pptx → reports/
@@ -50,19 +50,19 @@ pipeline.py     Orchestration → outputs/run_manifest.json
 
 | Module | Responsibility | Key ADRs |
 |---|---|---|
-| `io.py` | Load raw data; SHA-256 hash check | ADR-001 |
-| `dq.py` | DQ checks → dq_log.csv | ADR-003 |
-| `cohort.py` | Eligibility, index date, de novo/recurrent, attrition | ADR-002, ADR-004, ADR-005 |
-| `her2.py` | HER2 variant → category, window, tie-break, audit columns | ADR-006, ADR-007, ADR-008 |
-| `hr.py` | ER/PR % → HR status, ER-low flag | ADR-009 |
+| `data_loader.py` | Load raw CSVs into DuckDB; SHA-256 integrity check | ADR-001 |
+| `data_quality.py` | Data-quality checks → outputs/dq/dq_log.csv | ADR-003 |
+| `cohort.py` | Eligibility, metastatic index date, de novo/recurrent, attrition | ADR-002, ADR-004, ADR-005 |
+| `her2.py` | HER2 variant → category, biomarker window, tie-break, audit columns | ADR-006, ADR-007, ADR-008 |
+| `hormone_receptor.py` | ER/PR % → HR status, ER-low flag | ADR-009 |
 | `treatment.py` | Regimen grouping, line-of-therapy approximation | ADR-010 |
-| `q1_distribution.py` | HER2 distribution, strata, benchmarks | ADR-012, ADR-014 |
+| `q1_distribution.py` | HER2 distribution, strata, literature benchmarks | ADR-012, ADR-014 |
 | `q2_uptake.py` | Subindications, Enhertu uptake, competitors, discordance | ADR-011, ADR-013 |
-| `sensitivity.py` | Re-runs under alternative rule sets | ADR-006, ADR-007 |
-| `stats.py` | Wilson CI, small-cell flagging | ADR-012 |
-| `validate.py` | Invariant checks → validation_report.md | — |
-| `report.py` | Notebook → HTML; outputs → .pptx | — |
-| `pipeline.py` | End-to-end orchestration → run_manifest.json | ADR-001 |
+| `sensitivity.py` | Re-runs pipeline under alternative rule sets | ADR-006, ADR-007 |
+| `statistics.py` | Wilson 95% CI, small-cell (n<11) flagging | ADR-012 |
+| `validation.py` | Invariant checks → audit/validation_report.md | — |
+| `report.py` | Notebook → HTML (nbconvert); outputs → .pptx (python-pptx) | — |
+| `pipeline.py` | End-to-end orchestration → outputs/run_manifest.json | ADR-001 |
 
 ---
 

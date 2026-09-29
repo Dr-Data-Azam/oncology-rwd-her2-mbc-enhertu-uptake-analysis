@@ -1,4 +1,4 @@
-"""Input/output and data integrity for the her2rwd pipeline.
+"""Raw data loading and input integrity verification for the her2rwd pipeline.
 
 Responsibility:
     Load the five raw CSVs and the data dictionary into an in-memory or
