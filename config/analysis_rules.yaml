@@ -1,0 +1,122 @@
+# analysis_rules.yaml — Single source of truth for every analytic rule.
+#
+# All values are TBD until the corresponding ADR is written and approved by Azam.
+# Each key cites its ADR. The pipeline raises ValueError if any value is TBD.
+# Benchmarks are marked VERIFY — do not state them as fact without a citation.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-001: Tooling
+# ─────────────────────────────────────────────────────────────────────────────
+tooling:
+  engine: TBD  # e.g. "duckdb+pandas" — to be confirmed in ADR-001
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-002: Eligibility criteria
+# ─────────────────────────────────────────────────────────────────────────────
+eligibility:
+  require_breast_code: TBD       # require C50.x in diagnosis table
+  min_age_at_index_years: TBD    # minimum age at metastatic index date
+  valid_dob_required: TBD        # exclude patients with implausible DOB
+  must_exist_in_patient: TBD     # exclude orphan IDs (PAT_998, PAT_999)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-003: Handling future-dated, post-death, and pre-birth records
+# ─────────────────────────────────────────────────────────────────────────────
+dq:
+  future_date_action: TBD        # drop | flag — action for records dated after today
+  post_death_action: TBD         # drop | flag — action for records dated after death
+  pre_birth_action: TBD          # drop | flag — action for records dated before birth
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-004: Metastatic index date definition and source priority
+# ─────────────────────────────────────────────────────────────────────────────
+index_date:
+  sources: TBD                          # e.g. [metastatic_diagnosis, staging_m1]
+  require_breast_code_for_staging: TBD  # M1/IV staging counts only if patient has C50.x
+  source_priority: TBD                  # curated_first | earliest
+  stage_diagnosis_max_gap_days: TBD     # M1 date counts standalone only if within N days of a C50 metastatic dx
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-005: De novo vs recurrent definition
+# ─────────────────────────────────────────────────────────────────────────────
+cohort:
+  de_novo_primary_gap_days: TBD  # no primary C50 more than N days before index date → de novo
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-006: HER2 variant → category mapping
+# ─────────────────────────────────────────────────────────────────────────────
+her2:
+  variant_to_category:
+    ihc_3plus: TBD                        # IHC 3+
+    ihc_2plus_ish_amplified: TBD          # IHC 2+; ISH amplified
+    ihc_2plus_ish_negative: TBD           # IHC 2+; ISH negative
+    ihc_1plus: TBD                        # IHC 1+
+    ihc_0_absent_membrane: TBD            # IHC 0 absent membrane staining
+    ihc_0_faint_membrane_lte10pct: TBD    # IHC 0 with faint membrane staining in <=10% cells
+    ihc_0_membrane_staining: TBD          # IHC 0 with membrane staining (% not stated — ambiguous)
+    ihc_0_no_detail: TBD                  # IHC 0 (no staining detail — unresolvable)
+    equivocal_or_pending_or_blank: TBD    # equivocal / Pending / blank + Unknown result
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-007: HER2 look-up window
+# ─────────────────────────────────────────────────────────────────────────────
+  window_days:
+    pre_index: TBD   # days before index date (e.g. -365)
+    post_index: TBD  # days after index date (e.g. +180)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-008: HER2 tie-break hierarchy
+# ─────────────────────────────────────────────────────────────────────────────
+  tiebreak_order: TBD      # ordered list: e.g. [variant_beats_result, curated_beats_ehr, closest_to_index]
+  conflict_resolution: TBD # when categories still conflict: highest_category | most_recent
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-009: HR derivation
+# ─────────────────────────────────────────────────────────────────────────────
+hr:
+  positive_threshold_pct: TBD  # percentage >= this → positive (ASCO/CAP: 1)
+  er_low_max_pct: TBD          # ER 1–N% flagged as ER-low (ASCO/CAP: 10)
+  pct_beats_result_text: TBD   # true | false — percentage wins over result text on conflict
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-010: Regimen grouping and line-of-therapy approximation
+# ─────────────────────────────────────────────────────────────────────────────
+treatment:
+  regimen_window_days: TBD  # drugs starting within N days of each other = one regimen
+  new_line_gap_days: TBD    # gap > N days before a new drug class = new line
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-011: Subindication framework
+# ─────────────────────────────────────────────────────────────────────────────
+subindications:
+  required: TBD     # e.g. [her2_positive, hr_pos_her2_low, hr_pos_her2_ultralow]
+  exploratory: TBD  # e.g. [hr_neg_her2_low, her2_null, unknown]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-012: Statistics
+# ─────────────────────────────────────────────────────────────────────────────
+stats:
+  ci_method: TBD              # wilson
+  small_cell_threshold: TBD   # cells with n < this are displayed as "n<11"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-013: Discordance definitions
+# ─────────────────────────────────────────────────────────────────────────────
+discordance:
+  definitions: TBD  # list of named rules, e.g.:
+                    # - enhertu_in_her2_null
+                    # - her2_targeted_in_her2_negative
+                    # - cdk46i_in_hr_negative
+                    # - enhertu_before_endocrine_in_hr_pos
+                    # - enhertu_before_her2_test_date
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ADR-014: Literature benchmarks (VERIFY ALL — do not state as fact without citation)
+# ─────────────────────────────────────────────────────────────────────────────
+benchmarks:
+  her2_positive_pct_range: TBD    # VERIFY — approximate: [15, 20]
+  her2_low_pct_range: TBD         # VERIFY — approximate: [45, 55]
+  her2_null_pct_range: TBD        # VERIFY — approximate: [25, 35]
+  hr_positive_pct_range: TBD      # VERIFY — approximate: [65, 75]
+  her2_ultralow_of_null_pct: TBD  # VERIFY — approximate: [20, 30] (from DB-06 screening)
+  source_citation: TBD            # VERIFY — cite the paper(s)

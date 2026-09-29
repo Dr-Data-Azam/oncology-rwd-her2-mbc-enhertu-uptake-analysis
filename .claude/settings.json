@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "deny": [
+      "Edit(../external/**)",
+      "Write(../external/**)",
+      "Edit(data/raw/**)",
+      "Write(data/raw/**)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run black \"$CLAUDE_FILE_PATH\" 2>/dev/null; uv run ruff check --fix \"$CLAUDE_FILE_PATH\" 2>/dev/null"
+          }
+        ]
+      }
+    ]
+  }
+}

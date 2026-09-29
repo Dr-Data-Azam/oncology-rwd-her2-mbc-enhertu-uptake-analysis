@@ -1,0 +1,1060 @@
+patient_id,report_date,biomarker_name,biomarker_test_type,biomarker_result,biomarker_variant,curation_flag
+PAT_001,2024-10-18,ER,IHC,Positive,52% positive cells,1
+PAT_001,2024-10-19,PR,IHC,Positive,81% positive cells,1
+PAT_001,2024-10-30,Ki-67,protein expression,Positive,79%,1
+PAT_001,2024-11-03,Ki-67,protein expression,Unknown,22%,1
+PAT_001,2024-11-25,PR,IHC,Positive,25% positive cells,1
+PAT_001,2025-01-25,Ki-67,protein expression,Positive,,0
+PAT_001,2025-02-16,HER2,IHC,Negative,IHC 2+; ISH negative,0
+PAT_001,2025-04-13,HER2,IHC,Negative,,0
+PAT_001,2025-04-16,HER2,IHC,Negative,IHC 1+,1
+PAT_001,2025-04-16,PR,IHC,Positive,,0
+PAT_001,2025-05-22,ER,IHC,Positive,,0
+PAT_002,2022-04-09,ER,IHC,Positive,89% positive cells,1
+PAT_002,2022-04-30,PR,IHC,Positive,,0
+PAT_002,2022-06-26,PR,IHC,Positive,,0
+PAT_002,2022-07-19,ER,IHC,Positive,59% positive cells,1
+PAT_002,2022-07-25,PR,IHC,Positive,47% positive cells,1
+PAT_002,2022-10-05,HER2,IHC,Negative,,0
+PAT_002,2022-10-06,HER2,IHC,Negative,,0
+PAT_002,2022-10-30,ER,IHC,Positive,,0
+PAT_002,2022-10-30,Ki-67,protein expression,Positive,,0
+PAT_003,2023-12-30,ER,IHC,Positive,59% positive cells,0
+PAT_003,2024-04-05,HER2,IHC,Positive,,0
+PAT_003,2024-04-09,PR,IHC,Positive,89% positive cells,1
+PAT_003,2024-04-29,Ki-67,protein expression,Unknown,,0
+PAT_003,2024-05-25,Ki-67,protein expression,Unknown,,0
+PAT_003,2024-07-28,ER,IHC,Positive,,0
+PAT_003,2024-09-03,HER2,IHC,Positive,IHC 2+; ISH amplified,0
+PAT_004,2023-10-09,PR,IHC,Positive,79% positive cells,1
+PAT_004,2023-10-11,HER2,IHC,Negative,IHC 0,0
+PAT_004,2023-10-25,Ki-67,protein expression,Positive,33%,1
+PAT_004,2024-01-26,Ki-67,protein expression,Unknown,42%,0
+PAT_004,2024-01-28,HER2,IHC,Negative,IHC 0,1
+PAT_004,2024-04-09,HER2,IHC,Negative,IHC 0 absent membrane staining,0
+PAT_004,2024-05-06,ER,IHC,Positive,90% positive cells,1
+PAT_005,2026-02-01,Ki-67,protein expression,Unknown,44%,1
+PAT_005,2026-03-31,PR,IHC,Positive,22% positive cells,1
+PAT_005,2026-04-19,ER,IHC,Positive,14% positive cells,1
+PAT_005,2026-05-18,Ki-67,protein expression,Unknown,,0
+PAT_005,2026-07-12,HER2,IHC,Positive,,0
+PAT_006,2024-07-03,PR,IHC,Positive,6% positive cells,1
+PAT_006,2024-07-15,Ki-67,protein expression,Positive,,0
+PAT_006,2024-09-10,Ki-67,protein expression,Positive,16%,1
+PAT_006,2024-09-13,HER2,IHC,Negative,IHC 1+,0
+PAT_006,2024-10-01,ER,IHC,Positive,48% positive cells,1
+PAT_006,2024-12-26,PR,IHC,Positive,21% positive cells,0
+PAT_006,2025-01-02,HER2,IHC,Negative,IHC 2+; ISH negative,0
+PAT_006,2025-01-09,HER2,IHC,Negative,IHC 1+,0
+PAT_006,2025-01-19,ER,IHC,Positive,,0
+PAT_007,1963-07-26,HER2,IHC,Positive,IHC 3+,0
+PAT_007,2020-05-28,ER,IHC,Positive,11% positive cells,1
+PAT_007,2020-07-21,HER2,IHC,Negative,,0
+PAT_007,2020-08-12,Ki-67,protein expression,Unknown,42%,1
+PAT_007,2020-08-19,Ki-67,protein expression,Unknown,40%,1
+PAT_007,2020-08-22,PR,IHC,Positive,17% positive cells,0
+PAT_007,2020-09-11,HER2,IHC,Negative,IHC 0,0
+PAT_007,2020-10-16,PR,IHC,Positive,58% positive cells,1
+PAT_008,2020-06-16,PR,IHC,Positive,7% positive cells,1
+PAT_008,2020-07-18,ER,IHC,Positive,91% positive cells,1
+PAT_008,2020-08-13,HER2,protein expression,Positive,,0
+PAT_008,2020-08-21,PR,IHC,Positive,8% positive cells,1
+PAT_008,2020-09-28,ER,IHC,Unknown,56% positive cells,1
+PAT_008,2020-10-06,Ki-67,protein expression,Unknown,,0
+PAT_008,2020-10-21,Ki-67,protein expression,Unknown,28%,1
+PAT_008,2020-11-15,ER,IHC,Positive,43% positive cells,0
+PAT_008,2020-11-17,Ki-67,protein expression,Positive,50%,1
+PAT_009,2023-09-17,HER2,protein expression,Negative,,0
+PAT_009,2023-09-21,ER,IHC,Positive,32% positive cells,1
+PAT_009,2023-10-23,ER,IHC,Positive,,0
+PAT_009,2023-10-26,HER2,IHC,Negative,,0
+PAT_009,2023-11-23,HER2,IHC,Negative,,0
+PAT_009,2024-03-30,PR,IHC,Unknown,,0
+PAT_009,2024-04-28,Ki-67,protein expression,Positive,68%,0
+PAT_010,2021-12-28,Ki-67,protein expression,Positive,31%,1
+PAT_010,2022-01-17,PR,IHC,Negative,30% positive cells,1
+PAT_010,2022-02-14,PR,IHC,Negative,10% positive cells,1
+PAT_010,2022-05-10,PR,IHC,Negative,58% positive cells,1
+PAT_010,2022-07-01,HER2,IHC,Unknown,Pending,1
+PAT_010,2022-08-03,ER,IHC,Negative,26% positive cells,1
+PAT_011,2021-01-06,Ki-67,protein expression,Positive,46%,1
+PAT_011,2021-01-27,PR,IHC,Positive,73% positive cells,1
+PAT_011,2021-02-13,ER,IHC,Positive,25% positive cells,1
+PAT_011,2021-02-28,PR,IHC,Positive,39% positive cells,1
+PAT_011,2021-04-16,PR,IHC,Positive,4% positive cells,1
+PAT_011,2021-05-03,Ki-67,protein expression,Unknown,79%,1
+PAT_011,2021-05-14,Ki-67,protein expression,Unknown,,0
+PAT_011,2021-06-27,ER,IHC,Positive,34% positive cells,1
+PAT_011,2021-06-28,HER2,IHC,Negative,IHC 0 absent membrane staining,1
+PAT_011,2021-08-06,ER,IHC,Positive,17% positive cells,1
+PAT_012,2025-01-04,Ki-67,protein expression,Unknown,44%,0
+PAT_012,2025-01-21,ER,IHC,Positive,,0
+PAT_012,2025-02-15,Ki-67,protein expression,Unknown,14%,1
+PAT_012,2025-02-26,ER,IHC,Positive,,0
+PAT_012,2025-03-23,Ki-67,protein expression,Unknown,,0
+PAT_012,2025-06-11,HER2,IHC,Negative,IHC 1+,0
+PAT_012,2025-07-10,PR,IHC,Positive,6% positive cells,1
+PAT_012,2025-07-16,HER2,IHC,Negative,,0
+PAT_012,2025-08-07,PR,IHC,Positive,59% positive cells,1
+PAT_012,2025-08-19,HER2,protein expression,Negative,IHC 1+,0
+PAT_013,2019-05-10,HER2,protein expression,Positive,IHC 3+,1
+PAT_013,2019-06-09,HER2,IHC,Positive,,0
+PAT_013,2019-06-13,Ki-67,protein expression,Unknown,,0
+PAT_013,2019-06-14,PR,IHC,Positive,,0
+PAT_013,2019-06-22,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_013,2019-07-07,ER,IHC,Unknown,71% positive cells,1
+PAT_013,2019-08-08,ER,IHC,Positive,10% positive cells,1
+PAT_013,2019-10-21,Ki-67,protein expression,Unknown,,0
+PAT_014,2020-01-24,Ki-67,protein expression,Unknown,28%,1
+PAT_014,2020-03-20,ER,IHC,Positive,,0
+PAT_014,2020-07-16,ER,IHC,Positive,,0
+PAT_014,2020-08-09,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_014,2020-08-13,HER2,IHC,Negative,,0
+PAT_014,2020-08-15,Ki-67,protein expression,Positive,70%,1
+PAT_014,2020-08-18,Ki-67,protein expression,Positive,55%,0
+PAT_014,2020-08-21,PR,IHC,Positive,,0
+PAT_015,2023-02-19,Ki-67,protein expression,Unknown,16%,0
+PAT_015,2023-04-07,HER2,IHC,Positive,IHC 3+,0
+PAT_015,2023-04-24,PR,IHC,Positive,28% positive cells,1
+PAT_015,2023-04-29,ER,IHC,Positive,94% positive cells,1
+PAT_015,2023-05-17,ER,IHC,Positive,26% positive cells,1
+PAT_015,2023-07-07,HER2,protein expression,Positive,IHC 2+; ISH amplified,0
+PAT_015,2023-07-09,Ki-67,protein expression,Positive,9%,1
+PAT_015,2023-07-18,Ki-67,protein expression,Unknown,79%,1
+PAT_015,2023-09-26,ER,IHC,Positive,22% positive cells,1
+PAT_015,2023-10-02,HER2,IHC,Negative,IHC 0 absent membrane staining,0
+PAT_015,2023-10-02,HER2,IHC,Positive,IHC 3+,1
+PAT_016,2020-06-03,Ki-67,protein expression,Unknown,68%,1
+PAT_016,2020-06-20,ER,IHC,Negative,90% positive cells,1
+PAT_016,2020-06-28,PR,IHC,Unknown,63% positive cells,0
+PAT_016,2020-07-16,PR,IHC,Negative,23% positive cells,1
+PAT_016,2020-10-24,HER2,IHC,Positive,,0
+PAT_016,2020-11-06,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_016,2020-12-15,ER,IHC,Unknown,,0
+PAT_016,2020-12-17,PR,IHC,Negative,6% positive cells,1
+PAT_016,2021-01-25,ER,IHC,Unknown,,0
+PAT_016,2021-01-27,HER2,IHC,Positive,IHC 3+,1
+PAT_016,2021-01-28,Ki-67,protein expression,Unknown,,0
+PAT_017,2020-03-15,HER2,IHC,Unknown,Pending,0
+PAT_017,2020-04-10,PR,IHC,Positive,76% positive cells,0
+PAT_017,2020-04-12,ER,IHC,Positive,,0
+PAT_017,2020-05-08,Ki-67,protein expression,Positive,,0
+PAT_017,2020-08-22,ER,IHC,Positive,8% positive cells,1
+PAT_017,2020-09-17,PR,IHC,Positive,55% positive cells,1
+PAT_017,2020-09-21,ER,IHC,Positive,,0
+PAT_017,2020-10-05,HER2,protein expression,Unknown,,1
+PAT_017,2020-11-16,HER2,IHC,Unknown,IHC equivocal,1
+PAT_018,2022-07-04,PR,IHC,Positive,,0
+PAT_018,2022-08-22,PR,IHC,Positive,53% positive cells,0
+PAT_018,2022-09-28,HER2,IHC,Negative,IHC 0,1
+PAT_018,2022-10-09,ER,IHC,Positive,92% positive cells,1
+PAT_018,2022-11-07,ER,IHC,Positive,,0
+PAT_018,2022-11-15,Ki-67,protein expression,Unknown,,0
+PAT_018,2022-11-30,Ki-67,protein expression,Positive,,0
+PAT_018,2022-12-27,ER,IHC,Positive,26% positive cells,0
+PAT_018,2023-01-19,PR,IHC,Positive,80% positive cells,1
+PAT_018,2023-01-26,Ki-67,protein expression,Unknown,,0
+PAT_018,2023-02-19,HER2,IHC,Negative,IHC 0 absent membrane staining,1
+PAT_019,2024-05-08,PR,IHC,Positive,,0
+PAT_019,2024-05-19,ER,IHC,Unknown,60% positive cells,1
+PAT_019,2024-06-16,HER2,protein expression,Negative,IHC 0 absent membrane staining,1
+PAT_019,2024-08-17,Ki-67,protein expression,Unknown,,0
+PAT_019,2024-09-03,Ki-67,protein expression,Unknown,74%,0
+PAT_019,2024-09-06,HER2,IHC,Negative,IHC 0,0
+PAT_020,2021-12-23,PR,IHC,Positive,83% positive cells,1
+PAT_020,2021-12-27,HER2,IHC,Negative,IHC 0 with membrane staining,1
+PAT_020,2021-12-28,Ki-67,protein expression,Unknown,80%,1
+PAT_020,2022-01-08,Ki-67,protein expression,Positive,40%,0
+PAT_020,2022-02-11,PR,IHC,Positive,83% positive cells,1
+PAT_020,2022-08-02,ER,IHC,Positive,49% positive cells,1
+PAT_020,2022-08-06,Ki-67,protein expression,Positive,72%,1
+PAT_021,2020-04-15,PR,IHC,Negative,88% positive cells,0
+PAT_021,2020-04-29,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_021,2020-05-01,PR,IHC,Negative,36% positive cells,1
+PAT_021,2020-07-02,ER,IHC,Negative,56% positive cells,1
+PAT_021,2020-08-25,ER,IHC,Negative,93% positive cells,0
+PAT_021,2020-08-30,Ki-67,protein expression,Unknown,26%,1
+PAT_021,2020-09-16,Ki-67,protein expression,Positive,33%,0
+PAT_021,2020-09-30,Ki-67,protein expression,Unknown,43%,1
+PAT_021,2020-12-01,ER,IHC,Negative,,0
+PAT_022,2020-10-27,HER2,IHC,Positive,,0
+PAT_022,2020-11-26,ER,IHC,Positive,81% positive cells,0
+PAT_022,2020-11-26,Ki-67,protein expression,Positive,48%,0
+PAT_022,2021-02-02,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_022,2021-03-25,ER,IHC,Positive,53% positive cells,1
+PAT_022,2021-04-04,ER,IHC,Unknown,10% positive cells,1
+PAT_022,2021-04-15,PR,IHC,Positive,,0
+PAT_022,2021-04-27,HER2,IHC,Positive,IHC 3+,0
+PAT_023,2022-10-25,PR,IHC,Positive,37% positive cells,1
+PAT_023,2022-12-12,Ki-67,protein expression,Positive,37%,1
+PAT_023,2023-02-03,HER2,IHC,Positive,IHC 3+,1
+PAT_023,2023-02-04,HER2,protein expression,Positive,IHC 3+,0
+PAT_023,2023-04-08,PR,IHC,Positive,60% positive cells,1
+PAT_023,2023-05-29,HER2,IHC,Positive,,0
+PAT_023,2023-06-13,ER,IHC,Positive,5% positive cells,1
+PAT_023,2023-06-13,Ki-67,protein expression,Unknown,79%,1
+PAT_023,2023-06-17,ER,IHC,Positive,4% positive cells,1
+PAT_024,2019-07-02,HER2,protein expression,Positive,IHC 3+,1
+PAT_024,2019-07-08,PR,IHC,Positive,,0
+PAT_024,2019-07-22,HER2,IHC,Positive,,0
+PAT_024,2019-07-30,PR,IHC,Positive,14% positive cells,1
+PAT_024,2019-09-30,Ki-67,protein expression,Unknown,59%,0
+PAT_024,2019-10-03,ER,IHC,Positive,,0
+PAT_024,2019-10-24,ER,IHC,Positive,61% positive cells,1
+PAT_024,2019-11-05,HER2,IHC,Positive,IHC 3+,0
+PAT_024,2019-12-22,ER,IHC,Positive,94% positive cells,1
+PAT_025,2021-02-03,Ki-67,protein expression,Unknown,73%,1
+PAT_025,2021-03-18,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_025,2021-03-31,ER,IHC,Positive,39% positive cells,1
+PAT_025,2021-04-01,Ki-67,protein expression,Unknown,40%,0
+PAT_025,2021-04-02,HER2,IHC,Negative,IHC 1+,0
+PAT_025,2021-05-05,Ki-67,protein expression,Unknown,37%,0
+PAT_025,2021-06-03,ER,IHC,Positive,,0
+PAT_025,2021-06-05,PR,IHC,Positive,,0
+PAT_025,2021-08-04,PR,IHC,Positive,,0
+PAT_026,2020-08-20,ER,IHC,Positive,34% positive cells,0
+PAT_026,2020-08-26,HER2,IHC,Negative,IHC 1+,1
+PAT_026,2020-09-09,HER2,protein expression,Negative,,0
+PAT_026,2020-10-05,HER2,IHC,Negative,IHC 1+,1
+PAT_026,2020-10-31,ER,IHC,Positive,73% positive cells,1
+PAT_026,2020-11-19,Ki-67,protein expression,Positive,77%,1
+PAT_026,2020-11-25,PR,IHC,Positive,51% positive cells,1
+PAT_026,2020-12-08,ER,IHC,Positive,23% positive cells,1
+PAT_026,2021-02-11,Ki-67,protein expression,Positive,66%,1
+PAT_027,2019-04-26,PR,IHC,Positive,11% positive cells,1
+PAT_027,2019-05-30,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_027,2019-07-30,PR,IHC,Positive,76% positive cells,1
+PAT_027,2019-08-17,PR,IHC,Positive,15% positive cells,1
+PAT_027,2019-09-01,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,0
+PAT_027,2019-09-12,ER,IHC,Positive,93% positive cells,1
+PAT_027,2019-10-13,Ki-67,protein expression,Positive,24%,1
+PAT_027,2019-10-19,Ki-67,protein expression,Positive,7%,1
+PAT_028,2021-12-25,Ki-67,protein expression,Positive,,0
+PAT_028,2022-02-02,PR,IHC,Positive,58% positive cells,1
+PAT_028,2022-03-29,ER,IHC,Positive,,0
+PAT_028,2022-04-26,HER2,IHC,Negative,IHC 0,1
+PAT_028,2022-05-05,HER2,IHC,Negative,,0
+PAT_028,2022-05-07,ER,IHC,Positive,58% positive cells,1
+PAT_028,2022-06-05,PR,IHC,Positive,20% positive cells,1
+PAT_028,2022-06-25,ER,IHC,Positive,71% positive cells,1
+PAT_029,2020-11-22,PR,IHC,Positive,,0
+PAT_029,2020-12-27,ER,IHC,Positive,73% positive cells,1
+PAT_029,2021-04-14,Ki-67,protein expression,Unknown,62%,1
+PAT_029,2021-04-25,PR,IHC,Positive,83% positive cells,0
+PAT_029,2021-06-12,Ki-67,protein expression,Positive,7%,0
+PAT_029,2021-07-08,ER,IHC,Positive,,0
+PAT_029,2021-07-14,HER2,IHC,Negative,IHC 1+,1
+PAT_030,2021-07-06,Ki-67,protein expression,Positive,6%,0
+PAT_030,2021-07-27,PR,IHC,Negative,59% positive cells,1
+PAT_030,2021-08-23,HER2,IHC,Negative,,0
+PAT_030,2021-09-03,PR,IHC,Negative,61% positive cells,1
+PAT_030,2021-09-14,ER,IHC,Negative,58% positive cells,1
+PAT_030,2021-10-08,Ki-67,protein expression,Unknown,,0
+PAT_030,2021-10-21,HER2,IHC,Negative,,0
+PAT_030,2021-12-06,ER,IHC,Negative,,0
+PAT_030,2022-01-11,PR,IHC,Negative,71% positive cells,1
+PAT_030,2022-02-11,HER2,protein expression,Negative,IHC 1+,0
+PAT_031,2022-10-20,ER,IHC,Positive,11% positive cells,1
+PAT_031,2022-11-04,Ki-67,protein expression,Unknown,57%,0
+PAT_031,2022-11-16,PR,IHC,Positive,,0
+PAT_031,2022-12-19,ER,IHC,Positive,70% positive cells,1
+PAT_031,2023-01-05,HER2,protein expression,Negative,,0
+PAT_032,2019-12-12,HER2,IHC,Positive,,0
+PAT_032,2019-12-29,ER,IHC,Positive,70% positive cells,1
+PAT_032,2020-03-16,Ki-67,protein expression,Unknown,79%,1
+PAT_032,2020-04-05,PR,IHC,Positive,78% positive cells,0
+PAT_032,2020-04-14,Ki-67,protein expression,Positive,,0
+PAT_032,2020-04-21,Ki-67,protein expression,Unknown,,0
+PAT_032,2020-06-26,PR,IHC,Positive,5% positive cells,0
+PAT_033,2025-03-26,PR,IHC,Negative,22% positive cells,1
+PAT_033,2025-04-24,ER,IHC,Negative,,0
+PAT_033,2025-05-08,HER2,IHC,Negative,IHC 1+,0
+PAT_033,2025-05-21,HER2,IHC,Negative,IHC 1+,0
+PAT_033,2025-06-11,PR,IHC,Unknown,17% positive cells,1
+PAT_033,2025-06-15,PR,IHC,Negative,38% positive cells,1
+PAT_033,2025-07-21,Ki-67,protein expression,Unknown,28%,0
+PAT_033,2025-08-15,ER,IHC,Negative,,0
+PAT_033,2025-08-23,HER2,IHC,Negative,IHC 1+,1
+PAT_034,2021-03-06,ER,IHC,Positive,,0
+PAT_034,2021-04-16,PR,IHC,Positive,95% positive cells,1
+PAT_034,2021-04-18,Ki-67,protein expression,Unknown,39%,0
+PAT_034,2021-05-09,ER,IHC,Positive,63% positive cells,1
+PAT_034,2021-07-02,HER2,IHC,Negative,IHC 2+; ISH negative,0
+PAT_034,2021-07-10,ER,IHC,Positive,3% positive cells,1
+PAT_034,2021-08-16,PR,IHC,Positive,39% positive cells,0
+PAT_034,2021-09-01,PR,IHC,Positive,33% positive cells,1
+PAT_034,2021-09-03,HER2,protein expression,Negative,IHC 2+; ISH negative,1
+PAT_035,2023-01-18,HER2,IHC,Negative,,0
+PAT_035,2023-02-26,ER,IHC,Negative,,0
+PAT_035,2023-03-02,Ki-67,protein expression,Positive,42%,1
+PAT_035,2023-04-03,HER2,IHC,Negative,,0
+PAT_035,2023-04-30,PR,IHC,Unknown,13% positive cells,1
+PAT_035,2023-06-02,ER,IHC,Unknown,,0
+PAT_035,2023-06-08,PR,IHC,Unknown,,0
+PAT_035,2023-07-10,HER2,IHC,Negative,IHC 1+,1
+PAT_035,2023-08-11,Ki-67,protein expression,Positive,,0
+PAT_035,2023-08-30,PR,IHC,Negative,,0
+PAT_036,2021-05-21,ER,IHC,Positive,,0
+PAT_036,2021-05-25,HER2,IHC,Negative,IHC 0 with membrane staining,0
+PAT_036,2021-07-01,PR,IHC,Positive,84% positive cells,1
+PAT_036,2021-07-27,Ki-67,protein expression,Unknown,,0
+PAT_036,2021-08-24,Ki-67,protein expression,Unknown,,0
+PAT_036,2021-10-15,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_036,2021-12-29,Ki-67,protein expression,Unknown,22%,1
+PAT_037,2025-08-18,PR,IHC,Positive,85% positive cells,1
+PAT_037,2025-08-21,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_037,2025-09-07,Ki-67,protein expression,Positive,12%,1
+PAT_037,2025-09-14,Ki-67,protein expression,Positive,7%,1
+PAT_037,2025-10-28,Ki-67,protein expression,Unknown,36%,1
+PAT_037,2025-11-02,PR,IHC,Positive,,0
+PAT_037,2026-02-22,HER2,protein expression,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_037,2026-03-07,ER,IHC,Positive,79% positive cells,1
+PAT_038,2020-08-19,ER,IHC,Negative,49% positive cells,1
+PAT_038,2020-09-12,PR,IHC,Negative,,0
+PAT_038,2021-01-23,HER2,IHC,Negative,IHC 1+,1
+PAT_038,2021-02-26,Ki-67,protein expression,Positive,6%,1
+PAT_038,2021-02-27,HER2,IHC,Negative,,0
+PAT_038,2021-03-22,Ki-67,protein expression,Positive,,0
+PAT_038,2021-04-02,Ki-67,protein expression,Positive,62%,0
+PAT_038,2021-04-03,ER,IHC,Negative,,0
+PAT_039,2023-12-15,Ki-67,protein expression,Unknown,53%,1
+PAT_039,2024-01-09,ER,IHC,Positive,45% positive cells,1
+PAT_039,2024-02-03,Ki-67,protein expression,Unknown,8%,0
+PAT_039,2024-05-31,PR,IHC,Positive,92% positive cells,1
+PAT_039,2024-06-09,HER2,IHC,Positive,IHC 3+,0
+PAT_039,2024-06-11,HER2,IHC,Positive,IHC 3+,1
+PAT_040,2023-05-25,Ki-67,protein expression,Positive,24%,1
+PAT_040,2023-06-06,PR,IHC,Positive,74% positive cells,1
+PAT_040,2023-07-27,ER,IHC,Positive,88% positive cells,1
+PAT_040,2023-08-03,Ki-67,protein expression,Positive,16%,1
+PAT_040,2023-08-19,PR,IHC,Positive,12% positive cells,1
+PAT_040,2023-09-17,HER2,IHC,Negative,,0
+PAT_040,2023-10-16,Ki-67,protein expression,Unknown,28%,1
+PAT_040,2023-10-19,HER2,protein expression,Negative,IHC 2+; ISH negative,1
+PAT_040,2023-11-16,HER2,IHC,Negative,IHC 1+,1
+PAT_041,2022-08-19,HER2,protein expression,Negative,,0
+PAT_041,2022-08-27,PR,IHC,Positive,,0
+PAT_041,2022-09-03,Ki-67,protein expression,Positive,42%,1
+PAT_041,2022-11-02,PR,IHC,Positive,68% positive cells,0
+PAT_041,2022-11-04,ER,IHC,Positive,27% positive cells,0
+PAT_041,2022-11-12,HER2,IHC,Negative,,0
+PAT_041,2022-12-04,HER2,IHC,Negative,IHC 1+,1
+PAT_041,2022-12-04,PR,IHC,Unknown,,0
+PAT_041,2023-01-20,ER,IHC,Positive,,0
+PAT_041,2023-02-09,ER,IHC,Positive,,0
+PAT_042,2026-10-14,PR,IHC,Positive,10% positive cells,1
+PAT_042,2026-10-27,HER2,IHC,Negative,IHC 1+,1
+PAT_042,2026-11-27,HER2,IHC,Negative,IHC 1+,0
+PAT_042,2026-12-15,ER,IHC,Positive,27% positive cells,1
+PAT_042,2027-01-16,Ki-67,protein expression,Positive,12%,1
+PAT_042,2027-01-20,ER,IHC,Positive,,0
+PAT_042,2027-01-26,Ki-67,protein expression,Unknown,,0
+PAT_042,2027-02-14,PR,IHC,Positive,49% positive cells,1
+PAT_042,2027-02-26,Ki-67,protein expression,Positive,67%,1
+PAT_042,2027-05-03,HER2,IHC,Negative,IHC 0 absent membrane staining,0
+PAT_043,2022-02-09,Ki-67,protein expression,Positive,59%,1
+PAT_043,2022-04-04,HER2,IHC,Negative,IHC 2+; ISH negative,0
+PAT_043,2022-05-07,Ki-67,protein expression,Positive,,0
+PAT_043,2022-06-14,PR,IHC,Negative,11% positive cells,1
+PAT_043,2022-07-13,ER,IHC,Unknown,46% positive cells,1
+PAT_043,2022-07-20,ER,IHC,Negative,81% positive cells,0
+PAT_044,2024-03-20,PR,IHC,Positive,,0
+PAT_044,2024-05-06,ER,IHC,Positive,53% positive cells,1
+PAT_044,2024-06-16,Ki-67,protein expression,Positive,,0
+PAT_044,2024-07-21,PR,IHC,Positive,,0
+PAT_044,2024-08-10,HER2,IHC,Unknown,,0
+PAT_044,2024-08-12,HER2,IHC,Unknown,IHC equivocal,1
+PAT_044,2024-08-30,ER,IHC,Positive,44% positive cells,0
+PAT_044,2024-09-29,PR,IHC,Positive,84% positive cells,1
+PAT_044,2024-10-29,HER2,IHC,Unknown,IHC equivocal,1
+PAT_045,2020-12-15,PR,IHC,Positive,4% positive cells,0
+PAT_045,2021-01-15,Ki-67,protein expression,Unknown,,0
+PAT_045,2021-05-22,ER,IHC,Positive,43% positive cells,1
+PAT_045,2021-05-28,HER2,protein expression,Negative,,0
+PAT_045,2021-06-06,Ki-67,protein expression,Unknown,,0
+PAT_045,2021-06-18,HER2,IHC,Negative,IHC 1+,0
+PAT_046,2020-10-21,PR,IHC,Positive,,0
+PAT_046,2020-10-23,Ki-67,protein expression,Positive,56%,1
+PAT_046,2020-11-05,HER2,IHC,Positive,,0
+PAT_046,2020-12-05,HER2,IHC,Positive,IHC 3+,1
+PAT_046,2021-01-21,Ki-67,protein expression,Unknown,,0
+PAT_046,2021-01-24,Ki-67,protein expression,Positive,10%,1
+PAT_046,2021-01-28,HER2,IHC,Positive,IHC 3+,0
+PAT_046,2021-01-28,PR,IHC,Positive,15% positive cells,1
+PAT_046,2021-03-31,ER,IHC,Positive,90% positive cells,0
+PAT_047,2024-07-05,HER2,IHC,Positive,IHC 3+,1
+PAT_047,2024-07-25,HER2,protein expression,Positive,IHC 2+; ISH negative,1
+PAT_047,2024-07-26,ER,IHC,Negative,80% positive cells,1
+PAT_047,2024-07-31,ER,IHC,Negative,84% positive cells,1
+PAT_047,2024-08-14,ER,IHC,Negative,72% positive cells,1
+PAT_047,2024-08-19,PR,IHC,Negative,19% positive cells,1
+PAT_047,2024-08-22,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_047,2024-09-24,Ki-67,protein expression,Unknown,39%,1
+PAT_048,2022-08-04,Ki-67,protein expression,Unknown,,0
+PAT_048,2022-08-29,ER,IHC,Unknown,45% positive cells,1
+PAT_048,2022-09-21,HER2,IHC,Negative,IHC 1+,1
+PAT_048,2022-10-24,Ki-67,protein expression,Unknown,,0
+PAT_048,2022-11-01,PR,IHC,Positive,42% positive cells,1
+PAT_048,2022-11-18,ER,IHC,Positive,,0
+PAT_048,2022-11-21,PR,IHC,Positive,,0
+PAT_048,2022-12-20,PR,IHC,Unknown,,0
+PAT_049,2020-02-24,PR,IHC,Positive,,0
+PAT_049,2020-03-19,PR,IHC,Positive,59% positive cells,0
+PAT_049,2020-03-24,Ki-67,protein expression,Unknown,,0
+PAT_049,2020-04-18,ER,IHC,Positive,,0
+PAT_049,2020-04-22,HER2,IHC,Positive,,0
+PAT_049,2020-04-27,ER,IHC,Positive,54% positive cells,1
+PAT_049,2020-05-09,Ki-67,protein expression,Positive,51%,1
+PAT_049,2020-07-28,PR,IHC,Positive,,0
+PAT_049,2020-07-29,Ki-67,protein expression,Unknown,25%,0
+PAT_050,2024-02-01,PR,IHC,Positive,40% positive cells,1
+PAT_050,2024-02-15,ER,IHC,Positive,30% positive cells,1
+PAT_050,2024-03-16,HER2,IHC,Positive,IHC 3+,1
+PAT_050,2024-04-19,Ki-67,protein expression,Positive,,0
+PAT_050,2024-06-13,PR,IHC,Unknown,11% positive cells,1
+PAT_051,2024-03-02,ER,IHC,Positive,,0
+PAT_051,2024-04-06,HER2,IHC,Negative,,0
+PAT_051,2024-05-07,PR,IHC,Positive,1% positive cells,1
+PAT_051,2024-05-09,PR,IHC,Positive,95% positive cells,0
+PAT_051,2024-07-10,Ki-67,protein expression,Positive,27%,1
+PAT_051,2024-08-15,ER,IHC,Unknown,,0
+PAT_051,2024-09-13,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_052,2025-10-08,Ki-67,protein expression,Unknown,67%,0
+PAT_052,2025-12-17,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_052,2026-01-28,ER,IHC,Negative,,0
+PAT_052,2026-02-08,ER,IHC,Negative,26% positive cells,1
+PAT_052,2026-02-10,Ki-67,protein expression,Unknown,,0
+PAT_052,2026-03-06,PR,IHC,Negative,,0
+PAT_052,2026-03-06,PR,IHC,Negative,,0
+PAT_052,2026-03-14,PR,IHC,Negative,,0
+PAT_053,2025-04-16,HER2,IHC,Negative,IHC 2+; ISH negative,0
+PAT_053,2025-06-06,Ki-67,protein expression,Positive,69%,0
+PAT_053,2025-08-31,Ki-67,protein expression,Unknown,11%,1
+PAT_053,2025-09-26,HER2,IHC,Negative,IHC 1+,1
+PAT_053,2025-10-07,PR,IHC,Positive,25% positive cells,1
+PAT_053,2025-10-11,ER,IHC,Positive,,0
+PAT_053,2025-10-17,PR,IHC,Positive,,0
+PAT_053,2025-11-07,ER,IHC,Unknown,,0
+PAT_053,2025-11-16,HER2,IHC,Negative,IHC 1+,0
+PAT_053,2025-11-17,ER,IHC,Positive,,0
+PAT_054,2024-03-24,ER,IHC,Unknown,32% positive cells,1
+PAT_054,2024-05-05,ER,IHC,Negative,37% positive cells,0
+PAT_054,2024-05-05,PR,IHC,Negative,69% positive cells,1
+PAT_054,2024-06-07,HER2,IHC,Positive,IHC 3+,0
+PAT_054,2024-06-26,PR,IHC,Negative,29% positive cells,1
+PAT_054,2024-07-08,PR,IHC,Negative,95% positive cells,1
+PAT_054,2024-07-17,Ki-67,protein expression,Unknown,,0
+PAT_054,2024-07-22,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_054,2024-07-28,HER2,IHC,Positive,IHC 3+,0
+PAT_054,2024-09-03,Ki-67,protein expression,Unknown,76%,0
+PAT_054,2024-11-19,ER,IHC,Unknown,69% positive cells,1
+PAT_055,1955-11-19,HER2,IHC,Positive,IHC 3+,0
+PAT_055,2019-09-16,PR,IHC,Positive,,0
+PAT_055,2019-09-29,Ki-67,protein expression,Unknown,,0
+PAT_055,2019-10-25,PR,IHC,Positive,34% positive cells,0
+PAT_055,2019-11-19,ER,IHC,Positive,13% positive cells,0
+PAT_055,2019-11-29,ER,IHC,Positive,,0
+PAT_055,2020-01-24,PR,IHC,Positive,,0
+PAT_055,2020-02-09,Ki-67,protein expression,Unknown,,0
+PAT_055,2020-05-02,Ki-67,protein expression,Positive,19%,1
+PAT_055,2020-05-05,HER2,IHC,Negative,,0
+PAT_056,2020-09-10,HER2,IHC,Negative,IHC 0 with membrane staining,1
+PAT_056,2020-09-29,PR,IHC,Negative,54% positive cells,0
+PAT_056,2020-10-11,Ki-67,protein expression,Unknown,38%,0
+PAT_056,2020-10-18,ER,IHC,Unknown,17% positive cells,1
+PAT_056,2020-12-01,Ki-67,protein expression,Positive,72%,1
+PAT_056,2021-03-08,PR,IHC,Negative,17% positive cells,1
+PAT_056,2021-04-03,ER,IHC,Negative,,0
+PAT_056,2021-04-17,ER,IHC,Negative,87% positive cells,1
+PAT_057,2024-02-11,Ki-67,protein expression,Unknown,80%,0
+PAT_057,2024-03-21,PR,IHC,Positive,,0
+PAT_057,2024-04-10,HER2,IHC,Negative,IHC 0 absent membrane staining,1
+PAT_057,2024-04-17,PR,IHC,Positive,45% positive cells,1
+PAT_057,2024-04-30,HER2,IHC,Negative,IHC 0,0
+PAT_057,2024-06-18,HER2,IHC,Negative,IHC 0,1
+PAT_057,2024-08-06,ER,IHC,Positive,14% positive cells,1
+PAT_057,2024-08-14,Ki-67,protein expression,Positive,34%,1
+PAT_058,2021-09-07,ER,IHC,Positive,4% positive cells,1
+PAT_058,2021-09-13,PR,IHC,Positive,60% positive cells,1
+PAT_058,2021-10-11,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_058,2021-11-13,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_058,2022-02-26,Ki-67,protein expression,Positive,46%,1
+PAT_058,2022-03-20,PR,IHC,Positive,,0
+PAT_059,2023-04-30,HER2,IHC,Negative,IHC 1+,1
+PAT_059,2023-05-13,PR,IHC,Unknown,63% positive cells,1
+PAT_059,2023-06-11,ER,IHC,Positive,86% positive cells,1
+PAT_059,2023-08-02,Ki-67,protein expression,Unknown,8%,1
+PAT_059,2023-08-13,PR,IHC,Positive,,0
+PAT_059,2023-08-22,Ki-67,protein expression,Positive,60%,0
+PAT_059,2023-09-17,ER,IHC,Positive,91% positive cells,1
+PAT_060,2022-12-12,PR,IHC,Positive,65% positive cells,1
+PAT_060,2022-12-25,PR,IHC,Positive,33% positive cells,1
+PAT_060,2023-01-21,HER2,IHC,Negative,IHC 1+,1
+PAT_060,2023-01-25,Ki-67,protein expression,Unknown,65%,1
+PAT_060,2023-02-09,ER,IHC,Positive,47% positive cells,1
+PAT_060,2023-02-12,HER2,IHC,Negative,IHC 1+,0
+PAT_060,2023-03-02,PR,IHC,Positive,91% positive cells,1
+PAT_060,2023-03-28,HER2,IHC,Negative,IHC 1+,1
+PAT_060,2023-04-20,ER,IHC,Positive,4% positive cells,1
+PAT_061,2019-04-11,ER,IHC,Negative,45% positive cells,1
+PAT_061,2019-04-13,ER,IHC,Negative,,0
+PAT_061,2019-06-04,Ki-67,protein expression,Unknown,22%,1
+PAT_061,2019-06-10,PR,IHC,Negative,94% positive cells,1
+PAT_061,2019-07-05,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_061,2019-07-19,Ki-67,protein expression,Unknown,30%,1
+PAT_061,2019-07-23,ER,IHC,Negative,62% positive cells,1
+PAT_061,2019-08-11,HER2,IHC,Positive,IHC 3+,1
+PAT_061,2019-11-23,HER2,IHC,Positive,IHC 3+,1
+PAT_062,2022-11-22,Ki-67,protein expression,Unknown,77%,0
+PAT_062,2022-11-25,Ki-67,protein expression,Positive,23%,1
+PAT_062,2022-12-01,ER,IHC,Negative,8% positive cells,0
+PAT_062,2023-02-26,Ki-67,protein expression,Unknown,6%,1
+PAT_062,2023-04-27,HER2,protein expression,Positive,IHC 3+,1
+PAT_062,2023-05-18,ER,IHC,Negative,9% positive cells,1
+PAT_062,2023-07-17,PR,IHC,Unknown,8% positive cells,1
+PAT_062,2023-07-20,HER2,IHC,Positive,IHC 3+,1
+PAT_063,2024-09-04,ER,IHC,Negative,,0
+PAT_063,2024-09-28,PR,IHC,Negative,,0
+PAT_063,2024-10-11,HER2,IHC,Positive,IHC 3+,0
+PAT_063,2024-12-18,HER2,IHC,Positive,IHC 3+,0
+PAT_063,2025-01-09,ER,IHC,Negative,63% positive cells,0
+PAT_063,2025-02-04,PR,IHC,Negative,74% positive cells,1
+PAT_063,2025-03-07,Ki-67,protein expression,Unknown,46%,1
+PAT_063,2025-03-09,ER,IHC,Negative,75% positive cells,1
+PAT_064,2023-01-30,PR,IHC,Positive,,0
+PAT_064,2023-02-12,PR,IHC,Positive,,0
+PAT_064,2023-06-14,HER2,protein expression,Negative,IHC 1+,1
+PAT_064,2023-06-29,PR,IHC,Positive,53% positive cells,1
+PAT_064,2023-07-07,Ki-67,protein expression,Positive,70%,0
+PAT_064,2023-08-03,ER,IHC,Positive,,0
+PAT_065,2022-04-10,PR,IHC,Positive,33% positive cells,1
+PAT_065,2022-05-19,ER,IHC,Positive,26% positive cells,1
+PAT_065,2022-06-06,ER,IHC,Positive,52% positive cells,0
+PAT_065,2022-06-10,PR,IHC,Positive,,0
+PAT_065,2022-07-02,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_065,2022-09-04,Ki-67,protein expression,Unknown,,0
+PAT_065,2022-09-29,PR,IHC,Positive,,0
+PAT_065,2022-10-03,Ki-67,protein expression,Positive,50%,0
+PAT_065,2022-10-08,HER2,IHC,Negative,IHC 0 with membrane staining,1
+PAT_065,2022-10-11,Ki-67,protein expression,Unknown,79%,1
+PAT_066,2025-07-01,PR,IHC,Negative,11% positive cells,0
+PAT_066,2025-07-18,ER,IHC,Negative,,0
+PAT_066,2025-07-21,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_066,2025-08-19,Ki-67,protein expression,Unknown,33%,1
+PAT_066,2025-09-06,PR,IHC,Negative,49% positive cells,1
+PAT_066,2025-09-12,ER,IHC,Unknown,28% positive cells,1
+PAT_066,2025-12-13,PR,IHC,Unknown,11% positive cells,1
+PAT_066,2025-12-21,Ki-67,protein expression,Unknown,,0
+PAT_067,2023-11-14,PR,IHC,Positive,27% positive cells,0
+PAT_067,2023-11-19,PR,IHC,Positive,25% positive cells,0
+PAT_067,2023-12-20,PR,IHC,Positive,77% positive cells,1
+PAT_067,2024-01-26,ER,IHC,Positive,55% positive cells,0
+PAT_067,2024-02-24,Ki-67,protein expression,Unknown,27%,1
+PAT_067,2024-03-03,HER2,IHC,Unknown,IHC equivocal,1
+PAT_067,2024-04-10,HER2,IHC,Unknown,,0
+PAT_067,2024-05-22,Ki-67,protein expression,Positive,29%,1
+PAT_067,2024-06-11,Ki-67,protein expression,Unknown,23%,1
+PAT_068,2019-05-27,ER,IHC,Positive,90% positive cells,1
+PAT_068,2019-05-28,ER,IHC,Positive,,0
+PAT_068,2019-07-02,PR,IHC,Positive,40% positive cells,1
+PAT_068,2019-07-04,Ki-67,protein expression,Positive,34%,1
+PAT_068,2019-08-12,ER,IHC,Positive,,0
+PAT_068,2019-08-13,PR,IHC,Positive,65% positive cells,1
+PAT_068,2019-09-17,PR,IHC,Unknown,,0
+PAT_068,2019-10-15,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_069,2023-09-11,HER2,IHC,Negative,IHC 0 with membrane staining,1
+PAT_069,2023-09-18,PR,IHC,Unknown,,0
+PAT_069,2023-10-11,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_069,2023-11-03,ER,IHC,Unknown,63% positive cells,1
+PAT_069,2023-12-04,PR,IHC,Negative,29% positive cells,1
+PAT_069,2023-12-29,Ki-67,protein expression,Positive,,0
+PAT_069,2024-02-10,HER2,IHC,Negative,IHC 0 with membrane staining,1
+PAT_069,2024-02-16,Ki-67,protein expression,Positive,24%,1
+PAT_069,2024-02-27,ER,IHC,Negative,74% positive cells,1
+PAT_070,2023-01-23,Ki-67,protein expression,Positive,,0
+PAT_070,2023-02-04,HER2,IHC,Negative,IHC 0 absent membrane staining,1
+PAT_070,2023-02-12,ER,IHC,Unknown,8% positive cells,1
+PAT_070,2023-05-05,Ki-67,protein expression,Unknown,,0
+PAT_070,2023-05-22,HER2,IHC,Negative,IHC 0 absent membrane staining,1
+PAT_070,2023-06-07,ER,IHC,Unknown,21% positive cells,0
+PAT_070,2023-07-05,PR,IHC,Negative,82% positive cells,1
+PAT_070,2023-08-11,Ki-67,protein expression,Unknown,11%,1
+PAT_070,2023-09-08,PR,IHC,Negative,42% positive cells,0
+PAT_070,2023-10-01,HER2,IHC,Negative,IHC 0 absent membrane staining,1
+PAT_071,2023-07-08,PR,IHC,Positive,,0
+PAT_071,2023-09-09,Ki-67,protein expression,Unknown,30%,1
+PAT_071,2023-09-17,Ki-67,protein expression,Unknown,25%,1
+PAT_071,2023-10-12,ER,IHC,Positive,53% positive cells,1
+PAT_071,2024-01-18,HER2,IHC,Negative,IHC 1+,1
+PAT_072,2023-04-13,PR,IHC,Unknown,63% positive cells,0
+PAT_072,2023-05-19,Ki-67,protein expression,Positive,69%,0
+PAT_072,2023-05-27,ER,IHC,Positive,68% positive cells,1
+PAT_072,2023-06-18,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_072,2023-07-26,PR,IHC,Positive,71% positive cells,0
+PAT_072,2023-08-03,ER,IHC,Positive,75% positive cells,0
+PAT_072,2023-08-23,PR,IHC,Positive,,0
+PAT_072,2023-10-13,HER2,IHC,Positive,,0
+PAT_073,2023-06-30,HER2,IHC,Negative,IHC 1+,1
+PAT_073,2023-08-08,Ki-67,protein expression,Unknown,,0
+PAT_073,2023-10-03,HER2,IHC,Negative,IHC 1+,1
+PAT_073,2023-12-03,PR,IHC,Negative,69% positive cells,1
+PAT_073,2023-12-30,ER,IHC,Negative,13% positive cells,1
+PAT_074,2022-02-27,ER,IHC,Negative,,0
+PAT_074,2022-04-15,Ki-67,protein expression,Positive,64%,0
+PAT_074,2022-04-21,Ki-67,protein expression,Unknown,70%,1
+PAT_074,2022-08-02,ER,IHC,Negative,25% positive cells,1
+PAT_074,2022-08-31,PR,IHC,Negative,,0
+PAT_074,2022-09-01,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_075,2023-11-17,PR,IHC,Positive,36% positive cells,1
+PAT_075,2023-11-18,HER2,IHC,Negative,IHC 1+,1
+PAT_075,2024-01-03,ER,IHC,Positive,93% positive cells,1
+PAT_075,2024-03-17,ER,IHC,Positive,42% positive cells,1
+PAT_075,2024-03-22,PR,IHC,Positive,,0
+PAT_075,2024-04-17,Ki-67,protein expression,Positive,,0
+PAT_075,2024-05-24,HER2,IHC,Negative,IHC 1+,1
+PAT_075,2024-06-19,ER,IHC,Positive,,0
+PAT_075,2024-07-14,HER2,IHC,Negative,,0
+PAT_076,2020-08-07,ER,IHC,Positive,,0
+PAT_076,2020-09-27,Ki-67,protein expression,Unknown,46%,1
+PAT_076,2020-10-18,PR,IHC,Unknown,,0
+PAT_076,2020-11-23,Ki-67,protein expression,Unknown,37%,1
+PAT_076,2020-12-11,HER2,IHC,Negative,,0
+PAT_076,2020-12-27,HER2,IHC,Negative,IHC 0,1
+PAT_076,2021-01-18,HER2,IHC,Negative,,0
+PAT_076,2021-01-26,ER,IHC,Positive,23% positive cells,1
+PAT_076,2021-02-25,PR,IHC,Positive,,0
+PAT_077,2026-07-14,Ki-67,protein expression,Unknown,80%,1
+PAT_077,2026-07-16,ER,IHC,Negative,87% positive cells,1
+PAT_077,2026-08-27,PR,IHC,Negative,25% positive cells,0
+PAT_077,2026-10-18,PR,IHC,Negative,34% positive cells,1
+PAT_077,2026-11-06,HER2,IHC,Negative,IHC 1+,1
+PAT_077,2026-12-03,PR,IHC,Negative,89% positive cells,1
+PAT_077,2027-01-30,ER,IHC,Negative,23% positive cells,1
+PAT_077,2027-01-30,ER,IHC,Negative,29% positive cells,1
+PAT_078,2020-04-13,ER,IHC,Positive,82% positive cells,1
+PAT_078,2020-04-29,Ki-67,protein expression,Positive,39%,1
+PAT_078,2020-05-10,ER,IHC,Unknown,30% positive cells,1
+PAT_078,2020-05-26,Ki-67,protein expression,Unknown,52%,1
+PAT_078,2020-07-19,Ki-67,protein expression,Positive,37%,1
+PAT_078,2020-07-22,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_078,2020-08-30,PR,IHC,Positive,58% positive cells,1
+PAT_078,2020-09-25,PR,IHC,Unknown,65% positive cells,1
+PAT_078,2020-10-08,PR,IHC,Positive,2% positive cells,1
+PAT_078,2020-12-04,HER2,IHC,Positive,IHC 3+,0
+PAT_079,2021-12-31,HER2,IHC,Negative,IHC 1+,1
+PAT_079,2022-02-05,PR,IHC,Positive,89% positive cells,0
+PAT_079,2022-03-04,HER2,IHC,Negative,IHC 1+,1
+PAT_079,2022-05-09,ER,IHC,Positive,,0
+PAT_079,2022-05-29,ER,IHC,Positive,88% positive cells,1
+PAT_079,2022-06-23,ER,IHC,Positive,70% positive cells,1
+PAT_079,2022-07-04,Ki-67,protein expression,Unknown,57%,1
+PAT_079,2022-07-21,PR,IHC,Positive,59% positive cells,1
+PAT_080,2020-06-16,PR,IHC,Positive,65% positive cells,1
+PAT_080,2020-07-28,HER2,IHC,Negative,IHC 0,1
+PAT_080,2020-09-10,ER,IHC,Positive,75% positive cells,0
+PAT_080,2020-09-16,Ki-67,protein expression,Unknown,77%,1
+PAT_080,2020-12-04,HER2,IHC,Negative,IHC 0,1
+PAT_080,2021-01-09,PR,IHC,Positive,,0
+PAT_081,2024-03-15,Ki-67,protein expression,Positive,47%,1
+PAT_081,2024-03-23,Ki-67,protein expression,Positive,15%,1
+PAT_081,2024-03-25,Ki-67,protein expression,Unknown,35%,1
+PAT_081,2024-04-05,ER,IHC,Positive,93% positive cells,0
+PAT_081,2024-04-21,PR,IHC,Positive,,0
+PAT_081,2024-07-11,ER,IHC,Positive,,0
+PAT_081,2024-07-20,HER2,IHC,Positive,IHC 2+; ISH amplified,0
+PAT_081,2024-07-29,PR,IHC,Positive,28% positive cells,1
+PAT_081,2024-10-08,PR,IHC,Positive,77% positive cells,1
+PAT_081,2024-10-23,HER2,IHC,Positive,,0
+PAT_082,2024-04-13,Ki-67,protein expression,Unknown,17%,1
+PAT_082,2024-05-30,ER,IHC,Negative,50% positive cells,1
+PAT_082,2024-06-19,PR,IHC,Negative,54% positive cells,1
+PAT_082,2024-07-24,ER,IHC,Negative,48% positive cells,1
+PAT_082,2024-08-05,Ki-67,protein expression,Positive,11%,0
+PAT_082,2024-09-03,HER2,protein expression,Negative,IHC 1+,1
+PAT_082,2024-10-12,PR,IHC,Negative,59% positive cells,1
+PAT_083,2019-03-15,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_083,2019-04-08,HER2,IHC,Negative,IHC 0 with membrane staining,1
+PAT_083,2019-05-15,ER,IHC,Negative,49% positive cells,1
+PAT_083,2019-08-27,ER,IHC,Negative,59% positive cells,0
+PAT_083,2019-08-29,ER,IHC,Negative,37% positive cells,0
+PAT_083,2019-09-01,PR,IHC,Negative,34% positive cells,1
+PAT_083,2019-09-03,Ki-67,protein expression,Unknown,60%,1
+PAT_084,2023-06-05,PR,IHC,Unknown,13% positive cells,1
+PAT_084,2023-06-06,HER2,IHC,Negative,,0
+PAT_084,2023-08-05,HER2,IHC,Negative,,0
+PAT_084,2023-09-18,Ki-67,protein expression,Positive,25%,1
+PAT_084,2023-09-30,Ki-67,protein expression,Unknown,77%,1
+PAT_084,2023-10-16,HER2,IHC,Negative,IHC 0 with membrane staining,1
+PAT_084,2023-10-24,ER,IHC,Positive,,0
+PAT_084,2023-11-12,Ki-67,protein expression,Positive,27%,1
+PAT_084,2024-01-25,ER,IHC,Positive,69% positive cells,1
+PAT_085,2024-07-01,HER2,IHC,Negative,IHC 0,1
+PAT_085,2024-07-24,ER,IHC,Unknown,6% positive cells,1
+PAT_085,2024-07-30,PR,IHC,Positive,14% positive cells,1
+PAT_085,2024-08-05,ER,IHC,Positive,,0
+PAT_085,2024-09-03,Ki-67,protein expression,Unknown,13%,1
+PAT_085,2024-09-25,ER,IHC,Positive,65% positive cells,1
+PAT_085,2024-10-10,Ki-67,protein expression,Unknown,9%,1
+PAT_085,2024-11-06,PR,IHC,Positive,40% positive cells,1
+PAT_085,2025-01-09,Ki-67,protein expression,Unknown,35%,0
+PAT_086,2024-05-07,HER2,IHC,Positive,IHC 3+,1
+PAT_086,2024-05-15,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_086,2024-07-27,Ki-67,protein expression,Unknown,32%,1
+PAT_086,2024-09-03,ER,IHC,Negative,,0
+PAT_086,2024-09-12,PR,IHC,Negative,,0
+PAT_086,2024-09-27,PR,IHC,Negative,73% positive cells,1
+PAT_086,2024-10-04,HER2,IHC,Positive,IHC 3+,1
+PAT_086,2024-11-26,PR,IHC,Negative,90% positive cells,1
+PAT_087,2019-01-18,ER,IHC,Positive,,0
+PAT_087,2019-02-15,HER2,IHC,Negative,IHC 0,1
+PAT_087,2019-03-05,PR,IHC,Positive,,0
+PAT_087,2019-03-09,Ki-67,protein expression,Positive,65%,0
+PAT_087,2019-03-23,ER,IHC,Positive,93% positive cells,1
+PAT_087,2019-04-02,HER2,IHC,Negative,IHC 0,1
+PAT_087,2019-06-17,HER2,IHC,Negative,IHC 0,0
+PAT_088,2023-10-29,ER,IHC,Positive,69% positive cells,0
+PAT_088,2023-11-05,HER2,IHC,Negative,,0
+PAT_088,2023-11-26,PR,IHC,Positive,48% positive cells,0
+PAT_088,2024-03-23,Ki-67,protein expression,Positive,,0
+PAT_088,2024-04-23,PR,IHC,Unknown,85% positive cells,0
+PAT_088,2024-05-18,Ki-67,protein expression,Positive,53%,1
+PAT_088,2024-06-15,Ki-67,protein expression,Positive,33%,1
+PAT_088,2024-06-28,HER2,IHC,Negative,IHC 1+,0
+PAT_089,2021-06-30,HER2,IHC,Positive,IHC 3+,1
+PAT_089,2021-08-17,Ki-67,protein expression,Unknown,77%,0
+PAT_089,2021-09-29,ER,IHC,Negative,,0
+PAT_089,2021-10-25,PR,IHC,Negative,21% positive cells,0
+PAT_089,2021-12-25,ER,IHC,Negative,63% positive cells,1
+PAT_089,2022-01-27,ER,IHC,Unknown,20% positive cells,1
+PAT_089,2022-01-29,PR,IHC,Negative,4% positive cells,1
+PAT_089,2022-02-03,PR,IHC,Negative,7% positive cells,1
+PAT_090,2023-12-22,ER,IHC,Positive,82% positive cells,0
+PAT_090,2023-12-29,PR,IHC,Positive,,0
+PAT_090,2024-03-18,ER,IHC,Positive,,0
+PAT_090,2024-03-20,ER,IHC,Positive,,0
+PAT_090,2024-03-26,HER2,IHC,Negative,IHC 1+,0
+PAT_090,2024-05-20,Ki-67,protein expression,Positive,39%,0
+PAT_090,2024-08-07,HER2,IHC,Negative,IHC 1+,1
+PAT_090,2024-08-10,PR,IHC,Positive,,0
+PAT_090,2024-08-14,HER2,IHC,Negative,IHC 1+,1
+PAT_091,2023-10-31,PR,IHC,Negative,16% positive cells,0
+PAT_091,2023-11-30,Ki-67,protein expression,Positive,5%,1
+PAT_091,2024-01-06,Ki-67,protein expression,Unknown,,0
+PAT_091,2024-01-18,PR,IHC,Negative,,0
+PAT_091,2024-03-05,ER,IHC,Negative,7% positive cells,1
+PAT_091,2024-04-29,Ki-67,protein expression,Unknown,41%,1
+PAT_091,2024-05-09,HER2,IHC,Negative,IHC 1+,0
+PAT_091,2024-06-01,PR,IHC,Negative,81% positive cells,1
+PAT_091,2024-06-07,HER2,IHC,Negative,IHC 1+,0
+PAT_092,2021-09-25,HER2,IHC,Negative,IHC 0 absent membrane staining,0
+PAT_092,2021-11-07,ER,IHC,Negative,,0
+PAT_092,2021-11-10,PR,IHC,Negative,,0
+PAT_092,2022-02-05,Ki-67,protein expression,Positive,19%,0
+PAT_092,2022-03-21,ER,IHC,Negative,3% positive cells,0
+PAT_092,2022-04-16,ER,IHC,Negative,1% positive cells,1
+PAT_092,2022-05-07,HER2,IHC,Negative,IHC 0 absent membrane staining,1
+PAT_093,2021-08-05,HER2,protein expression,Negative,IHC 1+,1
+PAT_093,2021-08-12,PR,IHC,Positive,93% positive cells,1
+PAT_093,2021-11-08,ER,IHC,Positive,,0
+PAT_093,2021-12-14,Ki-67,protein expression,Positive,74%,1
+PAT_093,2022-03-05,Ki-67,protein expression,Positive,23%,1
+PAT_093,2022-03-27,PR,IHC,Positive,33% positive cells,1
+PAT_094,2021-08-22,PR,IHC,Positive,,0
+PAT_094,2021-09-11,HER2,protein expression,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_094,2021-09-12,ER,IHC,Positive,42% positive cells,1
+PAT_094,2021-09-17,Ki-67,protein expression,Unknown,75%,1
+PAT_094,2021-11-11,Ki-67,protein expression,Unknown,,0
+PAT_094,2021-11-17,ER,IHC,Positive,50% positive cells,0
+PAT_094,2021-12-24,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,1
+PAT_094,2022-02-27,PR,IHC,Unknown,93% positive cells,1
+PAT_094,2022-03-05,HER2,IHC,Negative,IHC 0 with membrane staining,1
+PAT_094,2022-03-18,ER,IHC,Positive,,0
+PAT_094,2022-04-18,PR,IHC,Unknown,37% positive cells,0
+PAT_095,2023-01-03,ER,IHC,Positive,83% positive cells,1
+PAT_095,2023-02-15,Ki-67,protein expression,Unknown,63%,1
+PAT_095,2023-02-24,HER2,IHC,Positive,IHC 3+,1
+PAT_095,2023-03-09,ER,IHC,Positive,,0
+PAT_095,2023-03-25,HER2,IHC,Positive,IHC 3+,1
+PAT_095,2023-04-09,PR,IHC,Positive,,0
+PAT_095,2023-05-07,PR,IHC,Positive,,0
+PAT_095,2023-06-17,HER2,IHC,Positive,,0
+PAT_096,2022-01-08,HER2,IHC,Negative,,0
+PAT_096,2022-02-12,PR,IHC,Positive,45% positive cells,1
+PAT_096,2022-03-13,HER2,IHC,Negative,,0
+PAT_096,2022-04-11,Ki-67,protein expression,Positive,,0
+PAT_096,2022-04-27,Ki-67,protein expression,Unknown,48%,1
+PAT_096,2022-04-30,PR,IHC,Positive,46% positive cells,1
+PAT_096,2022-05-07,HER2,IHC,Negative,IHC 1+,0
+PAT_096,2022-05-28,ER,IHC,Positive,80% positive cells,1
+PAT_096,2022-06-14,Ki-67,protein expression,Positive,48%,0
+PAT_097,2023-03-29,PR,IHC,Positive,,0
+PAT_097,2023-04-24,Ki-67,protein expression,Positive,26%,0
+PAT_097,2023-05-02,HER2,IHC,Negative,IHC 0,1
+PAT_097,2023-05-03,ER,IHC,Positive,91% positive cells,1
+PAT_097,2023-05-19,Ki-67,protein expression,Positive,38%,1
+PAT_097,2023-06-02,PR,IHC,Positive,,0
+PAT_097,2023-07-16,ER,IHC,Positive,,0
+PAT_097,2023-07-19,HER2,protein expression,Negative,IHC 0 absent membrane staining,0
+PAT_097,2023-10-18,PR,IHC,Positive,,0
+PAT_097,2023-10-29,HER2,IHC,Negative,,0
+PAT_098,2021-09-08,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_098,2021-09-17,HER2,protein expression,Negative,IHC 1+,1
+PAT_098,2021-10-14,Ki-67,protein expression,Unknown,41%,1
+PAT_098,2021-10-30,Ki-67,protein expression,Unknown,79%,1
+PAT_098,2021-12-21,HER2,IHC,Negative,IHC 1+,1
+PAT_098,2022-01-24,PR,IHC,Unknown,,0
+PAT_098,2022-01-29,Ki-67,protein expression,Unknown,,0
+PAT_098,2022-03-04,ER,IHC,Negative,31% positive cells,1
+PAT_098,2022-04-24,ER,IHC,Negative,76% positive cells,0
+PAT_099,2021-12-13,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_099,2022-01-11,ER,IHC,Positive,3% positive cells,0
+PAT_099,2022-02-02,Ki-67,protein expression,Unknown,77%,1
+PAT_099,2022-03-19,ER,IHC,Positive,73% positive cells,0
+PAT_099,2022-05-25,PR,IHC,Positive,62% positive cells,1
+PAT_099,2022-06-26,HER2,IHC,Positive,IHC 3+,1
+PAT_099,2022-08-11,PR,IHC,Positive,,0
+PAT_100,2025-03-23,HER2,IHC,Positive,IHC 3+,1
+PAT_100,2025-04-19,PR,IHC,Positive,,0
+PAT_100,2025-05-06,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_100,2025-05-08,ER,IHC,Positive,4% positive cells,1
+PAT_100,2025-05-16,Ki-67,protein expression,Positive,,0
+PAT_100,2025-08-23,Ki-67,protein expression,Unknown,33%,1
+PAT_100,2025-10-14,HER2,IHC,Negative,IHC 2+; ISH negative,0
+PAT_101,2023-09-24,HER2,IHC,Positive,,0
+PAT_101,2023-09-27,PR,IHC,Positive,15% positive cells,0
+PAT_101,2023-11-15,PR,IHC,Positive,,0
+PAT_101,2023-11-17,Ki-67,protein expression,Unknown,50%,1
+PAT_101,2023-12-04,HER2,IHC,Positive,IHC 3+,0
+PAT_101,2023-12-15,Ki-67,protein expression,Positive,66%,1
+PAT_101,2024-01-13,PR,IHC,Positive,75% positive cells,1
+PAT_101,2024-02-26,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_101,2024-03-19,ER,IHC,Positive,52% positive cells,0
+PAT_102,2022-11-08,ER,IHC,Negative,37% positive cells,1
+PAT_102,2022-11-15,PR,IHC,Negative,81% positive cells,1
+PAT_102,2022-11-16,Ki-67,protein expression,Unknown,6%,1
+PAT_102,2022-12-02,ER,IHC,Negative,86% positive cells,1
+PAT_102,2022-12-17,PR,IHC,Negative,29% positive cells,1
+PAT_102,2023-03-29,HER2,IHC,Negative,IHC 0,1
+PAT_102,2023-04-20,HER2,IHC,Negative,IHC 0,1
+PAT_102,2023-05-16,HER2,IHC,Negative,IHC 0,1
+PAT_102,2023-06-14,ER,IHC,Negative,,0
+PAT_102,2023-06-19,Ki-67,protein expression,Positive,70%,1
+PAT_103,2022-09-01,HER2,IHC,Positive,,0
+PAT_103,2022-09-21,HER2,IHC,Positive,IHC 3+,1
+PAT_103,2022-11-02,ER,IHC,Positive,58% positive cells,1
+PAT_103,2022-11-26,Ki-67,protein expression,Unknown,41%,1
+PAT_103,2022-12-31,ER,IHC,Positive,60% positive cells,1
+PAT_103,2023-02-13,Ki-67,protein expression,Unknown,,0
+PAT_103,2023-02-20,PR,IHC,Unknown,22% positive cells,1
+PAT_103,2023-03-20,Ki-67,protein expression,Unknown,33%,1
+PAT_104,2019-12-31,ER,IHC,Positive,75% positive cells,1
+PAT_104,2020-01-23,HER2,IHC,Unknown,,0
+PAT_104,2020-02-05,Ki-67,protein expression,Unknown,,0
+PAT_104,2020-03-06,ER,IHC,Positive,45% positive cells,1
+PAT_104,2020-03-14,HER2,IHC,Unknown,Pending,1
+PAT_104,2020-07-01,PR,IHC,Unknown,42% positive cells,1
+PAT_104,2020-07-04,ER,IHC,Positive,,0
+PAT_105,2024-04-18,ER,IHC,Negative,52% positive cells,1
+PAT_105,2024-04-24,PR,IHC,Negative,44% positive cells,1
+PAT_105,2024-05-12,Ki-67,protein expression,Positive,,0
+PAT_105,2024-08-29,HER2,IHC,Negative,IHC 1+,1
+PAT_105,2024-09-13,HER2,protein expression,Negative,IHC 2+; ISH negative,1
+PAT_105,2024-09-19,ER,IHC,Unknown,66% positive cells,0
+PAT_105,2024-11-05,PR,IHC,Negative,79% positive cells,1
+PAT_105,2024-11-29,HER2,protein expression,Negative,IHC 1+,1
+PAT_106,2022-06-23,Ki-67,protein expression,Unknown,49%,1
+PAT_106,2022-08-28,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_106,2022-09-14,Ki-67,protein expression,Unknown,,0
+PAT_106,2022-10-15,HER2,IHC,Negative,IHC 1+,1
+PAT_106,2022-10-19,PR,IHC,Positive,23% positive cells,1
+PAT_106,2022-11-14,PR,IHC,Positive,59% positive cells,0
+PAT_106,2022-11-16,ER,IHC,Positive,37% positive cells,1
+PAT_106,2022-12-30,PR,IHC,Unknown,78% positive cells,0
+PAT_106,2023-02-18,ER,IHC,Positive,,0
+PAT_106,2023-03-01,ER,IHC,Positive,29% positive cells,1
+PAT_107,2024-01-22,HER2,IHC,Negative,IHC 0,0
+PAT_107,2024-03-23,PR,IHC,Unknown,79% positive cells,1
+PAT_107,2024-04-21,HER2,IHC,Negative,IHC 0,0
+PAT_107,2024-05-07,Ki-67,protein expression,Unknown,69%,1
+PAT_107,2024-05-09,HER2,IHC,Negative,,0
+PAT_107,2024-05-25,PR,IHC,Positive,,0
+PAT_107,2024-06-17,ER,IHC,Unknown,78% positive cells,1
+PAT_107,2024-07-04,Ki-67,protein expression,Unknown,18%,1
+PAT_108,2022-03-22,ER,IHC,Negative,30% positive cells,1
+PAT_108,2022-03-22,PR,IHC,Negative,44% positive cells,1
+PAT_108,2022-04-02,HER2,IHC,Negative,IHC 0 absent membrane staining,1
+PAT_108,2022-04-14,PR,IHC,Negative,87% positive cells,1
+PAT_108,2022-05-15,HER2,IHC,Negative,IHC 0,1
+PAT_108,2022-06-06,HER2,protein expression,Negative,,0
+PAT_108,2022-08-10,Ki-67,protein expression,Positive,22%,1
+PAT_108,2022-11-12,ER,IHC,Negative,,0
+PAT_108,2022-11-12,PR,IHC,Negative,,0
+PAT_109,2024-03-24,Ki-67,protein expression,Positive,,0
+PAT_109,2024-03-29,Ki-67,protein expression,Unknown,32%,1
+PAT_109,2024-07-13,HER2,IHC,Unknown,,1
+PAT_109,2024-08-08,Ki-67,protein expression,Unknown,32%,0
+PAT_109,2024-08-11,PR,IHC,Positive,94% positive cells,1
+PAT_109,2024-08-16,ER,IHC,Positive,72% positive cells,1
+PAT_110,2020-09-03,Ki-67,protein expression,Positive,,0
+PAT_110,2020-09-10,HER2,IHC,Negative,IHC 0,1
+PAT_110,2020-09-17,HER2,IHC,Negative,IHC 0,0
+PAT_110,2020-09-19,ER,IHC,Unknown,74% positive cells,1
+PAT_110,2020-12-09,ER,IHC,Negative,6% positive cells,0
+PAT_110,2020-12-31,PR,IHC,Negative,43% positive cells,1
+PAT_110,2021-03-01,Ki-67,protein expression,Positive,25%,1
+PAT_110,2021-04-14,ER,IHC,Negative,,0
+PAT_110,2021-04-18,Ki-67,protein expression,Positive,,0
+PAT_111,2022-06-15,ER,IHC,Positive,66% positive cells,1
+PAT_111,2022-08-09,PR,IHC,Positive,,0
+PAT_111,2022-08-15,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_111,2022-09-13,HER2,IHC,Negative,IHC 1+,1
+PAT_111,2022-12-01,Ki-67,protein expression,Positive,42%,1
+PAT_111,2022-12-08,PR,IHC,Positive,53% positive cells,1
+PAT_111,2022-12-09,HER2,IHC,Negative,IHC 0 absent membrane staining,1
+PAT_111,2022-12-24,ER,IHC,Positive,,0
+PAT_112,2022-05-14,ER,IHC,Positive,78% positive cells,1
+PAT_112,2022-05-16,PR,IHC,Positive,62% positive cells,0
+PAT_112,2022-05-23,ER,IHC,Positive,89% positive cells,1
+PAT_112,2022-07-12,PR,IHC,Positive,56% positive cells,1
+PAT_112,2022-07-14,HER2,IHC,Negative,IHC 1+,1
+PAT_112,2022-07-24,PR,IHC,Positive,,0
+PAT_112,2022-08-06,ER,IHC,Positive,26% positive cells,1
+PAT_112,2022-11-30,Ki-67,protein expression,Positive,32%,1
+PAT_113,2025-12-22,PR,IHC,Positive,48% positive cells,0
+PAT_113,2026-01-02,ER,IHC,Positive,3% positive cells,0
+PAT_113,2026-01-03,Ki-67,protein expression,Positive,60%,1
+PAT_113,2026-01-08,HER2,IHC,Negative,IHC 1+,1
+PAT_113,2026-01-09,Ki-67,protein expression,Positive,39%,0
+PAT_113,2026-01-11,Ki-67,protein expression,Unknown,6%,0
+PAT_113,2026-06-03,HER2,IHC,Negative,IHC 1+,1
+PAT_113,2026-07-04,PR,IHC,Positive,28% positive cells,1
+PAT_113,2026-07-15,PR,IHC,Positive,,0
+PAT_113,2026-07-19,HER2,IHC,Negative,,0
+PAT_114,2020-04-15,ER,IHC,Unknown,1% positive cells,1
+PAT_114,2020-05-09,Ki-67,protein expression,Positive,63%,0
+PAT_114,2020-05-17,ER,IHC,Unknown,,0
+PAT_114,2020-05-20,ER,IHC,Positive,20% positive cells,0
+PAT_114,2020-09-07,Ki-67,protein expression,Positive,7%,1
+PAT_114,2020-10-13,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_114,2020-10-22,PR,IHC,Positive,,0
+PAT_115,2021-05-26,Ki-67,protein expression,Unknown,21%,1
+PAT_115,2021-08-11,PR,IHC,Positive,,0
+PAT_115,2021-09-04,PR,IHC,Positive,53% positive cells,1
+PAT_115,2021-10-25,ER,IHC,Positive,61% positive cells,0
+PAT_115,2021-11-06,PR,IHC,Positive,93% positive cells,1
+PAT_115,2021-11-25,Ki-67,protein expression,Positive,,0
+PAT_115,2021-11-28,Ki-67,protein expression,Positive,54%,0
+PAT_115,2021-12-23,HER2,IHC,Negative,,0
+PAT_116,2023-03-11,Ki-67,protein expression,Unknown,,0
+PAT_116,2023-06-22,ER,IHC,Positive,,0
+PAT_116,2023-07-31,HER2,IHC,Positive,IHC 2+; ISH amplified,0
+PAT_116,2023-08-01,ER,IHC,Positive,76% positive cells,0
+PAT_116,2023-08-25,PR,IHC,Positive,7% positive cells,1
+PAT_116,2023-09-02,HER2,IHC,Positive,IHC 3+,0
+PAT_116,2023-09-18,ER,IHC,Positive,27% positive cells,1
+PAT_116,2023-10-01,Ki-67,protein expression,Positive,13%,1
+PAT_117,2022-10-19,PR,IHC,Positive,14% positive cells,1
+PAT_117,2022-10-22,HER2,IHC,Negative,,0
+PAT_117,2023-01-21,ER,IHC,Positive,,0
+PAT_117,2023-01-27,HER2,IHC,Negative,IHC 0,1
+PAT_117,2023-02-27,HER2,IHC,Negative,IHC 0,1
+PAT_117,2023-04-04,PR,IHC,Positive,42% positive cells,1
+PAT_117,2023-04-05,Ki-67,protein expression,Positive,74%,1
+PAT_117,2023-04-09,Ki-67,protein expression,Unknown,77%,0
+PAT_118,2024-04-24,HER2,IHC,Positive,,0
+PAT_118,2024-04-29,Ki-67,protein expression,Unknown,38%,1
+PAT_118,2024-04-30,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_118,2024-05-16,HER2,protein expression,Positive,IHC 3+,1
+PAT_118,2024-05-21,PR,IHC,Unknown,1% positive cells,0
+PAT_118,2024-07-13,Ki-67,protein expression,Unknown,63%,0
+PAT_118,2024-07-18,ER,IHC,Positive,73% positive cells,1
+PAT_118,2024-09-27,Ki-67,protein expression,Unknown,65%,1
+PAT_119,2024-08-22,Ki-67,protein expression,Positive,,0
+PAT_119,2024-08-27,Ki-67,protein expression,Positive,51%,1
+PAT_119,2024-09-26,ER,IHC,Negative,30% positive cells,1
+PAT_119,2024-11-06,PR,IHC,Negative,1% positive cells,1
+PAT_119,2024-11-30,HER2,protein expression,Negative,IHC 2+; ISH negative,1
+PAT_119,2025-02-02,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_119,2025-02-28,Ki-67,protein expression,Positive,18%,1
+PAT_119,2025-03-13,ER,IHC,Negative,33% positive cells,1
+PAT_119,2025-04-21,HER2,IHC,Negative,IHC 1+,0
+PAT_120,2019-04-21,ER,IHC,Positive,35% positive cells,0
+PAT_120,2019-06-12,PR,IHC,Positive,89% positive cells,1
+PAT_120,2019-07-24,ER,IHC,Positive,29% positive cells,1
+PAT_120,2019-10-11,PR,IHC,Positive,68% positive cells,1
+PAT_120,2019-11-19,HER2,protein expression,Negative,IHC 1+,1
+PAT_120,2019-12-03,Ki-67,protein expression,Unknown,62%,0
+PAT_121,2025-04-02,PR,IHC,Positive,,0
+PAT_121,2025-04-17,ER,IHC,Positive,11% positive cells,1
+PAT_121,2025-06-22,PR,IHC,Positive,5% positive cells,0
+PAT_121,2025-07-21,Ki-67,protein expression,Positive,,0
+PAT_121,2025-08-28,HER2,IHC,Negative,IHC 0 with faint membrane staining in <=10% cells,0
+PAT_121,2025-08-30,PR,IHC,Positive,84% positive cells,1
+PAT_121,2025-09-03,Ki-67,protein expression,Positive,33%,0
+PAT_121,2025-09-12,HER2,IHC,Negative,,0
+PAT_121,2025-09-16,ER,IHC,Positive,74% positive cells,0
+PAT_122,2023-10-15,HER2,IHC,Positive,IHC 3+,1
+PAT_122,2023-10-18,PR,IHC,Negative,61% positive cells,0
+PAT_122,2023-12-01,Ki-67,protein expression,Positive,35%,1
+PAT_122,2023-12-19,PR,IHC,Negative,10% positive cells,1
+PAT_122,2024-01-10,PR,IHC,Unknown,83% positive cells,1
+PAT_122,2024-03-28,Ki-67,protein expression,Positive,45%,1
+PAT_122,2024-04-26,ER,IHC,Negative,,0
+PAT_123,2020-08-29,Ki-67,protein expression,Positive,42%,0
+PAT_123,2020-10-04,PR,IHC,Negative,1% positive cells,1
+PAT_123,2020-11-03,HER2,IHC,Positive,IHC 3+,0
+PAT_123,2020-12-04,HER2,IHC,Positive,IHC 3+,1
+PAT_123,2020-12-19,ER,IHC,Negative,19% positive cells,1
+PAT_123,2021-01-23,HER2,IHC,Positive,,0
+PAT_123,2021-03-17,ER,IHC,Negative,34% positive cells,1
+PAT_123,2021-04-10,Ki-67,protein expression,Positive,39%,0
+PAT_123,2021-04-25,Ki-67,protein expression,Positive,49%,1
+PAT_124,2022-09-27,Ki-67,protein expression,Unknown,70%,1
+PAT_124,2022-11-06,ER,IHC,Negative,,0
+PAT_124,2023-01-01,Ki-67,protein expression,Positive,53%,1
+PAT_124,2023-01-30,PR,IHC,Negative,42% positive cells,1
+PAT_124,2023-03-10,ER,IHC,Negative,77% positive cells,1
+PAT_124,2023-03-11,Ki-67,protein expression,Unknown,60%,0
+PAT_124,2023-03-12,HER2,protein expression,Unknown,Pending,1
+PAT_124,2023-04-19,ER,IHC,Negative,42% positive cells,1
+PAT_125,2021-11-29,HER2,IHC,Positive,,0
+PAT_125,2021-12-05,ER,IHC,Positive,,0
+PAT_125,2021-12-07,Ki-67,protein expression,Positive,22%,1
+PAT_125,2021-12-13,PR,IHC,Positive,65% positive cells,0
+PAT_125,2021-12-29,ER,IHC,Positive,14% positive cells,1
+PAT_125,2022-02-19,Ki-67,protein expression,Positive,10%,0
+PAT_125,2022-04-13,Ki-67,protein expression,Unknown,,0
+PAT_125,2022-04-16,HER2,IHC,Positive,IHC 2+; ISH amplified,0
+PAT_126,2021-10-22,HER2,IHC,Positive,IHC 3+,1
+PAT_126,2021-11-14,PR,IHC,Negative,78% positive cells,1
+PAT_126,2022-01-25,ER,IHC,Negative,22% positive cells,1
+PAT_126,2022-01-25,Ki-67,protein expression,Positive,61%,1
+PAT_126,2022-02-03,PR,IHC,Negative,16% positive cells,1
+PAT_126,2022-02-11,HER2,IHC,Positive,IHC 2+; ISH amplified,1
+PAT_126,2022-02-27,HER2,IHC,Positive,,0
+PAT_126,2022-03-03,ER,IHC,Negative,73% positive cells,0
+PAT_126,2022-04-30,Ki-67,protein expression,Positive,17%,1
+PAT_126,2022-05-24,PR,IHC,Negative,93% positive cells,1
+PAT_127,2022-10-19,HER2,IHC,Negative,,0
+PAT_127,2022-11-26,HER2,IHC,Negative,IHC 1+,0
+PAT_127,2022-11-28,ER,IHC,Unknown,30% positive cells,1
+PAT_127,2022-12-27,HER2,IHC,Negative,IHC 2+; ISH negative,0
+PAT_127,2022-12-27,PR,IHC,Unknown,39% positive cells,1
+PAT_127,2023-02-13,PR,IHC,Negative,32% positive cells,1
+PAT_127,2023-03-04,Ki-67,protein expression,Unknown,,0
+PAT_128,2023-09-11,HER2,IHC,Negative,IHC 2+; ISH negative,1
+PAT_128,2023-10-03,HER2,IHC,Negative,IHC 1+,1
+PAT_128,2023-10-20,ER,IHC,Unknown,,0
+PAT_128,2023-11-02,PR,IHC,Positive,37% positive cells,1
+PAT_128,2024-03-25,PR,IHC,Positive,43% positive cells,1
+PAT_128,2024-04-02,Ki-67,protein expression,Unknown,53%,1
+PAT_129,2021-03-20,HER2,IHC,Positive,IHC 0,0
+PAT_130,2019-01-14,HER2,IHC,Positive,IHC 0,0
+PAT_131,2021-07-17,HER2,IHC,Positive,IHC 1+,0
+PAT_135,2019-10-09,HER2,IHC,Unknown,IHC 3+,0
+PAT_137,2024-02-13,HER2,IHC,Negative,IHC 0,0
+PAT_138,2023-09-18,HER2,IHC,Unknown,IHC 3+,0
+PAT_139,2019-09-30,HER2,IHC,Positive,IHC 1+,0
+PAT_140,2021-01-06,HER2,IHC,Unknown,IHC 0,0
+PAT_998,2023-07-01,HER2,IHC,Positive,IHC 3+,0
+PAT_999,2023-07-01,HER2,IHC,Positive,IHC 3+,0

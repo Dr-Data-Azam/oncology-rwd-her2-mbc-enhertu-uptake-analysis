@@ -1,0 +1,199 @@
+# CLAUDE.md — Project Constitution: her2-mbc-feasibility
+
+---
+
+## ⛔ HARD RULES (read before anything else)
+
+1. **`../external/` is STRICTLY READ-ONLY.** Never write, edit, rename, move, delete, or
+   unzip into it. Never run any command whose output could land there. Read it only to
+   verify SHA-256 hashes (via `src/her2rwd/io.py`).
+
+2. **`data/raw/` is also read-only.** These are byte-identical working copies of the
+   originals. No pipeline step, script, or edit ever modifies them. All outputs go to
+   `outputs/`.
+
+3. **Local git only.** No remote, no `git push`, no GitHub operations of any kind.
+
+---
+
+## Project Overview
+
+**What:** ConcertAI technical assessment — HER2 metastatic breast cancer feasibility and
+Enhertu uptake analysis on 150 synthetic patients.
+
+**Who:** Azam (Associate Director, Solutions Consulting, ConcertAI) as owner and approver;
+Claude Code as builder.
+
+**Deadline:** Email Brandon Nathasingh Wed Sep 30 evening ET. Review Thu Oct 1, 3:00 PM ET.
+
+**Two client questions:**
+- Q1: What is the HER2 distribution (positive / low / ultralow / 0-null / unknown) at
+  metastatic diagnosis? Is this data asset feasible for HER2-defined mBC studies?
+- Q2: How does Enhertu uptake compare with competitors across HER2-defined subindications?
+  Is this asset fit for a commercial or feasibility question about Enhertu in mBC?
+
+**Deliverables:**
+
+| ID | Deliverable | Format | To Brandon? |
+|---|---|---|---|
+| D1 | Source code (reproducible) | zipped repo | ✅ |
+| D2 | Rendered analysis notebook | HTML | ✅ |
+| D3 | Slide deck (5 slides + Appendix A/B/C) | .pptx + .pdf | ✅ |
+| D4 | Output tables and figures | CSV/PNG | ✅ (inside zip) |
+| D5 | Audit pack | Markdown + CSV | ✅ (inside zip) |
+| D6 | README + repo docs | Markdown | ✅ |
+| D7 | Cover email | text (no dashes) | ✅ |
+| D8 | Talk track + Q&A prep | Markdown | ❌ internal (_prep/) |
+
+---
+
+## Architecture
+
+```
+data/raw/          ← READ-ONLY input (5 CSVs + data_dictionary.xlsx)
+     │
+     ▼
+io.py              load + SHA-256 integrity check → DuckDB
+     │
+     ▼
+dq.py              DQ checks → outputs/dq/dq_log.csv
+     │
+     ▼
+cohort.py          eligibility + index date + de novo/recurrent → outputs/tables/cohort.csv
+     │             attrition.csv
+     ▼
+her2.py            variant mapping + window + tie-break → outputs/tables/patient_her2.csv
+hr.py              ER/PR % → outputs/tables/patient_hr.csv
+     │
+     ▼
+treatment.py       regimens + lines → outputs/tables/patient_lines.csv
+     │
+     ├── q1_distribution.py  → outputs/tables/q1_*.csv
+     ├── q2_uptake.py        → outputs/tables/q2_*.csv
+     └── sensitivity.py      → outputs/tables/sensitivity_*.csv
+     │
+     ▼
+validate.py        invariant checks → audit/validation_report.md
+     │
+     ▼
+report.py          notebook → HTML; outputs → .pptx → reports/
+     │
+     ▼
+pipeline.py        orchestrates all stages → outputs/run_manifest.json
+```
+
+**Module map:**
+
+| Module | Responsibility |
+|---|---|
+| `io.py` | Load raw data; SHA-256 integrity check vs ../external/ |
+| `dq.py` | DQ checks → dq_log.csv |
+| `cohort.py` | Eligibility, index date, de novo/recurrent, attrition |
+| `her2.py` | HER2 variant → category, window, tie-break, audit columns |
+| `hr.py` | ER/PR % → HR status, ER-low flag |
+| `treatment.py` | Regimen grouping, line-of-therapy approximation |
+| `q1_distribution.py` | HER2 distribution, strata, benchmarks |
+| `q2_uptake.py` | Subindications, Enhertu uptake, competitors, discordance |
+| `sensitivity.py` | Re-runs under alternative rule sets |
+| `stats.py` | Wilson CI, small-cell flagging |
+| `validate.py` | Invariant checks → validation_report.md |
+| `report.py` | Notebook → HTML; pipeline outputs → .pptx |
+| `pipeline.py` | End-to-end orchestration → run_manifest.json |
+
+---
+
+## Conventions
+
+- **No hard-coded parameters.** Every window, threshold, code list, and tie-break order
+  lives in `config/analysis_rules.yaml`. Code reads from config; changing a rule means
+  editing config, not code.
+- **All outputs are generated.** Nothing in `outputs/` or `reports/` is ever hand-edited.
+  Numbers flow from raw data → pipeline → tables → deck.
+- **Docstrings cite ADR IDs.** Every public function docstring names the ADR that governs
+  its behavior (e.g. `# ADR-007`).
+- **Emails to Brandon have no dashes** (Azam's style preference). Draft them in D7 only.
+- **VERIFY markers.** Any clinical claim that needs a citation is marked `VERIFY` in config
+  and comments. Never state it as fact until the citation is confirmed.
+- **Small-cell flagging.** Report counts with denominators; flag cells with n < 11 as
+  `n<11` per ADR-012 and standard RWD practice.
+- **State that all data is synthetic** in the deck and README.
+
+---
+
+## Permission Boundaries (ASSESSMENT_PLAN §8)
+
+- Never touch `../external/` (see Hard Rule 1).
+- Never modify `data/raw/` (see Hard Rule 2).
+- Never hand-edit anything in `outputs/` or `reports/`.
+- Never type a number into the deck that is not sourced from `outputs/tables/`.
+- No `git push`, no remote operations, no GitHub calls.
+- Every clinical claim in the deck or ADRs must carry a citation or a `VERIFY` marker.
+
+---
+
+## Feature Lifecycle (spec-driven)
+
+```
+/create-spec <slug>
+      │
+      ▼
+ analysis-spec.md   ← Azam approves
+      │
+      ▼ (Plan Mode)
+  tech-spec.md      ← Azam approves + reads new ADRs
+      │
+      ▼
+   BUILD (code + tests)
+      │
+      ▼
+ /test  /lint
+      │
+      ▼
+ clinical-logic-reviewer  +  code-reviewer  (agents)
+      │
+      ▼
+ /close-phase         ← appends row to audit/SESSION_LOG.md → local commit
+```
+
+**Phase gate:** Azam must approve the analysis spec AND the tech spec, and read any new
+ADRs, before `/close-phase` is allowed to commit.
+
+---
+
+## Commands
+
+| Command | What it does |
+|---|---|
+| `/create-spec <slug>` | Clean tree check → branch `phase/<slug>` → create `specs/NN-slug/` → interview Azam on 5 analysis-spec questions → save `analysis-spec.md` |
+| `/close-phase "<msg>"` | test → lint → run-pipeline → validate → clinical-logic-reviewer + code-reviewer → implementation-summary → ADR check → append SESSION_LOG row → local commit → merge main |
+| `/run-pipeline [--rules alt.yaml]` | `uv run python -m her2rwd.pipeline`; prints attrition + headline counts |
+| `/validate` | Run invariants; STOP on any FAIL; write `audit/validation_report.md` |
+| `/log-decision "<title>"` | Create next ADR from template; fill from latest run; update DECISION_INDEX; link from analysis_rules.yaml |
+| `/build-report` | Notebook → HTML; outputs → pptx; zip `../_submission/` |
+| `/test` | `uv run pytest tests/ -v --cov=src/her2rwd --cov-report=term-missing` |
+| `/lint` | `uv run ruff check src/ tests/ && uv run black --check src/ tests/` |
+| `/fix` | `uv run ruff check --fix src/ tests/ && uv run black src/ tests/` |
+
+---
+
+## Skills
+
+| Skill | What it does |
+|---|---|
+| `generate-analysis-spec` | Interviews Azam on 5 questions (client question, definitions, outputs, alternatives, constraints/risks); writes `analysis-spec.md` |
+| `generate-tech-spec` | Turns analysis spec into `tech-spec.md` (architecture table, module changes, SQL models, tests, ADRs to write) |
+| `write-test` | Writes table-driven pytest fixtures; one tiny hand-made patient case per decision branch |
+| `clinical-rules-reference` | Provides HER2/HR rules (ASCO/CAP 2018/2023), Enhertu labels (marked VERIFY), competitor map, literature benchmarks (marked VERIFY) |
+| `decision-log` | Fills ADR template from `audit/decisions/ADR-TEMPLATE.md`; adds evidence from current run |
+| `deck-builder` | Enforces 5-slide structure; titles = finding sentences; routes numbers to CSV sources; exports via python-pptx |
+
+---
+
+## Agents
+
+| Agent | What it does |
+|---|---|
+| `code-reviewer` | Reviews diffs: reproducibility, no hard-coded params, SQL/pandas join correctness, config-sourced parameters, test coverage |
+| `clinical-logic-reviewer` | Reviews HER2/HR logic vs ASCO/CAP and Enhertu labels; flags uncited claims; writes verdict in `code-review.md` + `clinical-review.md` |
+| `test-writer` | Writes pytest file for a module; uses `write-test` skill; never mocks DuckDB — uses in-memory instances |
+| `reviewer-simulator` | Plays Brandon Nathasingh: reads deck + audit pack; fires PROJECT_BRIEF §9 follow-up questions; writes D8 Q&A prep in `../_prep/` |

@@ -1,0 +1,342 @@
+patient_id,med_date,med_brand_name,med_generic_name,med_status,curation_flag
+PAT_001,2025-01-24,Verzenio,abemaciclib,completed,0
+PAT_001,2025-01-24,Arimidex,anastrozole,active,0
+PAT_001,2025-04-27,Enhertu,trastuzumab deruxtecan,discontinued,0
+PAT_002,2022-06-30,Arimidex,anastrozole,completed,0
+PAT_002,2022-06-30,Ibrance,palbociclib,completed,1
+PAT_002,2023-05-16,Enhertu,trastuzumab deruxtecan,active,0
+PAT_003,2024-03-27,Taxol,paclitaxel,active,0
+PAT_003,2024-03-27,Perjeta,pertuzumab,completed,0
+PAT_003,2024-03-27,Herceptin,trastuzumab,active,0
+PAT_005,2026-02-13,Taxol,paclitaxel,discontinued,0
+PAT_005,2026-02-13,Perjeta,pertuzumab,completed,0
+PAT_005,2026-02-13,Herceptin,trastuzumab,active,0
+PAT_005,2026-06-16,Enhertu,trastuzumab deruxtecan,active,0
+PAT_006,2024-09-01,Verzenio,abemaciclib,discontinued,0
+PAT_006,2024-09-01,Faslodex,fulvestrant,active,0
+PAT_006,2024-12-24,Abraxane,nab-paclitaxel,active,0
+PAT_006,2025-03-13,Trodelvy,sacituzumab govitecan,completed,0
+PAT_008,2020-04-29,Taxol,paclitaxel,discontinued,1
+PAT_008,2020-04-29,Perjeta,pertuzumab,active,1
+PAT_008,2020-04-29,Herceptin,trastuzumab,active,1
+PAT_008,2020-08-23,Kadcyla,ado-trastuzumab emtansine,discontinued,1
+PAT_009,2023-12-03,Arimidex,anastrozole,discontinued,1
+PAT_009,2023-12-03,Ibrance,palbociclib,discontinued,0
+PAT_009,2024-06-10,Enhertu,trastuzumab deruxtecan,active,0
+PAT_009,2024-12-11,Trodelvy,sacituzumab govitecan,completed,1
+PAT_010,2022-03-03,Xeloda,capecitabine,completed,0
+PAT_010,2022-05-22,Ibrance,palbociclib,active,0
+PAT_011,2021-03-04,Femara,letrozole,discontinued,0
+PAT_011,2021-03-04,Ibrance,palbociclib,discontinued,1
+PAT_011,2021-06-27,Xeloda,capecitabine,completed,1
+PAT_012,2025-03-15,Arimidex,anastrozole,completed,1
+PAT_012,2025-03-15,Ibrance,palbociclib,completed,1
+PAT_013,2019-06-24,Taxol,paclitaxel,completed,1
+PAT_013,2019-06-24,Perjeta,pertuzumab,completed,1
+PAT_013,2019-06-24,Herceptin,trastuzumab,active,0
+PAT_013,2019-11-06,Enhertu,trastuzumab deruxtecan,active,0
+PAT_014,2020-04-05,Verzenio,abemaciclib,active,0
+PAT_014,2020-04-05,Femara,letrozole,completed,0
+PAT_015,2023-04-23,Taxol,paclitaxel,active,1
+PAT_015,2023-04-23,Perjeta,pertuzumab,active,1
+PAT_015,2023-04-23,Herceptin,trastuzumab,discontinued,1
+PAT_016,2020-07-07,Taxol,paclitaxel,completed,0
+PAT_016,2020-07-07,Perjeta,pertuzumab,active,1
+PAT_016,2020-07-07,Herceptin,trastuzumab,completed,0
+PAT_016,2021-01-06,Enhertu,trastuzumab deruxtecan,active,0
+PAT_018,2022-09-18,Femara,letrozole,completed,0
+PAT_018,2022-09-18,Ibrance,palbociclib,discontinued,0
+PAT_018,2022-12-15,Xeloda,capecitabine,active,0
+PAT_018,2023-06-27,Taxol,paclitaxel,completed,1
+PAT_019,2024-06-27,Femara,letrozole,active,0
+PAT_019,2024-06-27,Ibrance,palbociclib,discontinued,0
+PAT_019,2025-01-16,Xeloda,capecitabine,completed,0
+PAT_019,2025-07-23,Taxol,paclitaxel,active,0
+PAT_020,2022-02-23,Verzenio,abemaciclib,active,1
+PAT_020,2022-02-23,Arimidex,anastrozole,active,0
+PAT_022,2021-01-10,Taxol,paclitaxel,completed,0
+PAT_022,2021-01-10,Perjeta,pertuzumab,completed,0
+PAT_022,2021-01-10,Herceptin,trastuzumab,discontinued,0
+PAT_023,2022-12-07,Taxol,paclitaxel,completed,1
+PAT_023,2022-12-07,Perjeta,pertuzumab,completed,1
+PAT_023,2022-12-07,Herceptin,trastuzumab,discontinued,0
+PAT_023,2023-06-19,Enhertu,trastuzumab deruxtecan,completed,0
+PAT_023,2023-11-02,Xeloda,capecitabine,completed,1
+PAT_023,2023-11-02,Tukysa,tucatinib,active,0
+PAT_025,2021-04-23,Verzenio,abemaciclib,discontinued,1
+PAT_025,2021-04-23,Faslodex,fulvestrant,completed,1
+PAT_025,2021-07-12,Xeloda,capecitabine,completed,0
+PAT_027,2019-06-14,Femara,letrozole,active,0
+PAT_027,2019-06-14,Kisqali,ribociclib,completed,0
+PAT_027,2019-09-23,Enhertu,trastuzumab deruxtecan,completed,1
+PAT_027,2020-03-01,Xeloda,capecitabine,discontinued,0
+PAT_028,2022-02-10,Femara,letrozole,active,0
+PAT_028,2022-02-10,Ibrance,palbociclib,completed,1
+PAT_028,2022-08-15,Xeloda,capecitabine,completed,0
+PAT_028,2022-12-23,Abraxane,nab-paclitaxel,active,1
+PAT_029,2021-01-20,Verzenio,abemaciclib,discontinued,1
+PAT_029,2021-01-20,Arimidex,anastrozole,active,0
+PAT_030,2021-09-24,Trodelvy,sacituzumab govitecan,active,1
+PAT_030,2022-01-06,Enhertu,trastuzumab deruxtecan,discontinued,1
+PAT_031,2022-12-06,Arimidex,anastrozole,active,1
+PAT_031,2022-12-06,Kisqali,ribociclib,completed,0
+PAT_031,2023-05-27,Enhertu,trastuzumab deruxtecan,completed,0
+PAT_031,2023-11-16,Xeloda,capecitabine,active,0
+PAT_032,2020-01-28,Taxol,paclitaxel,active,1
+PAT_032,2020-01-28,Perjeta,pertuzumab,active,0
+PAT_032,2020-01-28,Herceptin,trastuzumab,discontinued,0
+PAT_033,2025-03-28,Trodelvy,sacituzumab govitecan,active,1
+PAT_033,2025-06-19,Enhertu,trastuzumab deruxtecan,active,0
+PAT_034,2021-04-02,Arimidex,anastrozole,discontinued,1
+PAT_034,2021-04-02,Ibrance,palbociclib,discontinued,0
+PAT_035,2023-04-25,Trodelvy,sacituzumab govitecan,discontinued,0
+PAT_036,2021-06-12,Faslodex,fulvestrant,discontinued,0
+PAT_036,2021-06-12,Ibrance,palbociclib,completed,0
+PAT_037,2025-09-14,Verzenio,abemaciclib,completed,1
+PAT_037,2025-09-14,Arimidex,anastrozole,discontinued,0
+PAT_037,2026-02-22,Enhertu,trastuzumab deruxtecan,active,1
+PAT_039,2024-01-28,Taxol,paclitaxel,active,1
+PAT_039,2024-01-28,Perjeta,pertuzumab,active,1
+PAT_039,2024-01-28,Herceptin,trastuzumab,active,1
+PAT_039,2024-06-09,Enhertu,trastuzumab deruxtecan,active,1
+PAT_040,2023-08-22,Verzenio,abemaciclib,completed,1
+PAT_040,2023-08-22,Femara,letrozole,completed,1
+PAT_041,2022-10-03,Arimidex,anastrozole,discontinued,1
+PAT_041,2022-10-03,Kisqali,ribociclib,completed,0
+PAT_041,2022-12-29,Xeloda,capecitabine,active,0
+PAT_042,2026-11-26,Verzenio,abemaciclib,active,1
+PAT_042,2026-11-26,Arimidex,anastrozole,discontinued,0
+PAT_042,2027-04-03,Taxol,paclitaxel,discontinued,0
+PAT_042,2027-08-27,Trodelvy,sacituzumab govitecan,completed,0
+PAT_043,2022-01-16,Xeloda,capecitabine,discontinued,0
+PAT_043,2022-05-12,Taxol,paclitaxel,completed,0
+PAT_043,2022-12-01,Xeloda,capecitabine,completed,0
+PAT_044,2024-05-19,Xeloda,capecitabine,discontinued,0
+PAT_045,2021-02-06,Faslodex,fulvestrant,completed,0
+PAT_045,2021-02-06,Ibrance,palbociclib,discontinued,1
+PAT_045,2021-05-18,Enhertu,trastuzumab deruxtecan,active,0
+PAT_045,2021-12-01,Xeloda,capecitabine,completed,1
+PAT_046,2021-01-12,Taxol,paclitaxel,completed,0
+PAT_046,2021-01-12,Perjeta,pertuzumab,active,0
+PAT_046,2021-01-12,Herceptin,trastuzumab,completed,0
+PAT_047,2023-05-10,Enhertu,trastuzumab deruxtecan,active,0
+PAT_047,2024-07-27,Taxol,paclitaxel,discontinued,0
+PAT_047,2024-07-27,Perjeta,pertuzumab,completed,1
+PAT_047,2024-07-27,Herceptin,trastuzumab,active,0
+PAT_047,2024-12-10,Enhertu,trastuzumab deruxtecan,completed,1
+PAT_047,2025-05-26,Xeloda,capecitabine,completed,0
+PAT_047,2025-05-26,Tukysa,tucatinib,active,0
+PAT_048,2022-08-10,Arimidex,anastrozole,active,1
+PAT_048,2022-08-10,Kisqali,ribociclib,completed,0
+PAT_050,2024-03-27,Taxol,paclitaxel,active,1
+PAT_050,2024-03-27,Perjeta,pertuzumab,completed,1
+PAT_050,2024-03-27,Herceptin,trastuzumab,completed,0
+PAT_050,2024-10-19,Kadcyla,ado-trastuzumab emtansine,discontinued,1
+PAT_050,2025-02-10,Xeloda,capecitabine,completed,1
+PAT_050,2025-02-10,Tukysa,tucatinib,active,0
+PAT_051,2024-04-18,Verzenio,abemaciclib,completed,0
+PAT_051,2024-04-18,Femara,letrozole,discontinued,0
+PAT_051,2024-09-14,Taxol,paclitaxel,active,1
+PAT_052,2025-09-29,Trodelvy,sacituzumab govitecan,active,1
+PAT_053,2025-06-28,Verzenio,abemaciclib,discontinued,0
+PAT_053,2025-06-28,Femara,letrozole,active,0
+PAT_053,2026-01-15,Enhertu,trastuzumab deruxtecan,discontinued,1
+PAT_053,2026-04-15,Trodelvy,sacituzumab govitecan,discontinued,1
+PAT_055,2019-12-08,Arimidex,anastrozole,discontinued,0
+PAT_055,2019-12-08,Kisqali,ribociclib,completed,1
+PAT_055,2020-02-25,Enhertu,trastuzumab deruxtecan,completed,0
+PAT_055,2020-05-27,Trodelvy,sacituzumab govitecan,completed,1
+PAT_056,2020-10-10,Xeloda,capecitabine,active,1
+PAT_056,2021-05-01,Enhertu,trastuzumab deruxtecan,active,1
+PAT_057,2024-04-10,Femara,letrozole,discontinued,0
+PAT_057,2024-04-10,Ibrance,palbociclib,active,1
+PAT_058,2021-10-28,Arimidex,anastrozole,active,1
+PAT_058,2021-10-28,Ibrance,palbociclib,active,0
+PAT_058,2022-05-05,Enhertu,trastuzumab deruxtecan,discontinued,0
+PAT_059,2023-04-27,Verzenio,abemaciclib,completed,1
+PAT_059,2023-04-27,Arimidex,anastrozole,completed,0
+PAT_060,2022-10-21,Arimidex,anastrozole,discontinued,1
+PAT_060,2022-10-21,Ibrance,palbociclib,completed,1
+PAT_060,2023-05-16,Enhertu,trastuzumab deruxtecan,completed,0
+PAT_061,2019-06-28,Taxol,paclitaxel,discontinued,0
+PAT_061,2019-06-28,Perjeta,pertuzumab,discontinued,0
+PAT_061,2019-06-28,Herceptin,trastuzumab,active,1
+PAT_061,2019-09-11,Enhertu,trastuzumab deruxtecan,discontinued,0
+PAT_061,2020-01-21,Xeloda,capecitabine,active,1
+PAT_061,2020-01-21,Tukysa,tucatinib,completed,1
+PAT_062,2023-02-25,Taxol,paclitaxel,active,1
+PAT_062,2023-02-25,Perjeta,pertuzumab,completed,0
+PAT_062,2023-02-25,Herceptin,trastuzumab,active,0
+PAT_063,2024-10-09,Taxol,paclitaxel,discontinued,1
+PAT_063,2024-10-09,Perjeta,pertuzumab,completed,0
+PAT_063,2024-10-09,Herceptin,trastuzumab,completed,0
+PAT_063,2025-02-14,Kadcyla,ado-trastuzumab emtansine,active,0
+PAT_063,2025-07-06,Xeloda,capecitabine,completed,1
+PAT_063,2025-07-06,Tukysa,tucatinib,active,0
+PAT_064,2023-03-30,Femara,letrozole,active,0
+PAT_064,2023-03-30,Ibrance,palbociclib,completed,0
+PAT_064,2023-07-18,Abraxane,nab-paclitaxel,completed,0
+PAT_065,2022-05-24,Faslodex,fulvestrant,discontinued,0
+PAT_065,2022-05-24,Ibrance,palbociclib,completed,1
+PAT_065,2022-11-28,Enhertu,trastuzumab deruxtecan,active,1
+PAT_066,2025-09-10,Taxol,paclitaxel,completed,0
+PAT_066,2025-09-10,Perjeta,pertuzumab,discontinued,0
+PAT_066,2025-09-10,Herceptin,trastuzumab,discontinued,0
+PAT_068,2019-05-04,Verzenio,abemaciclib,completed,0
+PAT_068,2019-05-04,Faslodex,fulvestrant,completed,1
+PAT_068,2019-09-18,Taxol,paclitaxel,active,0
+PAT_068,2020-03-06,Xeloda,capecitabine,discontinued,0
+PAT_069,2023-10-06,Trodelvy,sacituzumab govitecan,completed,0
+PAT_070,2023-03-16,Abraxane,nab-paclitaxel,completed,0
+PAT_070,2023-08-08,Trodelvy,sacituzumab govitecan,discontinued,1
+PAT_070,2024-01-17,Taxol,paclitaxel,active,0
+PAT_071,2023-07-14,Arimidex,anastrozole,completed,0
+PAT_071,2023-07-14,Ibrance,palbociclib,discontinued,0
+PAT_071,2023-12-05,Enhertu,trastuzumab deruxtecan,discontinued,1
+PAT_072,2023-05-05,Taxol,paclitaxel,completed,0
+PAT_072,2023-05-05,Perjeta,pertuzumab,active,0
+PAT_072,2023-05-05,Herceptin,trastuzumab,completed,0
+PAT_072,2023-10-30,Kadcyla,ado-trastuzumab emtansine,active,1
+PAT_075,2024-02-25,Faslodex,fulvestrant,active,0
+PAT_075,2024-02-25,Ibrance,palbociclib,discontinued,1
+PAT_075,2024-06-12,Enhertu,trastuzumab deruxtecan,completed,1
+PAT_075,2024-11-20,Xeloda,capecitabine,active,0
+PAT_076,2020-09-21,Femara,letrozole,active,0
+PAT_076,2020-09-21,Ibrance,palbociclib,active,0
+PAT_077,2026-10-12,Xeloda,capecitabine,active,0
+PAT_078,2020-06-30,Taxol,paclitaxel,completed,1
+PAT_078,2020-06-30,Perjeta,pertuzumab,active,1
+PAT_078,2020-06-30,Herceptin,trastuzumab,discontinued,1
+PAT_078,2020-12-01,Enhertu,trastuzumab deruxtecan,completed,0
+PAT_079,2022-02-06,Arimidex,anastrozole,discontinued,0
+PAT_079,2022-02-06,Kisqali,ribociclib,active,1
+PAT_079,2022-06-01,Enhertu,trastuzumab deruxtecan,discontinued,0
+PAT_081,2024-06-29,Taxol,paclitaxel,active,0
+PAT_081,2024-06-29,Perjeta,pertuzumab,active,0
+PAT_081,2024-06-29,Herceptin,trastuzumab,completed,0
+PAT_082,2024-04-07,Trodelvy,sacituzumab govitecan,completed,1
+PAT_082,2024-08-07,Enhertu,trastuzumab deruxtecan,active,1
+PAT_083,2019-05-12,Xeloda,capecitabine,completed,1
+PAT_084,2023-09-04,Arimidex,anastrozole,completed,0
+PAT_084,2023-09-04,Ibrance,palbociclib,completed,1
+PAT_084,2024-02-27,Abraxane,nab-paclitaxel,discontinued,1
+PAT_084,2024-08-01,Trodelvy,sacituzumab govitecan,completed,1
+PAT_085,2024-07-13,Femara,letrozole,active,1
+PAT_085,2024-07-13,Ibrance,palbociclib,completed,1
+PAT_085,2024-10-19,Trodelvy,sacituzumab govitecan,active,0
+PAT_086,2024-07-01,Taxol,paclitaxel,active,0
+PAT_086,2024-07-01,Perjeta,pertuzumab,active,1
+PAT_086,2024-07-01,Herceptin,trastuzumab,discontinued,0
+PAT_086,2024-11-04,Kadcyla,ado-trastuzumab emtansine,active,1
+PAT_087,2019-03-04,Femara,letrozole,completed,0
+PAT_087,2019-03-04,Ibrance,palbociclib,active,1
+PAT_089,2021-09-03,Taxol,paclitaxel,completed,0
+PAT_089,2021-09-03,Perjeta,pertuzumab,active,0
+PAT_089,2021-09-03,Herceptin,trastuzumab,active,1
+PAT_089,2022-02-08,Enhertu,trastuzumab deruxtecan,completed,0
+PAT_089,2022-05-25,Xeloda,capecitabine,active,0
+PAT_089,2022-05-25,Tukysa,tucatinib,active,1
+PAT_091,2024-01-20,Xeloda,capecitabine,discontinued,1
+PAT_093,2021-11-09,Verzenio,abemaciclib,discontinued,1
+PAT_093,2021-11-09,Arimidex,anastrozole,completed,0
+PAT_093,2022-02-10,Enhertu,trastuzumab deruxtecan,active,1
+PAT_096,2022-03-20,Arimidex,anastrozole,active,0
+PAT_096,2022-03-20,Kisqali,ribociclib,discontinued,1
+PAT_096,2022-06-27,Abraxane,nab-paclitaxel,discontinued,0
+PAT_096,2022-12-23,Xeloda,capecitabine,completed,0
+PAT_097,2023-06-18,Femara,letrozole,completed,0
+PAT_097,2023-06-18,Ibrance,palbociclib,discontinued,0
+PAT_097,2023-11-26,Xeloda,capecitabine,active,1
+PAT_097,2024-05-26,Abraxane,nab-paclitaxel,active,0
+PAT_099,2022-03-21,Taxol,paclitaxel,active,0
+PAT_099,2022-03-21,Perjeta,pertuzumab,active,1
+PAT_099,2022-03-21,Herceptin,trastuzumab,discontinued,0
+PAT_100,2025-05-25,Taxol,paclitaxel,active,0
+PAT_100,2025-05-25,Perjeta,pertuzumab,active,1
+PAT_100,2025-05-25,Herceptin,trastuzumab,active,1
+PAT_100,2025-09-04,Kadcyla,ado-trastuzumab emtansine,completed,0
+PAT_101,2023-12-13,Taxol,paclitaxel,discontinued,0
+PAT_101,2023-12-13,Perjeta,pertuzumab,completed,1
+PAT_101,2023-12-13,Herceptin,trastuzumab,completed,1
+PAT_101,2024-05-05,Enhertu,trastuzumab deruxtecan,completed,1
+PAT_103,2022-11-15,Taxol,paclitaxel,active,1
+PAT_103,2022-11-15,Perjeta,pertuzumab,active,1
+PAT_103,2022-11-15,Herceptin,trastuzumab,active,0
+PAT_103,2023-04-13,Enhertu,trastuzumab deruxtecan,discontinued,0
+PAT_104,2020-02-23,Enhertu,trastuzumab deruxtecan,completed,0
+PAT_104,2020-06-23,Xeloda,capecitabine,active,1
+PAT_104,2020-12-22,Femara,letrozole,active,0
+PAT_106,2022-09-10,Faslodex,fulvestrant,discontinued,1
+PAT_106,2022-09-10,Kisqali,ribociclib,active,0
+PAT_106,2023-01-08,Enhertu,trastuzumab deruxtecan,active,1
+PAT_107,2024-03-12,Femara,letrozole,completed,0
+PAT_107,2024-03-12,Ibrance,palbociclib,completed,0
+PAT_108,2022-05-09,Abraxane,nab-paclitaxel,active,0
+PAT_108,2022-11-21,Xeloda,capecitabine,active,1
+PAT_108,2023-05-05,Taxol,paclitaxel,completed,1
+PAT_110,2020-10-10,Taxol,paclitaxel,discontinued,1
+PAT_110,2021-04-30,Xeloda,capecitabine,active,0
+PAT_110,2021-09-19,Taxol,paclitaxel,completed,0
+PAT_111,2022-08-05,Arimidex,anastrozole,active,0
+PAT_111,2022-08-05,Ibrance,palbociclib,active,0
+PAT_111,2022-11-01,Enhertu,trastuzumab deruxtecan,active,1
+PAT_111,2023-05-05,Trodelvy,sacituzumab govitecan,completed,0
+PAT_112,2022-08-05,Faslodex,fulvestrant,active,0
+PAT_112,2022-08-05,Kisqali,ribociclib,discontinued,0
+PAT_113,2026-02-22,Verzenio,abemaciclib,completed,0
+PAT_113,2026-02-22,Faslodex,fulvestrant,active,0
+PAT_113,2026-07-15,Abraxane,nab-paclitaxel,completed,0
+PAT_114,2020-06-26,Taxol,paclitaxel,active,1
+PAT_114,2020-06-26,Perjeta,pertuzumab,completed,0
+PAT_114,2020-06-26,Herceptin,trastuzumab,completed,0
+PAT_114,2020-11-15,Enhertu,trastuzumab deruxtecan,active,0
+PAT_114,2021-02-21,Xeloda,capecitabine,discontinued,0
+PAT_114,2021-02-21,Tukysa,tucatinib,active,0
+PAT_115,2021-07-26,Femara,letrozole,discontinued,1
+PAT_115,2021-07-26,Ibrance,palbociclib,discontinued,1
+PAT_115,2021-12-11,Trodelvy,sacituzumab govitecan,active,1
+PAT_115,2022-04-14,Abraxane,nab-paclitaxel,active,0
+PAT_116,2023-06-06,Taxol,paclitaxel,discontinued,1
+PAT_116,2023-06-06,Perjeta,pertuzumab,completed,0
+PAT_116,2023-06-06,Herceptin,trastuzumab,active,0
+PAT_116,2023-09-10,Enhertu,trastuzumab deruxtecan,active,1
+PAT_117,2022-12-08,Femara,letrozole,discontinued,0
+PAT_117,2022-12-08,Ibrance,palbociclib,active,1
+PAT_117,2023-06-13,Trodelvy,sacituzumab govitecan,active,1
+PAT_117,2023-09-04,Taxol,paclitaxel,discontinued,1
+PAT_118,2024-06-12,Taxol,paclitaxel,discontinued,0
+PAT_118,2024-06-12,Perjeta,pertuzumab,discontinued,0
+PAT_118,2024-06-12,Herceptin,trastuzumab,active,0
+PAT_118,2024-11-15,Enhertu,trastuzumab deruxtecan,completed,1
+PAT_118,2025-02-19,Xeloda,capecitabine,active,0
+PAT_118,2025-02-19,Tukysa,tucatinib,active,0
+PAT_119,2024-10-23,Xeloda,capecitabine,completed,1
+PAT_119,2025-05-18,Enhertu,trastuzumab deruxtecan,active,1
+PAT_120,2019-06-06,Faslodex,fulvestrant,discontinued,1
+PAT_120,2019-06-06,Kisqali,ribociclib,completed,0
+PAT_120,2019-10-02,Enhertu,trastuzumab deruxtecan,active,1
+PAT_121,2025-04-26,Verzenio,abemaciclib,discontinued,0
+PAT_121,2025-04-26,Arimidex,anastrozole,active,1
+PAT_121,2025-09-12,Enhertu,trastuzumab deruxtecan,active,1
+PAT_121,2026-03-14,Trodelvy,sacituzumab govitecan,active,0
+PAT_122,2023-11-02,Taxol,paclitaxel,discontinued,1
+PAT_122,2023-11-02,Perjeta,pertuzumab,completed,1
+PAT_122,2023-11-02,Herceptin,trastuzumab,completed,1
+PAT_122,2024-02-26,Kadcyla,ado-trastuzumab emtansine,discontinued,0
+PAT_122,2024-07-26,Xeloda,capecitabine,discontinued,1
+PAT_122,2024-07-26,Tukysa,tucatinib,completed,0
+PAT_123,2020-11-30,Taxol,paclitaxel,completed,0
+PAT_123,2020-11-30,Perjeta,pertuzumab,completed,0
+PAT_123,2020-11-30,Herceptin,trastuzumab,discontinued,0
+PAT_124,2022-12-09,Ibrance,palbociclib,discontinued,1
+PAT_124,2023-06-02,Enhertu,trastuzumab deruxtecan,completed,1
+PAT_124,2023-11-30,Taxol,paclitaxel,completed,1
+PAT_126,2022-01-08,Taxol,paclitaxel,discontinued,0
+PAT_126,2022-01-08,Perjeta,pertuzumab,completed,1
+PAT_126,2022-01-08,Herceptin,trastuzumab,active,1
+PAT_126,2022-06-17,Enhertu,trastuzumab deruxtecan,active,0
+PAT_126,2022-09-17,Xeloda,capecitabine,active,1
+PAT_126,2022-09-17,Tukysa,tucatinib,active,1
+PAT_128,2023-11-02,Verzenio,abemaciclib,completed,0
+PAT_128,2023-11-02,Femara,letrozole,discontinued,1
+PAT_128,2024-03-08,Abraxane,nab-paclitaxel,active,0
