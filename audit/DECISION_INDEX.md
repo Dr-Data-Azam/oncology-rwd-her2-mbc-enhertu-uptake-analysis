@@ -6,9 +6,9 @@ Status transitions: Proposed → Accepted (after Azam approval) → Superseded (
 
 | ADR | Title | Status | Phase | Config key(s) | File |
 |---|---|---|---|---|---|
-| ADR-001 | Tooling: Python + DuckDB + pandas, config-driven | Proposed | 01 | tooling.engine | [ADR-001](decisions/ADR-001-tooling.md) |
+| ADR-001 | Tooling: Python + DuckDB + pandas, config-driven | Accepted | 01 | tooling.engine | [ADR-001](decisions/ADR-001-tooling.md) |
 | ADR-002 | Eligibility criteria | Proposed | 02 | eligibility.* | [ADR-002](decisions/ADR-002-eligibility.md) |
-| ADR-003 | Handling future-dated, post-death, and pre-birth records | Proposed | 01 | dq.* | [ADR-003](decisions/ADR-003-dq-bad-dates.md) |
+| ADR-003 | Handling future-dated, post-death, and pre-birth records | Accepted | 01 | dq.* | [ADR-003](decisions/ADR-003-dq-handling.md) |
 | ADR-004 | Metastatic index date definition and source priority | Proposed | 02 | index_date.* | [ADR-004](decisions/ADR-004-index-date.md) |
 | ADR-005 | De novo vs recurrent definition | Proposed | 02 | cohort.de_novo_primary_gap_days | [ADR-005](decisions/ADR-005-de-novo-recurrent.md) |
 | ADR-006 | HER2 variant → category mapping | Proposed | 03 | her2.variant_to_category.* | [ADR-006](decisions/ADR-006-her2-mapping.md) |

@@ -8,7 +8,7 @@
 # ADR-001: Tooling
 # ─────────────────────────────────────────────────────────────────────────────
 tooling:
-  engine: TBD  # e.g. "duckdb+pandas" — to be confirmed in ADR-001
+  engine: duckdb+pandas  # DuckDB SQL for transforms; pandas for output formatting only
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-002: Eligibility criteria
@@ -23,9 +23,10 @@ eligibility:
 # ADR-003: Handling future-dated, post-death, and pre-birth records
 # ─────────────────────────────────────────────────────────────────────────────
 dq:
-  future_date_action: TBD        # drop | flag — action for records dated after today
-  post_death_action: TBD         # drop | flag — action for records dated after death
-  pre_birth_action: TBD          # drop | flag — action for records dated before birth
+  future_date_action: flag        # flag and exclude downstream; do not silently drop
+  post_death_action: flag         # flag; grace period applies (post_death_grace_days)
+  pre_birth_action: flag          # flag; patient excluded from cohort in cohort.py
+  post_death_grace_days: 30       # admin/lab lag — events within 30 days post-death are kept
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-004: Metastatic index date definition and source priority
