@@ -33,16 +33,14 @@ dq:
 # ADR-004: Metastatic index date definition and source priority
 # ─────────────────────────────────────────────────────────────────────────────
 index_date:
-  sources: TBD                          # e.g. [metastatic_diagnosis, staging_m1]
-  require_breast_code_for_staging: TBD  # M1/IV staging counts only if patient has C50.x
-  source_priority: TBD                  # curated_first | earliest
-  stage_diagnosis_max_gap_days: TBD     # M1 date counts standalone only if within N days of a C50 metastatic dx
+  source_priority: earliest_of_diagnosis_and_staging  # MIN(C50 met dx date, M1/IV staging date)
+  require_c50_for_diagnosis: true  # non-C50 metastatic codes excluded from diagnosis source
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-005: De novo vs recurrent definition
 # ─────────────────────────────────────────────────────────────────────────────
 cohort:
-  de_novo_primary_gap_days: TBD  # no primary C50 more than N days before index date → de novo
+  de_novo_primary_gap_days: 180  # gap <= 180d from primary to metastatic index = de novo; no prior primary = de novo
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-006: HER2 variant → category mapping

@@ -37,6 +37,7 @@ from pathlib import Path
 
 import yaml
 
+from her2rwd.cohort import build_cohort
 from her2rwd.data_loader import check_input_integrity, load_raw
 from her2rwd.data_quality import run_dq_checks
 
@@ -109,7 +110,23 @@ def run(rules_path: str = "config/analysis_rules.yaml", reports: bool = False) -
             if row["n_flagged"] > 0:
                 print(f"  [ERROR] {row['check_name']}: {row['n_flagged']} records")
 
-    # ── Phases 02–07 are stubs until those phases are built ──────────────────
+    # ── Stage 4: cohort construction ──────────────────────────────────────────
+    print("Stage 4: building cohort...")
+    cohort_df, attrition_df = build_cohort(con, cfg)
+    final_n = int(attrition_df.iloc[-1]["n_remaining"])
+    de_novo = int((cohort_df["disease_type"] == "de_novo").sum())
+    recurrent = int((cohort_df["disease_type"] == "recurrent").sum())
+    manifest["stages"]["cohort"] = {
+        "n_eligible": final_n,
+        "n_de_novo": de_novo,
+        "n_recurrent": recurrent,
+    }
+    print(f"  {final_n} eligible patients ({de_novo} de novo, {recurrent} recurrent)")
+    for _, row in attrition_df.iterrows():
+        if row["n_excluded"] > 0:
+            print(f"  [-{int(row['n_excluded'])}] {row['step_label']}")
+
+    # ── Phases 03–07 are stubs until those phases are built ──────────────────
     # Each phase will add its stage block here.
 
     # ── Write manifest ────────────────────────────────────────────────────────
