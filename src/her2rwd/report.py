@@ -497,7 +497,7 @@ def _build_pptx(
         dq_lines.append(
             f"[{row['severity'].upper():7s}]  {row['check_name']:40s}  n={row['n_flagged']:3d}  action: {row['action']}"
         )
-    _add_body(slA, "\n".join(dq_lines), font_size=Pt(8))
+    _add_body(slA, "\n".join(dq_lines), font_size=Pt(8), width_in=12.2)
     _add_footer(slA, "Source: outputs/dq/dq_summary.csv")
 
     # ── Appendix B: Key Assumptions ───────────────────────────────────────────
@@ -520,7 +520,7 @@ def _build_pptx(
         "",
         "Full config: config/analysis_rules.yaml  |  Full decisions: audit/decisions/",
     ]
-    _add_body(slB, "\n".join(assump), font_size=Pt(8.5))
+    _add_body(slB, "\n".join(assump), font_size=Pt(8.5), width_in=12.2)
     _add_footer(slB, "Source: config/analysis_rules.yaml  |  audit/decisions/DECISION_INDEX.md")
 
     # ── Appendix C: Validation Summary ────────────────────────────────────────
@@ -531,7 +531,7 @@ def _build_pptx(
         val_text = val_report_path.read_text(encoding="utf-8")
         # Extract just the results table lines
         lines_val = [ln for ln in val_text.split("\n") if ln.startswith("|") or ln.startswith("**")]
-        _add_body(slC, "\n".join(lines_val[:30]), font_size=Pt(8))
+        _add_body(slC, "\n".join(lines_val[:30]), font_size=Pt(8), width_in=12.2)
     else:
         _add_body(
             slC,
@@ -568,8 +568,8 @@ def _add_header(slide, title: str, subtitle: bool = False) -> None:
     rule.line.fill.background()
 
 
-def _add_body(slide, text: str, font_size: Pt = Pt(10)) -> None:
-    tf = slide.shapes.add_textbox(Inches(0.4), Inches(1.45), Inches(6.8), Inches(5.6))
+def _add_body(slide, text: str, font_size: Pt = Pt(10), width_in: float = 6.8) -> None:
+    tf = slide.shapes.add_textbox(Inches(0.4), Inches(1.45), Inches(width_in), Inches(5.6))
     tf.word_wrap = True
     frame = tf.text_frame
     frame.word_wrap = True

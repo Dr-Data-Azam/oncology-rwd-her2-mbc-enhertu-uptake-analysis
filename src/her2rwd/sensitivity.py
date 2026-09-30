@@ -77,13 +77,19 @@ def run_sensitivity(
     """
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
+    # Sensitivity scenarios write to a temp subdir so they never overwrite the
+    # baseline outputs that pipeline Stage 9 already wrote to out_dir.
+    _tmp = out / "_sensitivity_tmp"
+    _tmp.mkdir(parents=True, exist_ok=True)
 
     # ── Baseline (primary run) ────────────────────────────────────────────────
     her2_base = derive_her2(con, cohort_df, cfg)
     hr_base = derive_hr(con, cohort_df, cfg)
     lines_base = build_treatment_lines(con, cohort_df, cfg)
-    compute_q1(her2_base, hr_base, cohort_df, cfg)  # writes q1 CSVs; distribution taken directly below
-    q2_base = compute_q2(her2_base, hr_base, lines_base, cohort_df, cfg)
+    # compute_q1/q2 baseline outputs already written by pipeline Stage 8/9;
+    # call in-memory only to get distribution and uptake summaries.
+    q2_base = compute_q2(her2_base, hr_base, lines_base, cohort_df, cfg, out_dir=_tmp)
+    compute_q1(her2_base, hr_base, cohort_df, cfg, out_dir=_tmp)
 
     dist_base = _distribution(her2_base)
     uptake_base = _uptake_summary(q2_base["uptake_summary"])
@@ -93,7 +99,7 @@ def run_sensitivity(
     her2_s1 = derive_her2(con, cohort_df, cfg_s1)
     hr_s1 = derive_hr(con, cohort_df, cfg_s1)
     lines_s1 = build_treatment_lines(con, cohort_df, cfg_s1)
-    q2_s1 = compute_q2(her2_s1, hr_s1, lines_s1, cohort_df, cfg_s1)
+    q2_s1 = compute_q2(her2_s1, hr_s1, lines_s1, cohort_df, cfg_s1, out_dir=_tmp)
     dist_s1 = _distribution(her2_s1)
     uptake_s1 = _uptake_summary(q2_s1["uptake_summary"])
 
@@ -102,7 +108,7 @@ def run_sensitivity(
     her2_s2 = derive_her2(con, cohort_df, cfg_s2)
     hr_s2 = derive_hr(con, cohort_df, cfg_s2)
     lines_s2 = build_treatment_lines(con, cohort_df, cfg_s2)
-    q2_s2 = compute_q2(her2_s2, hr_s2, lines_s2, cohort_df, cfg_s2)
+    q2_s2 = compute_q2(her2_s2, hr_s2, lines_s2, cohort_df, cfg_s2, out_dir=_tmp)
     dist_s2 = _distribution(her2_s2)
     uptake_s2 = _uptake_summary(q2_s2["uptake_summary"])
 
@@ -111,7 +117,7 @@ def run_sensitivity(
     her2_s3 = derive_her2(con, cohort_df, cfg_s3)
     hr_s3 = derive_hr(con, cohort_df, cfg_s3)
     lines_s3 = build_treatment_lines(con, cohort_df, cfg_s3)
-    q2_s3 = compute_q2(her2_s3, hr_s3, lines_s3, cohort_df, cfg_s3)
+    q2_s3 = compute_q2(her2_s3, hr_s3, lines_s3, cohort_df, cfg_s3, out_dir=_tmp)
     dist_s3 = _distribution(her2_s3)
     uptake_s3 = _uptake_summary(q2_s3["uptake_summary"])
 
