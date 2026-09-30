@@ -9,4 +9,5 @@ One row per Claude Code session. Appended automatically by `/close-phase`.
 | concertai-her2 \| P01 ingest-and-dq | 2026-09-29 | 01 | data_quality.py (15 checks), pipeline.py orchestrator, ADR-001 + ADR-003 accepted | ADR-001, ADR-003 | 683a713 |
 | concertai-her2 \| P01 DQ augmentation | 2026-09-29 | 01 | +4 DQ checks (19 total); config filled ADR-002/007/008/009; 4 ADRs accepted | ADR-002, ADR-007, ADR-008, ADR-009 | a762ba6 |
 | concertai-her2 \| P01 notebook enrichment | 2026-09-29 | 01 | Notebook decisions panel + Appendix B assumptions register; all decisions inline for HTML | — | 00b0681 |
-| concertai-her2 \| P02 cohort-index-date | 2026-09-29 | 02 | cohort.py (index date, eligibility, de novo/recurrent); 11 tests; ADR-004/005 accepted | ADR-004, ADR-005 | TBD |
+| concertai-her2 \| P02 cohort-index-date | 2026-09-29 | 02 | cohort.py (index date, eligibility, de novo/recurrent); 11 tests; ADR-004/005 accepted | ADR-004, ADR-005 | 54095f3 |
+| concertai-her2 \| P03 biomarker-derivation | 2026-09-29 | 03 | her2.py + hormone_receptor.py; 24 tests; ADR-006 accepted | ADR-006 | TBD |

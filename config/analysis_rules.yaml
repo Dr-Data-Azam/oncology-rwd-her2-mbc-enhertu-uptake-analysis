@@ -47,15 +47,21 @@ cohort:
 # ─────────────────────────────────────────────────────────────────────────────
 her2:
   variant_to_category:
-    ihc_3plus: TBD                        # IHC 3+
-    ihc_2plus_ish_amplified: TBD          # IHC 2+; ISH amplified
-    ihc_2plus_ish_negative: TBD           # IHC 2+; ISH negative
-    ihc_1plus: TBD                        # IHC 1+
-    ihc_0_absent_membrane: TBD            # IHC 0 absent membrane staining
-    ihc_0_faint_membrane_lte10pct: TBD    # IHC 0 with faint membrane staining in <=10% cells
-    ihc_0_membrane_staining: TBD          # IHC 0 with membrane staining (% not stated — ambiguous)
-    ihc_0_no_detail: TBD                  # IHC 0 (no staining detail — unresolvable)
-    equivocal_or_pending_or_blank: TBD    # equivocal / Pending / blank + Unknown result
+    # HER2-positive (ASCO/CAP 2018/2023): IHC 3+ or IHC 2+/ISH amplified
+    "IHC 3+": "positive"
+    "IHC 2+; ISH amplified": "positive"
+    # HER2-low (ASCO/CAP 2023): IHC 1+ or IHC 2+/ISH non-amplified
+    "IHC 1+": "low"
+    "IHC 2+; ISH negative": "low"
+    # HER2-ultralow (DESTINY-Breast06): IHC 0 with faint staining in <=10% cells
+    "IHC 0 with faint membrane staining in <=10% cells": "ultralow"
+    # HER2-null: IHC 0 with no staining documented
+    "IHC 0 absent membrane staining": "null"
+    "IHC 0": "null"                # no faint-staining qualifier → absent staining assumed
+    # Unknown: cannot assign category
+    "IHC 0 with membrane staining": "unknown"  # staining present but % not documented
+    "IHC equivocal": "unknown"
+    "Pending": "unknown"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-007: HER2 look-up window

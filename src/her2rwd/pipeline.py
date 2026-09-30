@@ -40,6 +40,8 @@ import yaml
 from her2rwd.cohort import build_cohort
 from her2rwd.data_loader import check_input_integrity, load_raw
 from her2rwd.data_quality import run_dq_checks
+from her2rwd.her2 import derive_her2
+from her2rwd.hormone_receptor import derive_hr
 
 
 def _load_cfg(rules_path: str = "config/analysis_rules.yaml") -> dict:
@@ -126,7 +128,25 @@ def run(rules_path: str = "config/analysis_rules.yaml", reports: bool = False) -
         if row["n_excluded"] > 0:
             print(f"  [-{int(row['n_excluded'])}] {row['step_label']}")
 
-    # ── Phases 03–07 are stubs until those phases are built ──────────────────
+    # ── Stage 5: HER2 classification ─────────────────────────────────────────
+    print("Stage 5: deriving HER2 categories...")
+    her2_df = derive_her2(con, cohort_df, cfg)
+    her2_counts = her2_df["her2_category"].value_counts().to_dict()
+    manifest["stages"]["her2"] = {"category_counts": her2_counts}
+    for cat, n in sorted(her2_counts.items()):
+        print(f"  {cat}: {n}")
+
+    # ── Stage 6: HR status ────────────────────────────────────────────────────
+    print("Stage 6: deriving HR status...")
+    hr_df = derive_hr(con, cohort_df, cfg)
+    hr_counts = hr_df["hr_status"].value_counts().to_dict()
+    er_low_n = int(hr_df["er_low"].sum())
+    manifest["stages"]["hr"] = {"status_counts": hr_counts, "n_er_low": er_low_n}
+    for status, n in sorted(hr_counts.items()):
+        print(f"  {status}: {n}")
+    print(f"  ER-low: {er_low_n}")
+
+    # ── Phases 04–07 are stubs until those phases are built ──────────────────
     # Each phase will add its stage block here.
 
     # ── Write manifest ────────────────────────────────────────────────────────
