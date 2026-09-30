@@ -63,13 +63,14 @@ def derive_hr(
                     ORDER BY
                         b.curation_flag DESC,
                         CASE WHEN b.biomarker_variant IS NULL THEN 0 ELSE 1 END DESC,
-                        ABS(DATEDIFF('day', b.report_date, c.index_date)) ASC
+                        ABS(DATEDIFF('day', CAST(b.report_date AS DATE), CAST(c.index_date AS DATE))) ASC
                 ) AS rn
             FROM biomarker b
             JOIN _cohort_for_hr c ON b.patient_id = c.patient_id
             WHERE b.biomarker_name IN ('ER', 'PR')
-              AND b.report_date BETWEEN c.index_date - INTERVAL '{pre_days} days'
-                                    AND c.index_date + INTERVAL '{post_days} days'
+              AND CAST(b.report_date AS DATE)
+                  BETWEEN CAST(c.index_date AS DATE) - INTERVAL '{pre_days} days'
+                      AND CAST(c.index_date AS DATE) + INTERVAL '{post_days} days'
         )
         SELECT patient_id, biomarker_name, biomarker_result, biomarker_variant, pct
         FROM windowed WHERE rn = 1

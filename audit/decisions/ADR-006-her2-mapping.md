@@ -59,6 +59,13 @@ is documented. Classified as null (conservative). 30 records, 9 patients in wind
 Cannot confirm ≤10% threshold required for ultralow. Unknown is safer than over-assigning
 ultralow. 9 records, 5 patients in window affected.
 
+**FDA DB-06 label note (approved Jan 27, 2025):** The approved label defines HER2-ultralow
+eligibility as "IHC 0 with membrane staining" — a broader criterion than our ultralow
+category. Patients with this variant in our dataset are classified as *unknown* because
+we cannot confirm the ≤10% faint-staining criterion from structured data alone. In a
+production study, these 5 patients should be reviewed for DB-06 eligibility via chart
+abstraction. This is a limitation of EHR-captured variant strings vs. pathology report detail.
+
 ## Consequences
 
 - `her2.py` builds the SQL CASE statement dynamically from `cfg['her2']['variant_to_category']`.

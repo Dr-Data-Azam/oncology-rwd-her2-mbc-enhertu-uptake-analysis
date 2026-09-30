@@ -15,8 +15,8 @@ Status transitions: Proposed → Accepted (after Azam approval) → Superseded (
 | ADR-007 | HER2 look-up window | Accepted | 03 | her2.window_days.* | [ADR-007](decisions/ADR-007-her2-window.md) |
 | ADR-008 | HER2 tie-break hierarchy | Accepted | 03 | her2.tiebreak_order, her2.conflict_resolution | [ADR-008](decisions/ADR-008-her2-tiebreak.md) |
 | ADR-009 | HR derivation: percentage beats result text; ≥1% = positive | Accepted | 03 | hr.* | [ADR-009](decisions/ADR-009-hr-derivation.md) |
-| ADR-010 | Regimen grouping and line-of-therapy approximation | Proposed | 05 | treatment.* | [ADR-010](decisions/ADR-010-treatment-lines.md) |
-| ADR-011 | Subindication framework (required + exploratory groups) | Proposed | 06 | subindications.* | [ADR-011](decisions/ADR-011-subindications.md) |
-| ADR-012 | Statistics: Wilson CIs and small-cell flagging | Proposed | 04 | stats.* | [ADR-012](decisions/ADR-012-statistics.md) |
-| ADR-013 | Discordance definitions (treatment vs biomarker) | Proposed | 06 | discordance.definitions | [ADR-013](decisions/ADR-013-discordance.md) |
-| ADR-014 | Literature benchmarks chosen and cited | Proposed | 04 | benchmarks.* | [ADR-014](decisions/ADR-014-benchmarks.md) |
+| ADR-010 | Regimen grouping and line-of-therapy approximation | Accepted | 05 | treatment.* | [ADR-010](decisions/ADR-010-treatment-lines.md) |
+| ADR-011 | Subindication framework (required + exploratory groups) | Accepted | 06 | subindications.* | [ADR-011](decisions/ADR-011-subindications.md) |
+| ADR-012 | Statistics: Wilson CIs and small-cell flagging | Accepted | 04 | stats.* | [ADR-012](decisions/ADR-012-statistics.md) |
+| ADR-013 | Discordance definitions (treatment vs biomarker) | Accepted | 06 | discordance.definitions | [ADR-013](decisions/ADR-013-discordance.md) |
+| ADR-014 | Literature benchmarks chosen and cited | Accepted | 04 | benchmarks.* | [ADR-014](decisions/ADR-014-benchmarks.md) |

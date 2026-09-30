@@ -43,12 +43,11 @@ def derive_her2(
     pre_days = cfg["her2"]["window_days"]["pre_index"]
     post_days = cfg["her2"]["window_days"]["post_index"]
     variant_map = cfg["her2"]["variant_to_category"]
+    curated_only = cfg["her2"].get("curated_only", False)
+    curated_filter = "AND b.curation_flag = 1" if curated_only else ""
 
     # Build SQL CASE from config mapping — keeps variant strings out of code
-    case_clauses = "\n                ".join(
-        f"WHEN her2_variant = '{k}' THEN '{v}'"
-        for k, v in variant_map.items()
-    )
+    case_clauses = "\n                ".join(f"WHEN her2_variant = '{k}' THEN '{v}'" for k, v in variant_map.items())
 
     con.register("_cohort_for_her2", cohort_df[["patient_id", "index_date"]])
 
@@ -60,7 +59,7 @@ def derive_her2(
                 b.report_date                                   AS her2_test_date,
                 b.biomarker_variant                             AS her2_variant,
                 b.curation_flag                                 AS her2_curation_flag,
-                ABS(DATEDIFF('day', b.report_date, c.index_date)) AS days_from_index,
+                ABS(DATEDIFF('day', CAST(b.report_date AS DATE), CAST(c.index_date AS DATE))) AS days_from_index,
                 -- variant_specificity: NULL=0, indeterminate=1, IHC score=2 (ADR-008)
                 CASE
                     WHEN b.biomarker_variant IS NULL                         THEN 0
@@ -74,13 +73,15 @@ def derive_her2(
                         CASE WHEN b.biomarker_variant IS NULL THEN 0
                              WHEN b.biomarker_variant IN ('Pending', 'IHC equivocal') THEN 1
                              ELSE 2 END DESC,
-                        ABS(DATEDIFF('day', b.report_date, c.index_date)) ASC
+                        ABS(DATEDIFF('day', CAST(b.report_date AS DATE), CAST(c.index_date AS DATE))) ASC
                 ) AS rn
             FROM biomarker b
             JOIN _cohort_for_her2 c ON b.patient_id = c.patient_id
             WHERE b.biomarker_name = 'HER2'
-              AND b.report_date BETWEEN c.index_date - INTERVAL '{pre_days} days'
-                                    AND c.index_date + INTERVAL '{post_days} days'
+              AND CAST(b.report_date AS DATE)
+                  BETWEEN CAST(c.index_date AS DATE) - INTERVAL '{pre_days} days'
+                      AND CAST(c.index_date AS DATE) + INTERVAL '{post_days} days'
+              {curated_filter}
         ),
         selected AS (SELECT * FROM windowed WHERE rn = 1),
         counts AS (
@@ -88,8 +89,10 @@ def derive_her2(
             FROM biomarker b
             JOIN _cohort_for_her2 c ON b.patient_id = c.patient_id
             WHERE b.biomarker_name = 'HER2'
-              AND b.report_date BETWEEN c.index_date - INTERVAL '{pre_days} days'
-                                    AND c.index_date + INTERVAL '{post_days} days'
+              AND CAST(b.report_date AS DATE)
+                  BETWEEN CAST(c.index_date AS DATE) - INTERVAL '{pre_days} days'
+                      AND CAST(c.index_date AS DATE) + INTERVAL '{post_days} days'
+              {curated_filter}
             GROUP BY b.patient_id
         )
         SELECT

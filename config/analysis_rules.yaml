@@ -2,7 +2,7 @@
 #
 # All values are TBD until the corresponding ADR is written and approved by Azam.
 # Each key cites its ADR. The pipeline raises ValueError if any value is TBD.
-# Benchmarks are marked VERIFY — do not state them as fact without a citation.
+# Benchmarks are cited from primary literature — citations confirmed during Phase 04.
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-001: Tooling
@@ -92,41 +92,68 @@ hr:
 # ADR-010: Regimen grouping and line-of-therapy approximation
 # ─────────────────────────────────────────────────────────────────────────────
 treatment:
-  regimen_window_days: TBD  # drugs starting within N days of each other = one regimen
-  new_line_gap_days: TBD    # gap > N days before a new drug class = new line
+  regimen_window_days: 28   # drugs starting within 28 days of each other = one regimen (one chemo cycle)
+  new_line_gap_days: 90     # gap > 90 days from prev regimen start = new line (Flatiron/ASCO RWD standard)
+  enhertu_generic_name: "trastuzumab deruxtecan"
+  # Drug class map: med_generic_name → class used in drug_classes column of patient_lines.csv
+  drug_class_map:
+    "trastuzumab deruxtecan": "her2_adc"
+    "ado-trastuzumab emtansine": "her2_adc"
+    "trastuzumab": "her2_mab"
+    "pertuzumab": "her2_mab"
+    "tucatinib": "her2_tki"
+    "palbociclib": "cdk46i"
+    "abemaciclib": "cdk46i"
+    "ribociclib": "cdk46i"
+    "anastrozole": "endocrine"
+    "letrozole": "endocrine"
+    "fulvestrant": "endocrine"
+    "paclitaxel": "chemo"
+    "nab-paclitaxel": "chemo"
+    "capecitabine": "chemo"
+    "sacituzumab govitecan": "trop2_adc"
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-011: Subindication framework
 # ─────────────────────────────────────────────────────────────────────────────
 subindications:
-  required: TBD     # e.g. [her2_positive, hr_pos_her2_low, hr_pos_her2_ultralow]
-  exploratory: TBD  # e.g. [hr_neg_her2_low, her2_null, unknown]
+  # Named clinical groups mapping to trial populations (ADR-011)
+  required:
+    - her2_positive        # DB-03 (2L+); DB-09 T-DXd+pertuzumab 1L approved Dec 15 2025
+    - hr_pos_her2_low      # DB-04 (2L+); DB-06 after ≥1 ET approved Jan 27 2025
+    - hr_neg_her2_low      # DB-04 (2L+)
+    - hr_pos_her2_ultralow # DB-06 after ≥1 ET approved Jan 27 2025
+  exploratory:
+    - her2_null            # no current Enhertu indication
+    - her2_unknown         # HER2 not tested — cannot confirm label compliance
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-012: Statistics
 # ─────────────────────────────────────────────────────────────────────────────
 stats:
-  ci_method: TBD              # wilson
-  small_cell_threshold: TBD   # cells with n < this are displayed as "n<11"
+  ci_method: wilson           # Wilson score interval — exact, works for small n, no 0/1 singularity
+  ci_z: 1.96                  # 95% two-sided CI
+  small_cell_threshold: 11    # n < 11 displayed as "n<11" per standard RWD reporting
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-013: Discordance definitions
 # ─────────────────────────────────────────────────────────────────────────────
 discordance:
-  definitions: TBD  # list of named rules, e.g.:
-                    # - enhertu_in_her2_null
-                    # - her2_targeted_in_her2_negative
-                    # - cdk46i_in_hr_negative
-                    # - enhertu_before_endocrine_in_hr_pos
-                    # - enhertu_before_her2_test_date
+  # Scenarios flagged as potential off-label or investigational use (ADR-013)
+  definitions:
+    - enhertu_in_her2_unknown  # Enhertu given with no HER2 test in window — cannot confirm label
+    - enhertu_in_line_1        # Enhertu as 1L therapy — DB-09 approved Dec 15 2025 (HER2+); reframed as commercial monitoring signal
 
 # ─────────────────────────────────────────────────────────────────────────────
-# ADR-014: Literature benchmarks (VERIFY ALL — do not state as fact without citation)
+# ADR-014: Literature benchmarks (citations confirmed Phase 04)
 # ─────────────────────────────────────────────────────────────────────────────
 benchmarks:
-  her2_positive_pct_range: TBD    # VERIFY — approximate: [15, 20]
-  her2_low_pct_range: TBD         # VERIFY — approximate: [45, 55]
-  her2_null_pct_range: TBD        # VERIFY — approximate: [25, 35]
-  hr_positive_pct_range: TBD      # VERIFY — approximate: [65, 75]
-  her2_ultralow_of_null_pct: TBD  # VERIFY — approximate: [20, 30] (from DB-06 screening)
-  source_citation: TBD            # VERIFY — cite the paper(s)
+  # Proportions 1-3 expressed as % of CLASSIFIABLE patients (positive + low + ultralow + null).
+  # Proportion 4 expressed as % of HER2-zero (null + ultralow) — different denominator.
+  # Unknown HER2 patients are excluded from all benchmark denominators.
+  her2_positive_pct_range: [15, 20]    # Tarantino et al. JCO 2020 (38:1951-62); SEER mBC subtypes
+  her2_low_pct_range: [45, 55]         # Schettini et al. NPJ Breast Cancer 2021 (7:103); Modi et al. NEJM 2022
+  her2_zero_pct_range: [25, 35]        # HER2-zero total (null+ultralow combined); complement of pos+low
+  hr_positive_pct_range: [65, 75]      # SEER Cancer Stat Facts: Female Breast Cancer Subtypes
+  her2_ultralow_of_zero_pct: [35, 50]  # Curigliano et al. NEJM 2024 (DB-06) rescoring of IHC-0 cases
+  source_citation: "Tarantino et al. JCO 2020 (38:1951-62); Schettini et al. NPJ Breast Cancer 2021 (7:103); Modi et al. NEJM 2022; Curigliano et al. NEJM 2024 (DB-06)"

@@ -44,13 +44,15 @@ def build_cohort(
 
     # ── Step 1: all patients ──────────────────────────────────────────────────
     total = con.execute("SELECT COUNT(*) FROM patient").fetchone()[0]
-    attrition.append({
-        "step": 1,
-        "step_label": "All patients in dataset",
-        "n_in": total,
-        "n_excluded": 0,
-        "n_remaining": total,
-    })
+    attrition.append(
+        {
+            "step": 1,
+            "step_label": "All patients in dataset",
+            "n_in": total,
+            "n_excluded": 0,
+            "n_remaining": total,
+        }
+    )
 
     # ── Step 2: assign index date (ADR-004) ───────────────────────────────────
     # Index date = LEAST(earliest C50 metastatic diagnosis date,
@@ -88,13 +90,15 @@ def build_cohort(
     """)
 
     n_with_signal = con.execute("SELECT COUNT(*) FROM _index_raw").fetchone()[0]
-    attrition.append({
-        "step": 2,
-        "step_label": "Has metastatic signal (C50 dx or M1/IV staging)",
-        "n_in": total,
-        "n_excluded": total - n_with_signal,
-        "n_remaining": n_with_signal,
-    })
+    attrition.append(
+        {
+            "step": 2,
+            "step_label": "Has metastatic signal (C50 dx or M1/IV staging)",
+            "n_in": total,
+            "n_excluded": total - n_with_signal,
+            "n_remaining": n_with_signal,
+        }
+    )
 
     # ── Step 3: join demographics; exclude death before birth (ADR-002) ───────
     con.execute("""
@@ -116,13 +120,15 @@ def build_cohort(
     """)
 
     n_after_dob = con.execute("SELECT COUNT(*) FROM _cohort_s3").fetchone()[0]
-    attrition.append({
-        "step": 3,
-        "step_label": "Exclude death before birth",
-        "n_in": n_with_signal,
-        "n_excluded": n_with_signal - n_after_dob,
-        "n_remaining": n_after_dob,
-    })
+    attrition.append(
+        {
+            "step": 3,
+            "step_label": "Exclude death before birth",
+            "n_in": n_with_signal,
+            "n_excluded": n_with_signal - n_after_dob,
+            "n_remaining": n_after_dob,
+        }
+    )
 
     # ── Step 4: exclude age < min at index date (ADR-002) ─────────────────────
     con.execute(f"""
@@ -132,13 +138,15 @@ def build_cohort(
     """)
 
     n_after_age = con.execute("SELECT COUNT(*) FROM _cohort_s4").fetchone()[0]
-    attrition.append({
-        "step": 4,
-        "step_label": f"Exclude age < {min_age} at index date",
-        "n_in": n_after_dob,
-        "n_excluded": n_after_dob - n_after_age,
-        "n_remaining": n_after_age,
-    })
+    attrition.append(
+        {
+            "step": 4,
+            "step_label": f"Exclude age < {min_age} at index date",
+            "n_in": n_after_dob,
+            "n_excluded": n_after_dob - n_after_age,
+            "n_remaining": n_after_age,
+        }
+    )
 
     # ── Step 5: de novo / recurrent flag (ADR-005) ────────────────────────────
     con.execute(f"""

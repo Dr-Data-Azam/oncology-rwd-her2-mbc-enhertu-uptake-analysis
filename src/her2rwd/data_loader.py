@@ -81,9 +81,7 @@ def check_input_integrity(
     raw_hash = _sha256_file(raw_dict)
     ext_hash = _sha256_file(ext_dict)
     if raw_hash != ext_hash:
-        mismatches.append(
-            f"data_dictionary.xlsx: raw={raw_hash[:12]}… external={ext_hash[:12]}…"
-        )
+        mismatches.append(f"data_dictionary.xlsx: raw={raw_hash[:12]}… external={ext_hash[:12]}…")
     hashes["data_dictionary.xlsx"] = raw_hash
 
     # --- five CSVs: raw file vs entry inside the zip ---
@@ -104,9 +102,7 @@ def check_input_integrity(
             raw_hash = _sha256_file(raw_csv)
             zip_hash = _sha256_bytes(zip_bytes)
             if raw_hash != zip_hash:
-                mismatches.append(
-                    f"{name}.csv: raw={raw_hash[:12]}… zip={zip_hash[:12]}…"
-                )
+                mismatches.append(f"{name}.csv: raw={raw_hash[:12]}… zip={zip_hash[:12]}…")
             hashes[f"{name}.csv"] = raw_hash
 
     if mismatches:
@@ -142,9 +138,7 @@ def load_raw(
     con = duckdb.connect(db_path)
     for name in _CSV_FILES:
         csv_path = raw / f"{name}.csv"
-        con.execute(
-            f"CREATE OR REPLACE TABLE {name} AS SELECT * FROM read_csv_auto('{csv_path}')"
-        )
+        con.execute(f"CREATE OR REPLACE TABLE {name} AS SELECT * FROM read_csv_auto('{csv_path}')")
     return con
 
 

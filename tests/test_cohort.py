@@ -9,7 +9,6 @@ ADRs covered: ADR-002, ADR-004, ADR-005
 from __future__ import annotations
 
 import duckdb
-import pytest
 
 from her2rwd.cohort import build_cohort
 
@@ -21,6 +20,7 @@ _CFG = {
 
 
 # ── fixtures ──────────────────────────────────────────────────────────────────
+
 
 def _empty_con() -> duckdb.DuckDBPyConnection:
     con = duckdb.connect()
@@ -60,26 +60,21 @@ def _empty_con() -> duckdb.DuckDBPyConnection:
 
 def _add_patient(con, pid, dob="1970-01-01", dod=None):
     dod_val = f"'{dod}'" if dod else "NULL"
-    con.execute(
-        f"INSERT INTO patient VALUES ('{pid}', '{dob}', {dod_val}, 'ORG_001', 'academic')"
-    )
+    con.execute(f"INSERT INTO patient VALUES ('{pid}', '{dob}', {dod_val}, 'ORG_001', 'academic')")
 
 
 def _add_diagnosis(con, pid, code, dtype, ddate):
-    con.execute(
-        f"INSERT INTO diagnosis VALUES ('{pid}', '{ddate}', '{code}', '{dtype}', 1)"
-    )
+    con.execute(f"INSERT INTO diagnosis VALUES ('{pid}', '{ddate}', '{code}', '{dtype}', 1)")
 
 
 def _add_staging(con, pid, stage_date, stage_group=None, m_stage=None):
     sg = f"'{stage_group}'" if stage_group else "NULL"
     ms = f"'{m_stage}'" if m_stage else "NULL"
-    con.execute(
-        f"INSERT INTO staging VALUES ('{pid}', '{stage_date}', {sg}, NULL, NULL, {ms}, 1)"
-    )
+    con.execute(f"INSERT INTO staging VALUES ('{pid}', '{stage_date}', {sg}, NULL, NULL, {ms}, 1)")
 
 
 # ── tests ─────────────────────────────────────────────────────────────────────
+
 
 def test_staging_only_patient_included(tmp_path):
     """Patient with M1 staging but no C50 metastatic dx is included (index_source=staging_only)."""

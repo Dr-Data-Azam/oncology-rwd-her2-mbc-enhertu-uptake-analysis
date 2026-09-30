@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import duckdb
 import pandas as pd
-import pytest
 
 from her2rwd.her2 import derive_her2
 
@@ -51,13 +50,11 @@ def _cohort(pid, index_date="2020-06-01") -> pd.DataFrame:
 
 def _add_her2(con, pid, variant, result="Positive", report_date="2020-04-01", flag=1):
     v = "NULL" if variant is None else f"'{variant}'"
-    con.execute(
-        f"INSERT INTO biomarker VALUES ('{pid}', '{report_date}', 'HER2', "
-        f"'IHC', '{result}', {v}, {flag})"
-    )
+    con.execute(f"INSERT INTO biomarker VALUES ('{pid}', '{report_date}', 'HER2', " f"'IHC', '{result}', {v}, {flag})")
 
 
 # ── category mapping tests (ADR-006) ─────────────────────────────────────────
+
 
 def test_ihc3plus_maps_to_positive(tmp_path):
     con = _empty_con()
@@ -117,6 +114,7 @@ def test_null_variant_maps_to_unknown(tmp_path):
 
 # ── window tests (ADR-007) ────────────────────────────────────────────────────
 
+
 def test_record_outside_window_excluded(tmp_path):
     """HER2 record more than 365 days before index date is outside window -> unknown."""
     con = _empty_con()
@@ -137,11 +135,12 @@ def test_record_at_window_edge_included(tmp_path):
 
 # ── tie-break tests (ADR-008) ─────────────────────────────────────────────────
 
+
 def test_curated_beats_uncurated(tmp_path):
     """Curated (flag=1) IHC 1+ beats uncurated (flag=0) IHC 3+."""
     con = _empty_con()
-    _add_her2(con, "P1", "IHC 3+", report_date="2020-05-01", flag=0)   # uncurated
-    _add_her2(con, "P1", "IHC 1+", report_date="2020-05-01", flag=1)   # curated
+    _add_her2(con, "P1", "IHC 3+", report_date="2020-05-01", flag=0)  # uncurated
+    _add_her2(con, "P1", "IHC 1+", report_date="2020-05-01", flag=1)  # curated
     result = derive_her2(con, _cohort("P1"), _CFG, out_dir=tmp_path)
     assert result.iloc[0]["her2_category"] == "low"
 
@@ -149,7 +148,7 @@ def test_curated_beats_uncurated(tmp_path):
 def test_specific_variant_beats_null_variant(tmp_path):
     """Non-NULL variant (IHC 3+) beats NULL variant when curation flags tie."""
     con = _empty_con()
-    _add_her2(con, "P1", None,     report_date="2020-05-01", flag=1)  # NULL variant
+    _add_her2(con, "P1", None, report_date="2020-05-01", flag=1)  # NULL variant
     _add_her2(con, "P1", "IHC 3+", report_date="2020-05-01", flag=1)  # specific
     result = derive_her2(con, _cohort("P1"), _CFG, out_dir=tmp_path)
     assert result.iloc[0]["her2_category"] == "positive"

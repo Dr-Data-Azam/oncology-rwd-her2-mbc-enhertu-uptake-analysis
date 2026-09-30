@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import duckdb
 import pandas as pd
-import pytest
 
 from her2rwd.hormone_receptor import derive_hr
 
@@ -46,12 +45,12 @@ def _cohort(pid, index_date="2020-06-01") -> pd.DataFrame:
 def _add_bm(con, pid, name, variant, result="Positive", report_date="2020-04-01", flag=1):
     v = "NULL" if variant is None else f"'{variant}'"
     con.execute(
-        f"INSERT INTO biomarker VALUES ('{pid}', '{report_date}', '{name}', "
-        f"'IHC', '{result}', {v}, {flag})"
+        f"INSERT INTO biomarker VALUES ('{pid}', '{report_date}', '{name}', " f"'IHC', '{result}', {v}, {flag})"
     )
 
 
 # ── HR+ from numeric % ────────────────────────────────────────────────────────
+
 
 def test_er_pct_above_threshold_is_positive(tmp_path):
     con = _empty_con()
@@ -80,6 +79,7 @@ def test_both_zero_pct_is_negative(tmp_path):
 
 # ── HR from result text fallback (ADR-009) ────────────────────────────────────
 
+
 def test_null_variant_positive_result_is_hr_positive(tmp_path):
     """No ER %; result = 'Positive' → HR+ via text fallback."""
     con = _empty_con()
@@ -100,13 +100,14 @@ def test_null_variant_negative_result_is_hr_negative(tmp_path):
 
 # ── ER-low flag (ADR-009) ─────────────────────────────────────────────────────
 
+
 def test_er_1pct_is_er_low(tmp_path):
     """ER = 1% is HR+ and ER-low."""
     con = _empty_con()
     _add_bm(con, "P1", "ER", "1% positive cells", result="Positive")
     result = derive_hr(con, _cohort("P1"), _CFG, out_dir=tmp_path)
     assert result.iloc[0]["hr_status"] == "positive"
-    assert result.iloc[0]["er_low"] == True
+    assert result.iloc[0]["er_low"]
 
 
 def test_er_10pct_is_er_low(tmp_path):
@@ -114,7 +115,7 @@ def test_er_10pct_is_er_low(tmp_path):
     con = _empty_con()
     _add_bm(con, "P1", "ER", "10% positive cells", result="Positive")
     result = derive_hr(con, _cohort("P1"), _CFG, out_dir=tmp_path)
-    assert result.iloc[0]["er_low"] == True
+    assert result.iloc[0]["er_low"]
 
 
 def test_er_11pct_is_not_er_low(tmp_path):
@@ -123,7 +124,7 @@ def test_er_11pct_is_not_er_low(tmp_path):
     _add_bm(con, "P1", "ER", "11% positive cells", result="Positive")
     result = derive_hr(con, _cohort("P1"), _CFG, out_dir=tmp_path)
     assert result.iloc[0]["hr_status"] == "positive"
-    assert result.iloc[0]["er_low"] == False
+    assert not result.iloc[0]["er_low"]
 
 
 def test_no_hr_record_is_unknown(tmp_path):

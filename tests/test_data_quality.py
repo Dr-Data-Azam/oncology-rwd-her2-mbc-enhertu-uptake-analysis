@@ -7,11 +7,7 @@ touched; fixtures use tmp_path only where CSV output must be checked.
 
 from __future__ import annotations
 
-from pathlib import Path
-
 import duckdb
-import pandas as pd
-import pytest
 
 from her2rwd.data_quality import run_dq_checks
 
@@ -68,16 +64,13 @@ def _empty_con() -> duckdb.DuckDBPyConnection:
 
 def _insert_patient(con, pid, dob="1970-01-01", dod=None):
     dod_val = f"'{dod}'" if dod else "NULL"
-    con.execute(
-        f"INSERT INTO patient VALUES ('{pid}', '{dob}', {dod_val}, 'ORG_001', 'academic')"
-    )
+    con.execute(f"INSERT INTO patient VALUES ('{pid}', '{dob}', {dod_val}, 'ORG_001', 'academic')")
 
 
 def _insert_biomarker(con, pid, name, variant, report_date="2024-01-01"):
     variant_sql = "NULL" if variant is None else f"'{variant}'"
     con.execute(
-        f"INSERT INTO biomarker VALUES ('{pid}', '{report_date}', '{name}', "
-        f"'IHC', 'Positive', {variant_sql}, 1)"
+        f"INSERT INTO biomarker VALUES ('{pid}', '{report_date}', '{name}', " f"'IHC', 'Positive', {variant_sql}, 1)"
     )
 
 
@@ -88,9 +81,7 @@ def test_clean_data_produces_no_errors(tmp_path):
     """All checks return 0 flagged when data is clean."""
     con = _empty_con()
     _insert_patient(con, "PAT_001", dob="1970-01-01", dod="2023-06-01")
-    con.execute(
-        "INSERT INTO diagnosis VALUES ('PAT_001', '2022-01-01', 'C50.8', 'metastatic', 1)"
-    )
+    con.execute("INSERT INTO diagnosis VALUES ('PAT_001', '2022-01-01', 'C50.8', 'metastatic', 1)")
     summary = run_dq_checks(con, _CFG, out_dir=tmp_path)
     errors = summary[summary["severity"] == "error"]["n_flagged"].sum()
     assert errors == 0, f"Expected no errors on clean data, got:\n{summary}"
