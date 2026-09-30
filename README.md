@@ -87,13 +87,30 @@ pipeline run.
 
 ```bash
 uv sync                                         # install deps
-uv run python -m her2rwd.pipeline               # run analysis → outputs/
-uv run pytest tests/ -v                         # verify tests pass
+uv run pytest tests/ -v                         # verify 134 tests pass
+uv run python -m her2rwd.pipeline               # run stages 1–11 → outputs/
 uv run python -m her2rwd.pipeline --reports     # also build HTML + pptx → reports/
 ```
 
-To use an alternative rule set (sensitivity analysis):
+**Pipeline stages:**
 
-```bash
-uv run python -m her2rwd.pipeline --rules config/alt_narrow_window.yaml
-```
+| Stage | Module | Output |
+|---|---|---|
+| 1 | `data_loader.py` | SHA-256 hash check |
+| 2 | `data_loader.py` | DuckDB in-memory tables |
+| 3 | `data_quality.py` | `outputs/dq/dq_log.csv`, `dq_summary.csv` |
+| 4 | `cohort.py` | `outputs/tables/cohort.csv`, `attrition.csv` |
+| 5 | `her2.py` | `outputs/tables/patient_her2.csv` |
+| 6 | `hormone_receptor.py` | `outputs/tables/patient_hr.csv` |
+| 7 | `treatment.py` | `outputs/tables/patient_lines.csv` |
+| 8 | `q1_distribution.py` | `outputs/tables/q1_*.csv` |
+| 9 | `q2_uptake.py` | `outputs/tables/q2_*.csv` |
+| 10 | `sensitivity.py` | `outputs/tables/sensitivity_*.csv` |
+| 11 | `validation.py` | `audit/validation_report.md` |
+| 12 | `report.py` | `reports/analysis_notebook.html`, `reports/HER2_mBC_Enhertu_Assessment.pptx` |
+
+**Key headline outputs (103 patients, all data synthetic):**
+- HER2-positive: 17 (16.5%) — within published 15–20% range
+- HER2-unknown: 62 (60.2%) — primary data gap finding
+- Enhertu recipients: 41 total; 23 (37% of unknowns) had no HER2 test in window
+- Validation: 13/13 invariant checks PASS

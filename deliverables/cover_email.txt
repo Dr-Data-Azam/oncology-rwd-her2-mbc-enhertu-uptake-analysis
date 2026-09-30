@@ -1,0 +1,27 @@
+To: Brandon Nathasingh
+Subject: ConcertAI Assessment Submission: HER2 mBC Feasibility and Enhertu Uptake Analysis
+
+Hi Brandon,
+
+Please find attached my submission for the ConcertAI technical assessment. The analysis covers two questions on the 150 synthetic HER2 mBC patients you provided.
+
+What is included:
+
+1. Source code (zipped repo) with a fully reproducible pipeline. Running uv sync followed by uv run python -m her2rwd.pipeline --reports regenerates every table, figure, HTML notebook, and slide from raw inputs. No numbers are hand-typed anywhere.
+
+2. Rendered analysis notebook (HTML) walking through each stage with live output: DQ findings, attrition, HER2 classification, HR status, treatment lines, Q1 distribution, Q2 uptake, and a fit-for-purpose verdict.
+
+3. Slide deck (5 slides + 3 appendices) addressing both client questions directly. Titles are finding sentences, not topic labels. Every number traces back to a source CSV.
+
+4. Output tables (17 CSVs) covering cohort, HER2 categories, HR status, treatment lines, Q1 distribution with Wilson CIs, Q2 Enhertu uptake by subindication, discordance lists, and three sensitivity scenarios.
+
+5. Audit pack including 14 Architecture Decision Records (ADRs), a validation report (13/13 invariant checks passing), a session log, and a data lineage document.
+
+Key findings in brief:
+
+The asset is directionally feasible for HER2-defined mBC studies. HER2-positive prevalence (16.5%) falls within the published 15 to 20 percent range. The primary constraint is a 60 percent unknown HER2 rate, which reflects a testing gap in the data rather than absence of HER2 expression. Enhertu uptake is visible across all required subindications, with 23 of 41 Enhertu recipients (56 percent) having no HER2 test in the window, which is itself a commercially relevant finding about biomarker data quality. At 103 eligible patients the asset supports hypothesis generation and protocol design but would need to scale to 1,000-plus patients for CI-powered subindication endpoint studies.
+
+All data are synthetic. The analysis is reproducible. I look forward to discussing on Thursday at 3:00 PM ET.
+
+Best,
+Azam

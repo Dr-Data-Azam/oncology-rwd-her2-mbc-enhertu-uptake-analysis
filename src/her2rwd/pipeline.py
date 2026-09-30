@@ -30,9 +30,8 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
-import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import yaml
@@ -42,6 +41,12 @@ from her2rwd.data_loader import check_input_integrity, load_raw
 from her2rwd.data_quality import run_dq_checks
 from her2rwd.her2 import derive_her2
 from her2rwd.hormone_receptor import derive_hr
+from her2rwd.q1_distribution import compute_q1
+from her2rwd.q2_uptake import compute_q2
+from her2rwd.report import build_reports
+from her2rwd.sensitivity import run_sensitivity
+from her2rwd.treatment import build_treatment_lines
+from her2rwd.validation import run_validation
 
 
 def _load_cfg(rules_path: str = "config/analysis_rules.yaml") -> dict:
@@ -68,7 +73,7 @@ def run(rules_path: str = "config/analysis_rules.yaml", reports: bool = False) -
     """Run the full pipeline and return the manifest dict."""
     t0 = time.time()
     manifest: dict = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "timestamp": datetime.now(UTC).isoformat(),
         "rules_file": rules_path,
         "config_sha256": _cfg_hash(rules_path),
         "package_versions": _pkg_versions(),
@@ -146,8 +151,100 @@ def run(rules_path: str = "config/analysis_rules.yaml", reports: bool = False) -
         print(f"  {status}: {n}")
     print(f"  ER-low: {er_low_n}")
 
-    # ── Phases 04–07 are stubs until those phases are built ──────────────────
-    # Each phase will add its stage block here.
+    # ── Stage 7: treatment lines ──────────────────────────────────────────────
+    print("Stage 7: building treatment lines...")
+    lines_df = build_treatment_lines(con, cohort_df, cfg)
+    n_treated = lines_df["patient_id"].nunique()
+    n_enhertu = int(lines_df[lines_df["contains_enhertu"]]["patient_id"].nunique())
+    line_dist = lines_df.groupby("line_number")["patient_id"].nunique().to_dict()
+    manifest["stages"]["treatment"] = {
+        "n_patients_with_treatment": n_treated,
+        "n_patients_enhertu": n_enhertu,
+        "n_patients_per_line": {str(k): v for k, v in line_dist.items()},
+    }
+    print(f"  {n_treated} patients with treatment on/after index date")
+    print(f"  Enhertu recipients: {n_enhertu}")
+    for ln, n in sorted(line_dist.items()):
+        print(f"  Line {ln}: {n} patients")
+
+    # ── Stage 8: Q1 distribution ─────────────────────────────────────────────
+    print("Stage 8: computing Q1 HER2 distribution...")
+    q1_results = compute_q1(her2_df, hr_df, cohort_df, cfg)
+    overall = q1_results["overall"]
+    n_class = q1_results["n_classifiable"]
+    cat_summary = {
+        row["her2_category"]: {
+            "n": int(row["n"]),
+            "pct": float(row["pct"]),
+            "small_cell": bool(row["small_cell"]),
+        }
+        for _, row in overall.iterrows()
+    }
+    manifest["stages"]["q1_distribution"] = {
+        "n_total": q1_results["n_total"],
+        "n_classifiable": n_class,
+        "categories": cat_summary,
+    }
+    for _, row in overall.iterrows():
+        flag = " [n<11]" if row["small_cell"] else ""
+        print(f"  {row['her2_category']}: {int(row['n'])} ({row['pct']}%){flag}")
+
+    # ── Stage 9: Q2 uptake ────────────────────────────────────────────────────
+    print("Stage 9: computing Q2 Enhertu uptake...")
+    q2_results = compute_q2(her2_df, hr_df, lines_df, cohort_df, cfg)
+    uptake = q2_results["uptake_summary"]
+    n_discord_unknown = len(q2_results["discordance_unknown_her2"])
+    n_discord_1l = len(q2_results["discordance_1l"])
+    manifest["stages"]["q2_uptake"] = {
+        "n_discordance_unknown_her2": n_discord_unknown,
+        "n_discordance_1l": n_discord_1l,
+        "uptake_by_subindication": {
+            row["subindication"]: {
+                "n_total": int(row["n_total"]),
+                "n_enhertu": int(row["n_enhertu"]),
+                "pct_enhertu": float(row["pct_enhertu"]),
+            }
+            for _, row in uptake.iterrows()
+        },
+    }
+    for _, row in uptake[uptake["subindication_type"] == "required"].iterrows():
+        flag = " [n<11]" if row["small_cell"] else ""
+        print(f"  {row['subindication']}: {int(row['n_enhertu'])}/{int(row['n_total'])} ({row['pct_enhertu']}%){flag}")
+    print(f"  Discordance — unknown HER2: {n_discord_unknown} | 1L: {n_discord_1l}")
+
+    # ── Stage 10: sensitivity analyses ───────────────────────────────────────
+    print("Stage 10: running sensitivity analyses...")
+    sens_results = run_sensitivity(con, cohort_df, cfg)
+    sens_dist = sens_results["her2_distribution"]
+    manifest["stages"]["sensitivity"] = {
+        "scenarios": ["baseline", "s1_narrow_window", "s2_curated_only", "s3_conservative_ihc0"],
+        "n_rows": len(sens_dist),
+    }
+    print(f"  Sensitivity tables written ({len(sens_dist)} category rows × 4 scenarios)")
+
+    # ── Stage 11: validation ──────────────────────────────────────────────────
+    print("Stage 11: running validation checks...")
+    val_df = run_validation()
+    n_val_pass = int((val_df["result"] == "PASS").sum())
+    n_val_fail = int((val_df["result"] == "FAIL").sum())
+    manifest["stages"]["validation"] = {
+        "n_checks": len(val_df),
+        "n_pass": n_val_pass,
+        "n_fail": n_val_fail,
+    }
+    print(f"  {n_val_pass} PASS, {n_val_fail} FAIL — see audit/validation_report.md")
+
+    # ── Stage 12: reports (--reports flag) ────────────────────────────────────
+    if reports:
+        print("Stage 12: building reports (HTML + pptx)...")
+        report_results = build_reports(cfg)
+        manifest["stages"]["reports"] = {
+            "html": report_results.get("html"),
+            "pptx": report_results.get("pptx"),
+            "pdf": report_results.get("pdf"),
+        }
+        print(f"  HTML: {report_results.get('html')}")
+        print(f"  PPTX: {report_results.get('pptx')}")
 
     # ── Write manifest ────────────────────────────────────────────────────────
     manifest["elapsed_seconds"] = round(time.time() - t0, 2)
