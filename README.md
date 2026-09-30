@@ -134,6 +134,41 @@ Every phase followed the same lifecycle:
 
 ---
 
+### 1d. What the Numbers Mean Clinically
+
+**Why 60% unknown is the primary finding — not a failure.**
+The 60% unknown rate does not mean 60% of patients lack HER2 expression. It means 60% of
+patients have no granular IHC score in the structured `biomarker_variant` field. A patient
+with `biomarker_result = 'Negative'` and a blank variant could be IHC 0 (HER2-null), IHC 1+
+(HER2-low), or IHC 2+/ISH− (also HER2-low) — three entirely different categories under
+ASCO/CAP 2023 guidelines. Without the variant string, classification is impossible. This is
+a data completeness gap, not a biology gap. In a production study, targeted curation of
+variant strings for mBC patients would transform the ~60% unknown rate dramatically.
+
+**Why HER2-low is reported with two denominators.**
+The published benchmark for HER2-low (45–55%) uses *classifiable patients* as the denominator
+— patients who have enough biomarker detail to assign a category. Our 13/41 classifiable =
+31.7% is the apples-to-apples comparison with that benchmark. The 13/103 all-patient = 12.6%
+is the operational rate — the fraction of your full mBC cohort you could enroll in a HER2-low
+trial without additional biomarker collection. Both numbers are reported because they answer
+different commercial questions.
+
+**Why the subindication categories map to specific trial populations.**
+The HER2+ / HR+HER2-low / HR+HER2-ultralow / HR−HER2-low framework directly mirrors the
+FDA-approved trial populations: DB-03/09 (HER2+), DB-04 (HER2-low, any HR), DB-06
+(HR+/HER2-low or ultralow after ≥1 endocrine therapy). Every subindication name in the
+output tables traces back to a specific Enhertu approval or trial cohort. The exploratory
+groups (HER2-null, HER2-unknown) serve as control arms and commercial signal detectors.
+
+**Why 23 discordant Enhertu cases are commercially valuable.**
+23 patients received Enhertu despite having no HER2 test result in the biomarker window.
+In a synthetic dataset with 60% unknown HER2, these cases likely reflect data incompleteness
+rather than true off-label prescribing. But the commercial insight is real: this asset can
+identify which providers have untested patients who may benefit from biomarker testing. That
+is a direct ConcertAI value proposition for a pharma commercial team tracking Enhertu access.
+
+---
+
 ## Part 2 — Detailed Execution Order: What Runs After What
 
 ### Phase-level execution order
@@ -270,6 +305,33 @@ Writes `outputs/run_manifest.json` recording: UTC timestamp, SHA-256 hash of eve
 CSV, SHA-256 hash of `config/analysis_rules.yaml`, Python package versions (duckdb,
 pandas, pyyaml, python-pptx, nbconvert), and row counts at every stage — the
 reproducibility receipt for the entire run.
+
+---
+
+## Data Quality — Deliberate Traps and How Each Was Handled
+
+The synthetic dataset was seeded with deliberate data-quality issues to test analytical
+rigor. Every trap below was caught by `data_quality.py` Stage 3 and handled by an
+explicit rule in `config/analysis_rules.yaml`. No patient was silently dropped.
+
+| Trap | Where | What it is | Rule applied | ADR |
+|------|-------|-----------|-------------|-----|
+| Death before birth | `patient` | PAT_001: `date_of_death < date_of_birth` — impossible dates | Flagged as `death_before_birth` error; patient excluded from cohort | ADR-002 |
+| Orphan records | `biomarker`, `staging` | PAT_998 and PAT_999 appear in clinical tables but not in `patient` table | Flagged as `orphan_biomarker`; records excluded from all analysis | ADR-002 |
+| 24 pediatric patients | `patient` | PAT_127–150 born 2009–2020; age <18 at index date | Excluded by eligibility filter `min_age_at_index_years: 18` | ADR-002 |
+| Future-dated records | `biomarker`, `medication`, `diagnosis`, `staging` | 15 biomarker + 5 medication + 1 diagnosis + 1 staging records dated after today | Flagged as error; excluded from downstream analysis | ADR-003 |
+| Post-death events | `diagnosis`, `biomarker`, `medication` | Events recorded well after date of death | 30-day grace period kept (admin/lab lag); beyond 30 days flagged as warning | ADR-003 |
+| Blank HER2 variant | `biomarker` | 39 HER2 records with `biomarker_result` = Positive/Negative but `biomarker_variant` = NULL | Cannot assign low/ultralow/null; classified as `unknown`; root cause of 60% unknown rate | ADR-006 |
+| Result/variant conflict | `biomarker` | `result = 'Negative'` but `variant = 'IHC 1+'` (which is HER2-low) | Variant beats result text — IHC score is the pathology finding; result text is a secondary label | ADR-008 |
+| ER/PR result vs. % conflict | `biomarker` | `result = 'Negative'` with variant `= '37% positive cells'` | Numeric % beats result text per ASCO/CAP 2020 | ADR-009 |
+| Blank stage group | `staging` | 40 records with `stage_group` = NULL; 19 have `m_stage = M1` | `cohort.py` falls back to `m_stage = 'M1'` for index date assignment | ADR-004 |
+| Non-breast metastatic code | `diagnosis` | 2 metastatic diagnosis rows carrying non-C50 codes (C34.9 lung, C61 prostate) | Excluded — index date requires a breast C50 code | ADR-004 |
+| 1 duplicate biomarker row | `biomarker` | Exact duplicate row | Flagged as `duplicate_biomarker_same_date` warning; first occurrence kept | ADR-003 |
+
+All flagged records are logged to `outputs/dq/dq_log.csv` with `check_name`, `severity`,
+and `action`. The DQ summary (19 checks, 25 errors, 153 warnings) is on PPTX Appendix A —
+those counts are computed from `outputs/dq/dq_summary.csv` at report generation time,
+never typed by hand.
 
 ---
 
@@ -453,6 +515,31 @@ Every number in the deck can be traced back to a raw CSV row through these layer
 | 5. Validation report | `audit/validation_report.md` | *Can the numbers be trusted?* |
 | 6. Run manifest | `outputs/run_manifest.json` | *Can it be reproduced?* |
 | 7. Process trail | `specs/00-engagement/` + `audit/SESSION_LOG.md` + `audit/AI_USAGE.md` | *How was it built?* |
+
+### Tracing a number end-to-end (worked example)
+
+> **"Slide 2 says 17 patients are HER2-positive (16.5%). How do I verify that?"**
+
+1. **Slide → source table:** The slide speaker note reads `Source: outputs/tables/q1_overall.csv`.
+   Open that file and filter `her2_category = 'positive'` → row shows `n = 17, pct = 16.5`.
+
+2. **Source table → patient list:** Open `outputs/tables/patient_her2.csv` and filter
+   `her2_category = 'positive'` → 17 rows, each with a `winning_record_id` pointing to the
+   exact biomarker record that drove the classification.
+
+3. **Patient list → raw biomarker record:** Take any `winning_record_id`, look it up in
+   `data/raw/biomarker.csv` → confirm `biomarker_variant = 'IHC 3+'` or `'IHC 2+; ISH amplified'`.
+
+4. **Raw record → rule:** Open `config/analysis_rules.yaml → her2.variant_to_category`.
+   Confirm `"IHC 3+": "positive"`. Open `audit/decisions/ADR-006-her2-mapping.md` for the
+   clinical rationale (ASCO/CAP 2018/2023: strong complete membrane staining >10% of cells).
+
+5. **Rule → integrity:** Open `outputs/run_manifest.json → stages.her2.category_counts.positive`
+   → confirms the pipeline run that produced these 17 patients recorded exactly `17` at
+   classification time. Cross-check `input_hashes` to confirm the CSV has not changed since.
+
+The same five steps work for any number on any slide. The chain is always:
+`slide note → outputs/tables/ → patient_her2.csv → data/raw/ → config/ → ADR → manifest`.
 
 ---
 
