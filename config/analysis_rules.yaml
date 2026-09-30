@@ -14,10 +14,10 @@ tooling:
 # ADR-002: Eligibility criteria
 # ─────────────────────────────────────────────────────────────────────────────
 eligibility:
-  require_breast_code: TBD       # require C50.x in diagnosis table
-  min_age_at_index_years: TBD    # minimum age at metastatic index date
-  valid_dob_required: TBD        # exclude patients with implausible DOB
-  must_exist_in_patient: TBD     # exclude orphan IDs (PAT_998, PAT_999)
+  require_breast_code: true       # only C50.x counts toward breast cancer eligibility
+  min_age_at_index_years: 18      # age at metastatic index date (ASCO adult oncology standard)
+  valid_dob_required: true        # exclude patients flagged death_before_birth
+  must_exist_in_patient: true     # exclude orphan IDs not in patient table
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-003: Handling future-dated, post-death, and pre-birth records
@@ -27,6 +27,7 @@ dq:
   post_death_action: flag         # flag; grace period applies (post_death_grace_days)
   pre_birth_action: flag          # flag; patient excluded from cohort in cohort.py
   post_death_grace_days: 30       # admin/lab lag — events within 30 days post-death are kept
+  curation_priority: curated_first  # prefer curation_flag=1; fall back to flag=0 if no curated record exists
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-004: Metastatic index date definition and source priority
@@ -62,22 +63,26 @@ her2:
 # ADR-007: HER2 look-up window
 # ─────────────────────────────────────────────────────────────────────────────
   window_days:
-    pre_index: TBD   # days before index date (e.g. -365)
-    post_index: TBD  # days after index date (e.g. +180)
+    pre_index: 365   # days before index date — captures primary workup biomarkers
+    post_index: 90   # days after index date — confirmatory tests at staging
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-008: HER2 tie-break hierarchy
 # ─────────────────────────────────────────────────────────────────────────────
-  tiebreak_order: TBD      # ordered list: e.g. [variant_beats_result, curated_beats_ehr, closest_to_index]
-  conflict_resolution: TBD # when categories still conflict: highest_category | most_recent
+  tiebreak_order:
+    - curation_flag        # curated (flag=1) beats uncurated (flag=0)
+    - variant_specificity  # non-NULL variant beats NULL; more granular beats less
+    - closest_to_index     # closest report_date to metastatic index date wins
+  conflict_resolution: variant_beats_result_text  # IHC score overrides Positive/Negative label
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-009: HR derivation
 # ─────────────────────────────────────────────────────────────────────────────
 hr:
-  positive_threshold_pct: TBD  # percentage >= this → positive (ASCO/CAP: 1)
-  er_low_max_pct: TBD          # ER 1–N% flagged as ER-low (ASCO/CAP: 10)
-  pct_beats_result_text: TBD   # true | false — percentage wins over result text on conflict
+  positive_threshold_pct: 1         # ≥1% = HR-positive (ASCO/CAP 2020)
+  er_low_max_pct: 10                 # ER 1–10% = ER-low flag (ASCO/CAP 2020)
+  pct_beats_result_text: true        # numeric % from variant field overrides result text
+  null_variant_fallback: result_text # NULL variant → use biomarker_result (Positive/Negative)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADR-010: Regimen grouping and line-of-therapy approximation

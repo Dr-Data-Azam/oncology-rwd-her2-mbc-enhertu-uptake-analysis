@@ -244,4 +244,54 @@ def _define_checks(cfg: dict) -> list[dict]:
                 WHERE p.patient_id IS NULL
             """,
         },
+        {
+            "name": "her2_result_variant_conflict",
+            "table": "biomarker",
+            "description": "HER2 result='Negative' but variant='IHC 1+' — variant wins (IHC 1+ = HER2-low)",
+            "severity": "info",
+            "action": "variant_beats_result_text",
+            "sql": """
+                SELECT DISTINCT patient_id FROM biomarker
+                WHERE biomarker_name = 'HER2'
+                  AND biomarker_result = 'Negative'
+                  AND biomarker_variant = 'IHC 1+'
+            """,
+        },
+        {
+            "name": "er_pr_null_variant_fallback",
+            "table": "biomarker",
+            "description": "ER/PR record has NULL variant — HR status will fall back to biomarker_result text",
+            "severity": "info",
+            "action": "use_result_text_fallback",
+            "sql": """
+                SELECT DISTINCT patient_id FROM biomarker
+                WHERE biomarker_name IN ('ER', 'PR')
+                  AND biomarker_variant IS NULL
+            """,
+        },
+        {
+            "name": "duplicate_biomarker_same_date",
+            "table": "biomarker",
+            "description": "Same patient_id + report_date + biomarker_name appears more than once",
+            "severity": "warning",
+            "action": "apply_curation_tiebreak",
+            "sql": """
+                SELECT DISTINCT patient_id FROM (
+                    SELECT patient_id, report_date, biomarker_name, COUNT(*) c
+                    FROM biomarker GROUP BY 1, 2, 3 HAVING c > 1
+                )
+            """,
+        },
+        {
+            "name": "non_breast_metastatic_code",
+            "table": "diagnosis",
+            "description": "diagnosis_type='metastatic' with non-C50 ICD code — excluded from index date",
+            "severity": "warning",
+            "action": "exclude_from_index_date",
+            "sql": """
+                SELECT DISTINCT patient_id FROM diagnosis
+                WHERE diagnosis_type = 'metastatic'
+                  AND diagnosis_code NOT LIKE 'C50%'
+            """,
+        },
     ]

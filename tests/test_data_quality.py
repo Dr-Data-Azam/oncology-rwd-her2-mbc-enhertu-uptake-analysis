@@ -158,5 +158,51 @@ def test_summary_has_all_checks(tmp_path):
     """Summary DataFrame has one row per defined check."""
     con = _empty_con()
     summary = run_dq_checks(con, _CFG, out_dir=tmp_path)
-    assert len(summary) >= 15
+    assert len(summary) >= 19
     assert set(["check_name", "n_flagged", "severity", "action"]).issubset(summary.columns)
+
+
+def test_her2_result_variant_conflict_flagged(tmp_path):
+    """HER2 result='Negative' + variant='IHC 1+' triggers her2_result_variant_conflict."""
+    con = _empty_con()
+    _insert_patient(con, "PAT_001")
+    _insert_biomarker(con, "PAT_001", "HER2", "IHC 1+", report_date="2024-01-01")
+    # Manually update result to Negative (helper always sets Positive)
+    con.execute("UPDATE biomarker SET biomarker_result = 'Negative' WHERE biomarker_variant = 'IHC 1+'")
+    summary = run_dq_checks(con, _CFG, out_dir=tmp_path)
+    row = summary[summary["check_name"] == "her2_result_variant_conflict"].iloc[0]
+    assert row["n_flagged"] == 1
+    assert row["action"] == "variant_beats_result_text"
+
+
+def test_er_pr_null_variant_fallback_flagged(tmp_path):
+    """ER record with NULL variant triggers er_pr_null_variant_fallback."""
+    con = _empty_con()
+    _insert_patient(con, "PAT_001")
+    _insert_biomarker(con, "PAT_001", "ER", None)
+    summary = run_dq_checks(con, _CFG, out_dir=tmp_path)
+    row = summary[summary["check_name"] == "er_pr_null_variant_fallback"].iloc[0]
+    assert row["n_flagged"] == 1
+    assert row["action"] == "use_result_text_fallback"
+
+
+def test_duplicate_biomarker_same_date_flagged(tmp_path):
+    """Two HER2 records for same patient on same date triggers duplicate_biomarker_same_date."""
+    con = _empty_con()
+    _insert_patient(con, "PAT_001")
+    _insert_biomarker(con, "PAT_001", "HER2", "IHC 3+", report_date="2024-01-01")
+    _insert_biomarker(con, "PAT_001", "HER2", "IHC 2+; ISH amplified", report_date="2024-01-01")
+    summary = run_dq_checks(con, _CFG, out_dir=tmp_path)
+    row = summary[summary["check_name"] == "duplicate_biomarker_same_date"].iloc[0]
+    assert row["n_flagged"] == 1
+
+
+def test_non_breast_metastatic_code_flagged(tmp_path):
+    """Metastatic diagnosis with non-C50 code triggers non_breast_metastatic_code."""
+    con = _empty_con()
+    _insert_patient(con, "PAT_001")
+    con.execute("INSERT INTO diagnosis VALUES ('PAT_001', '2023-01-01', 'C34.9', 'metastatic', 1)")
+    summary = run_dq_checks(con, _CFG, out_dir=tmp_path)
+    row = summary[summary["check_name"] == "non_breast_metastatic_code"].iloc[0]
+    assert row["n_flagged"] == 1
+    assert row["action"] == "exclude_from_index_date"
