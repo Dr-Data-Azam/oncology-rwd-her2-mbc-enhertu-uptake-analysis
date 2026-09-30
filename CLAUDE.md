@@ -38,7 +38,7 @@ Claude Code as builder.
 |---|---|---|---|
 | D1 | Source code (reproducible) | zipped repo | ✅ |
 | D2 | Rendered analysis notebook | HTML | ✅ |
-| D3 | Slide deck (5 slides + Appendix A/B/C) | .pptx + .pdf | ✅ |
+| D3 | Slide deck (5 slides + Appendix A/B/C) | .pptx (pdf skipped — no LibreOffice) | ✅ |
 | D4 | Output tables and figures | CSV/PNG | ✅ (inside zip) |
 | D5 | Audit pack | Markdown + CSV | ✅ (inside zip) |
 | D6 | README + repo docs | Markdown | ✅ |
@@ -112,8 +112,10 @@ pipeline.py        orchestrates all stages → outputs/run_manifest.json
 - **Docstrings cite ADR IDs.** Every public function docstring names the ADR that governs
   its behavior (e.g. `# ADR-007`).
 - **Emails to Brandon have no dashes** (Azam's style preference). Draft them in D7 only.
-- **VERIFY markers.** Any clinical claim that needs a citation is marked `VERIFY` in config
-  and comments. Never state it as fact until the citation is confirmed.
+- **VERIFY markers.** All VERIFY markers were resolved in Phase 04 with confirmed primary
+  literature citations (FDA DB-06 approval Jan 27 2025; DB-09 Dec 15 2025; DESTINY-Breast
+  benchmarks). Any new clinical claim added in future phases must carry a citation before
+  it can be stated as fact.
 - **Small-cell flagging.** Report counts with denominators; flag cells with n < 11 as
   `n<11` per ADR-012 and standard RWD practice.
 - **State that all data is synthetic** in the deck and README.
@@ -166,7 +168,7 @@ ADRs, before `/close-phase` is allowed to commit.
 |---|---|
 | `/create-spec <slug>` | Clean tree check → branch `phase/<slug>` → create `specs/NN-slug/` → interview Azam on 5 analysis-spec questions → save `analysis-spec.md` |
 | `/close-phase "<msg>"` | test → lint → run-pipeline → validate → clinical-logic-reviewer + code-reviewer → implementation-summary → ADR check → append SESSION_LOG row → local commit → merge main |
-| `/run-pipeline [--rules alt.yaml]` | `uv run python -m her2rwd.pipeline`; prints attrition + headline counts |
+| `/run-pipeline [--rules alt.yaml] [--reports]` | `uv run python -m her2rwd.pipeline`; prints attrition + headline counts. `--reports` also runs stages 10–12 (figures + HTML + pptx) |
 | `/validate` | Run invariants; STOP on any FAIL; write `audit/validation_report.md` |
 | `/log-decision "<title>"` | Create next ADR from template; fill from latest run; update DECISION_INDEX; link from analysis_rules.yaml |
 | `/build-report` | Notebook → HTML; outputs → pptx; zip `../_submission/` |
@@ -183,7 +185,7 @@ ADRs, before `/close-phase` is allowed to commit.
 | `generate-analysis-spec` | Interviews Azam on 5 questions (client question, definitions, outputs, alternatives, constraints/risks); writes `analysis-spec.md` |
 | `generate-tech-spec` | Turns analysis spec into `tech-spec.md` (architecture table, module changes, SQL models, tests, ADRs to write) |
 | `write-test` | Writes table-driven pytest fixtures; one tiny hand-made patient case per decision branch |
-| `clinical-rules-reference` | Provides HER2/HR rules (ASCO/CAP 2018/2023), Enhertu labels (marked VERIFY), competitor map, literature benchmarks (marked VERIFY) |
+| `clinical-rules-reference` | Provides HER2/HR rules (ASCO/CAP 2018/2023), Enhertu labels (DB-06/DB-09 confirmed), competitor map, literature benchmarks (citations confirmed Phase 04) |
 | `decision-log` | Fills ADR template from `audit/decisions/ADR-TEMPLATE.md`; adds evidence from current run |
 | `deck-builder` | Enforces 5-slide structure; titles = finding sentences; routes numbers to CSV sources; exports via python-pptx |
 
