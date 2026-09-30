@@ -26,6 +26,7 @@ ADRs implemented: none (presentation layer)
 
 from __future__ import annotations
 
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -101,8 +102,21 @@ def build_reports(
     n_enhertu = int(lines[lines["contains_enhertu"]]["patient_id"].nunique())
     small_thr = cfg["stats"]["small_cell_threshold"]
 
+    # Raw patient count from run manifest (written by Stage 2 before this stage runs)
+    manifest_path = out / "run_manifest.json"
+    n_raw = n_cohort  # fallback if manifest not present
+    if manifest_path.exists():
+        with open(manifest_path) as _mf:
+            _manifest = json.load(_mf)
+        n_raw = (
+            _manifest.get("stages", {})
+            .get("load_raw", {})
+            .get("row_counts", {})
+            .get("patient", n_cohort)
+        )
+
     # ── Generate figures ──────────────────────────────────────────────────────
-    fig_q1 = _fig_her2_distribution(q1_overall, n_cohort, fig_dir)
+    fig_q1 = _fig_her2_distribution(q1_overall, n_cohort, fig_dir)  # n_cohort passed; no literal
     fig_q2 = _fig_enhertu_uptake(q2_uptake, fig_dir)
     fig_bench = _fig_benchmark(q1_bench, fig_dir)
 
@@ -126,6 +140,7 @@ def build_reports(
         n_class=n_class,
         n_unk=n_unk,
         n_enhertu=n_enhertu,
+        n_raw=n_raw,
         small_thr=small_thr,
     )
 
@@ -174,10 +189,10 @@ def _fig_her2_distribution(q1: pd.DataFrame, n_cohort: int, fig_dir: Path) -> Pa
             color="#333333",
         )
 
-    ax.set_xlabel("% of cohort (n=103)", fontsize=9)
+    ax.set_xlabel(f"% of cohort (n={n_cohort})", fontsize=9)
     ax.set_xlim(0, 80)
     ax.set_title(
-        "HER2 Distribution at Metastatic Diagnosis\n(103 cohort patients, synthetic data)",
+        f"HER2 Distribution at Metastatic Diagnosis\n({n_cohort} cohort patients, synthetic data)",
         fontsize=10,
         fontweight="bold",
         pad=10,
@@ -362,6 +377,7 @@ def _build_pptx(
     n_class: int,
     n_unk: int,
     n_enhertu: int,
+    n_raw: int,
     small_thr: int,
 ) -> Path:
     prs = Presentation()
@@ -373,9 +389,12 @@ def _build_pptx(
     # ── Slide 1: Title / Context ──────────────────────────────────────────────
     sl1 = prs.slides.add_slide(blank)
     _add_header(sl1, "HER2 mBC Feasibility & Enhertu Uptake Assessment", subtitle=True)
+    _dq_n_checks = len(dq_summary)
+    _dq_errors = int(dq_summary[dq_summary["severity"] == "error"]["n_flagged"].sum())
+    _dq_warnings = int(dq_summary[dq_summary["severity"] == "warning"]["n_flagged"].sum())
     body = (
-        f"Dataset: 150 synthetic patients  |  Cohort: {n_cohort} eligible\n"
-        "DQ: 19 checks — 25 errors and 153 warnings resolved\n\n"
+        f"Dataset: {n_raw} synthetic patients  |  Cohort: {n_cohort} eligible\n"
+        f"DQ: {_dq_n_checks} checks — {_dq_errors} errors and {_dq_warnings} warnings resolved\n\n"
         "Q1: What is the HER2 distribution at metastatic diagnosis?\n"
         "Q2: How does Enhertu uptake compare across HER2-defined subindications?\n\n"
         "All data is synthetic — findings are illustrative only."
@@ -472,12 +491,15 @@ def _build_pptx(
         sl5,
         "Asset Supports Directional Feasibility — Not Powered for CI-Level Subindication Endpoints",
     )
+    _pct_pos_str = f"{pct_pos:.1f}%"
+    _pct_unk_str = f"{round(n_unk / n_cohort * 100, 0):.0f}%" if n_cohort > 0 else "n/a"
+    _pct_disc_unk = round(n_disc_unk / n_unk * 100, 0) if n_unk > 0 else 0
     body_s5 = (
-        "FEASIBLE:     HER2-positive prevalence (16.5%) within published 15–20% range\n"
-        "PARTIAL:      60% unknown HER2 limits subindication denominators\n"
+        f"FEASIBLE:     HER2-positive prevalence ({_pct_pos_str}) within published 15–20% range\n"
+        f"PARTIAL:      {_pct_unk_str} unknown HER2 limits subindication denominators\n"
         "PARTIAL:      HER2-low prevalence low (driven by testing gap, not biology)\n"
         "DIRECTIONAL:  Enhertu uptake signals visible in all required subindications (all n<11)\n"
-        "FINDING:      37% of untested patients received Enhertu — key testing gap signal\n"
+        f"FINDING:      {_pct_disc_unk:.0f}% of untested patients received Enhertu — key testing gap signal\n"
         "FINDING:      1L Enhertu detectable — relevant for post-DB-09 launch monitoring\n\n"
         f"Overall: N={n_cohort} is too small for powered endpoint studies.\n"
         "         Scale to 1,000+ patients for CI-level subindication analyses.\n"
