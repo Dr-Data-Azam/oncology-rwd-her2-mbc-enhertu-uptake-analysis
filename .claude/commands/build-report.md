@@ -15,25 +15,31 @@ Build all submission artifacts and populate `../_submission/`.
    - Produces `reports/HER2_mBC_Enhertu_Assessment.pptx`
    - Attempts PDF export via LibreOffice headless; logs a warning if unavailable
 
-3. **Render the assumptions register** from `config/analysis_rules.yaml` into
-   `audit/assumptions_register.md` (one row per key: config key → value → ADR).
+3. **Run `/validate`** one final time to confirm all invariants pass.
 
-4. **Run `/validate`** one final time to confirm all invariants pass.
-
-5. **Populate `../_submission/`:**
+4. **Copy artifacts to `../_submission/`** (individual files, not a zip):
    ```
    ../_submission/
+   ├── analysis_notebook.html
    ├── HER2_mBC_Enhertu_Assessment.pptx
    ├── HER2_mBC_Enhertu_Assessment.pdf   (if available)
-   ├── analysis_notebook.html
-   └── her2-mbc-feasibility.zip          (repo, excluding .git/, data/interim/, .venv/, caches)
+   └── her2-mbc-feasibility.zip          (source code + outputs + audit pack)
    ```
 
-6. **Print a checklist** of every file in `../_submission/` with its size.
+   The zip includes: `src/`, `tests/`, `config/`, `notebooks/`, `outputs/`,
+   `audit/`, `docs/`, `README.md`, `pyproject.toml`.
+   The zip excludes: `data/raw/`, `data/interim/`, `.venv/`, `.git/`, caches.
+
+5. **Print a checklist** of every file in `../_submission/` with its size.
+
+## What Brandon receives (email attachments)
+
+- `analysis_notebook.html` — the rendered ipynb output
+- `HER2_mBC_Enhertu_Assessment.pptx` — slide deck
+- `HER2_mBC_Enhertu_Assessment.pdf` — PDF of deck
+- `her2-mbc-feasibility.zip` — reproducible source code + all outputs
 
 ## Notes
 
-- This command must be run from the `main` branch after `/close-phase` for Phase 07.
-- Never include `data/raw/`, `data/interim/`, `.venv/`, or `outputs/` in the zip
-  (they are git-ignored or too large).
-- Azam reviews the submission folder before emailing Brandon.
+- `../_prep/` (talk track, Q&A prep) is internal only — never sent to Brandon.
+- Azam reviews `../_submission/` before emailing.
