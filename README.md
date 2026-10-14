@@ -1,5 +1,7 @@
 # HER2 mBC Feasibility Study — Enhertu Uptake in a Synthetic Oncology Cohort
 
+[![GitHub](https://img.shields.io/badge/GitHub-oncology--rwd--her2--mbc--enhertu--uptake--analysis-181717?logo=github)](https://github.com/Dr-Data-Azam/oncology-rwd-her2-mbc-enhertu-uptake-analysis)
+
 Analysis of HER2 distribution and Enhertu uptake in a synthetic metastatic breast cancer
 cohort (150 patients, 10 provider organizations). Answers two client questions:
 
