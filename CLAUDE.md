@@ -1,4 +1,4 @@
-# CLAUDE.md — Project Constitution: her2-mbc-feasibility
+# CLAUDE.md — Project Constitution: oncology-rwd-her2-mbc-enhertu-uptake-analysis
 
 ---
 

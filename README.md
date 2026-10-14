@@ -1,4 +1,4 @@
-# her2-mbc-feasibility
+# HER2 mBC Feasibility Study — Enhertu Uptake in a Synthetic Oncology Cohort
 
 Analysis of HER2 distribution and Enhertu uptake in a synthetic metastatic breast cancer
 cohort (150 patients, 10 provider organizations). Answers two client questions:
