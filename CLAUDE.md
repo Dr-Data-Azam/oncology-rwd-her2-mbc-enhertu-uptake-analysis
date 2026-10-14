@@ -18,13 +18,13 @@
 
 ## Project Overview
 
-**What:** ConcertAI technical assessment — HER2 metastatic breast cancer feasibility and
+**What:** Nexus Health Data feasibility study — HER2 metastatic breast cancer feasibility and
 Enhertu uptake analysis on 150 synthetic patients.
 
-**Who:** Azam (Associate Director, Solutions Consulting, ConcertAI) as owner and approver;
+**Who:** Azam as owner and approver;
 Claude Code as builder.
 
-**Deadline:** Email Brandon Nathasingh Wed Sep 30 evening ET. Review Thu Oct 1, 3:00 PM ET.
+**Deadline:** Submit deliverables Wed Sep 30 evening ET. Review Thu Oct 1, 3:00 PM ET.
 
 **Two client questions:**
 - Q1: What is the HER2 distribution (positive / low / ultralow / 0-null / unknown) at
@@ -34,7 +34,7 @@ Claude Code as builder.
 
 **Deliverables:**
 
-| ID | Deliverable | Format | To Brandon? |
+| ID | Deliverable | Format | Client deliverable? |
 |---|---|---|---|
 | D1 | Source code (reproducible) | zipped repo | ✅ |
 | D2 | Rendered analysis notebook | HTML | ✅ |
@@ -111,7 +111,6 @@ pipeline.py        orchestrates all stages → outputs/run_manifest.json
   Numbers flow from raw data → pipeline → tables → deck.
 - **Docstrings cite ADR IDs.** Every public function docstring names the ADR that governs
   its behavior (e.g. `# ADR-007`).
-- **Emails to Brandon have no dashes** (Azam's style preference). Draft them in D7 only.
 - **VERIFY markers.** All VERIFY markers were resolved in Phase 04 with confirmed primary
   literature citations (FDA DB-06 approval Jan 27 2025; DB-09 Dec 15 2025; DESTINY-Breast
   benchmarks). Any new clinical claim added in future phases must carry a citation before
@@ -198,4 +197,4 @@ ADRs, before `/close-phase` is allowed to commit.
 | `code-reviewer` | Reviews diffs: reproducibility, no hard-coded params, SQL/pandas join correctness, config-sourced parameters, test coverage |
 | `clinical-logic-reviewer` | Reviews HER2/HR logic vs ASCO/CAP and Enhertu labels; flags uncited claims; writes verdict in `code-review.md` + `clinical-review.md` |
 | `test-writer` | Writes pytest file for a module; uses `write-test` skill; never mocks DuckDB — uses in-memory instances |
-| `reviewer-simulator` | Plays Brandon Nathasingh: reads deck + audit pack; fires PROJECT_BRIEF §9 follow-up questions; writes D8 Q&A prep in `../_prep/` |
+| `reviewer-simulator` | Plays the reviewer: reads deck + audit pack; fires PROJECT_BRIEF §9 follow-up questions; writes D8 Q&A prep in `../_prep/` |

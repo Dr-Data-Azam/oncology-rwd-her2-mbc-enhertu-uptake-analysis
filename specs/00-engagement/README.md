@@ -8,6 +8,8 @@ Read the documents in this order:
 |---|---|---|---|
 | 1 | `PROJECT_BRIEF_for_Claude_Code.md` | **What & why** (requirements) | Client framing, the official task, data dictionary, first data scan, clinical rules, likely reviewer questions, open decisions |
 | 2 | `DATA_GUIDE_and_Approach.md` | **Data & method** (knowledge) | Part A: every table and trap explained. Part B: the ideal data scientist's 8-step playbook |
+| 4 | `DECK_BLUEPRINT.md` | **What the deck shows** | Slide-by-slide content, visuals, action titles, appendix A to E, talk track, red flags. Used by the deck-builder skill in Phase 07 |
+| 5 | `NOTEBOOK_BLUEPRINT.md` | **What the HTML shows** | Notebook sections, tables and plots, top 5 plots, export rules |
 | 3 | `ASSESSMENT_PLAN_and_Repo_Structure.md` | **How we build & prove it** (blueprint) | Deliverables D1 to D8, Shafer's repo adaptation, the 7-layer audit framework, ADR backlog, phases, folder tree, commands, rules, the repo as a showcase |
 
 ## Source materials (copies of the read-only originals in `external/`)
@@ -21,12 +23,12 @@ Read the documents in this order:
 ## Key points by file
 
 ### 1. PROJECT_BRIEF
-- **Framing:** Azam as AD, Solutions Consulting delivering to a pharma Enhertu/HEOR client. The real context is the ConcertAI take-home ("Senior Data Scientist Technical Assessment"), reviewed by Brandon Nathasingh.
+- **Framing:** Azam as AD, Solutions Consulting delivering to a pharma Enhertu/HEOR client on a Nexus Health Data feasibility study.
 - **Timeline:** email the results Wed Sep 30 evening ET. Review Thu Oct 1, 3:00 to 3:30 PM ET (about a 15-minute presentation, the rest Q&A).
 - **Task:**
   - Q1 = mBC cohort + index date + HER2 at metastatic diagnosis (positive/low/ultralow/0/unknown) + 3 or more stratifications + literature comparison + uncertainty + sensitivity analysis.
   - Q2 = Enhertu uptake vs competitors by subindication (HER2+, HR+/low, HR+/ultralow), first treatment, time to Enhertu, discordance, fit-for-purpose verdict.
-- **Submission:** code + at most 5 slides (or 2 pages) + a DQ/assumptions appendix + tables.
+- **Deliverables:** code + at most 5 slides (or 2 pages) + a DQ/assumptions appendix + tables.
 - **Data scan:** 150 patients. Breast is dominant with some noise. HER2 variant patterns and conflicts. Planted traps (orphans, pediatric DOBs, death before birth, future and post-death dates).
 - **Clinical rules:** ASCO/CAP HER2 categories incl. ultralow; HR ≥1%; Enhertu labels (DB-03/04/06/09, **VERIFY**); competitor map; literature benchmarks (**VERIFY**).
 - **Reviewer probes** and **7 open decisions** for Azam.
@@ -47,7 +49,7 @@ Read the documents in this order:
 - **From the Shafer's repo:**
   - Keep: CLAUDE.md, the spec lifecycle, /test /lint /fix, code-reviewer, test-writer.
   - Drop: ship-feature/push, RAG eval, security-reviewer, CI, Docker.
-  - Add: /close-phase, /run-pipeline, /validate, /log-decision, /build-report, clinical-logic-reviewer, a "Brandon" reviewer-simulator.
+  - Add: /close-phase, /run-pipeline, /validate, /log-decision, /build-report, clinical-logic-reviewer, a reviewer-simulator.
 - **7 audit layers:** ADR decision log · rules-as-config YAML · per-patient audit trail · DQ log · validation report · run manifest (hashes) · process trail (specs + git + AI_USAGE).
 - **14 starter ADRs** and **8 phases** (01 ingest/DQ → 06 Q2 → 07 deliverables → 08 review prep).
 - **Folder tree** incl. `docs/` (ARCHITECTURE, DEVELOPMENT_PROCESS, DATA_LINEAGE).

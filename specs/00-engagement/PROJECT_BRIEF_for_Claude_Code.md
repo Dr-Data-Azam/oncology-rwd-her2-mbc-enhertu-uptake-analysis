@@ -1,7 +1,7 @@
 # Project Brief: HER2 Metastatic Breast Cancer Feasibility & Enhertu Uptake (Synthetic Oncology RWD)
 
 > ⛔ **HARD RULE: `../external/` (ConcertAI_Assesment/external) is STRICTLY READ-ONLY.**
-> It is the original, unmodified attachment from ConcertAI. Never write, edit, rename, move, delete, unzip into, or create files inside it, and never run any command with it as the working directory that could write output there. Read from it only to verify inputs (e.g. hash checks). All work happens inside `her2-mbc-feasibility/`. Working copies of the data are in `data/raw/` (verified identical by SHA-256).
+> It is the original, unmodified attachment from Nexus Health Data. Never write, edit, rename, move, delete, unzip into, or create files inside it, and never run any command with it as the working directory that could write output there. Read from it only to verify inputs (e.g. hash checks). All work happens inside `her2-mbc-feasibility/`. Working copies of the data are in `data/raw/` (verified identical by SHA-256).
 
 
 > **For Claude Code plan mode.** Read this whole brief, then produce an implementation plan before writing any code. Confirm open decisions (Section 10) with me before building.
@@ -10,21 +10,21 @@
 
 ## 1. Framing: how we are treating this work
 
-- **Who I am in this exercise:** Associate Director, Solutions Consulting at ConcertAI. I lead feasibility and pre-sales analytics for pharma/biotech clients on oncology real-world data (RWD).
+- **Who I am in this exercise:** Associate Director, Solutions Consulting at Nexus Health Data. I lead feasibility and pre-sales analytics for pharma/biotech clients on oncology real-world data (RWD).
 - **The client:** a pharma commercial / HEOR team focused on trastuzumab deruxtecan (Enhertu) in metastatic breast cancer (mBC).
 - **The client's two questions:**
   1. *Feasibility:* Can this data asset support a HER2-defined mBC cohort? What is the HER2 distribution (positive / low / ultralow / 0-null / unknown) at metastatic diagnosis, and how confident are we?
   2. *Commercial:* How does Enhertu uptake compare with competitor therapies across HER2-defined mBC subindications? Is this asset fit for answering that question?
 - **Tone of deliverable:** client-ready and executive-first. Lead with the answer, then the evidence, then the caveats. Show defensible clinical logic and data-quality reasoning; visuals should be clean and functional, not decorative.
 
-**Actual context (for me, not the deck):** This is a take-home technical test for the ConcertAI **Associate Director, Solutions Consulting** role. It was sent by Brandon Nathasingh, the current AD (computational biologist; background in survival analysis, causal inference and oncology RWE; previously Strategic Data Scientist at ConcertAI). The instructions document is titled "Senior Data Scientist Technical Assessment". I worked at ConcertAI before.
+**Actual context:** This is a portfolio project demonstrating oncology RWD analytical leadership for the Nexus Health Data **Associate Director, Solutions Consulting** role.
 
 ## 2. Timeline
 
 | When | What |
 |---|---|
 | Tue Sep 29, 2026 | Materials received; start work |
-| **Wed Sep 30 (evening, ET)** | **Send results to Brandon** (he asked for them *before* the meeting: "ppt, html of ipynb output, etc") |
+| **Wed Sep 30 (evening, ET)** | **Submit deliverables** (ppt, html of ipynb output, etc — before the meeting) |
 | **Thu Oct 1, 3:00–3:30 PM ET** | Review meeting on Teams (30-minute slot). The instructions say to be ready to present for 20–30 min, so plan roughly a 15-minute walkthrough and leave the rest for Q&A. |
 
 ## 3. Files
@@ -176,10 +176,10 @@ HER2 `result × variant` patterns, which drive the classifier:
 
 **Literature benchmarks (approximate; verify and cite):** HER2+ about 15–20% of breast cancer; HER2-low about 45–55%; HER2-0 about 25–35%, of which ultralow is roughly 20–30% of HR+ HER2-0 (per DB-06 screening). HR+ is about 65–75% of mBC. Expect this synthetic set to deviate. Explain the deviation through its design, the number of blank variants, and curation mix.
 
-## 8. Expected deliverables (what I will send Brandon)
+## 8. Expected deliverables (what I will deliver to the client)
 
 1. **Reproducible code**: Python + DuckDB (SQL for cohort logic, pandas for the rest) in a Jupyter notebook plus a small modular package or SQL files. It should run end to end from the zip, with fixed seeds and no manual steps.
-2. **Rendered notebook as HTML** (Brandon explicitly mentioned "html of ipynb output").
+2. **Rendered notebook as HTML** (the reviewer explicitly mentioned "html of ipynb output").
 3. **Slide deck, at most 5 slides plus 1 appendix** (.pptx):
    1. Executive summary: answer, fit-for-purpose verdict, top 3 caveats
    2. Cohort attrition (a CONSORT-style flow) and the index-date definition
@@ -214,4 +214,4 @@ HER2 `result × variant` patterns, which drive the classifier:
 
 - Keep the deck to 5 slides plus the appendix. The rendered notebook carries the depth.
 - **`../external/` is strictly read-only**: no writes, edits, moves, deletes or unzipping into it. `data/raw/` is also treated as read-only. All outputs go to `outputs/`.
-- Write no dashes in any email text I send to Brandon (my style preference).
+- Write no dashes in any email text (style preference).

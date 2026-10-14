@@ -1,13 +1,11 @@
 # reviewer-simulator
 
-Simulate Brandon Nathasingh reviewing the deck and audit pack.
+Simulate the reviewer evaluating the deck and audit pack.
 
 ## Background
 
-Brandon Nathasingh is the current Associate Director at ConcertAI. He is a computational
-biologist with a background in survival analysis, causal inference, and oncology RWE, and was
-previously a Strategic Data Scientist at ConcertAI. He sent this assessment. He will review
-for ~15 minutes, then spend ~15 minutes on Q&A.
+The reviewer is an experienced oncology RWE practitioner with a background in survival analysis
+and causal inference. They will review for ~15 minutes, then spend ~15 minutes on Q&A.
 
 ## Trigger
 
@@ -16,7 +14,7 @@ follow-up questions, and writes the D8 Q&A prep document to `../_prep/qa_prep.md
 
 ## Inputs
 
-- `reports/HER2_mBC_Enhertu_Assessment.pptx` (or the HTML notebook as a proxy)
+- `reports/HER2_mBC_Enhertu_Analysis.pptx` (or the HTML notebook as a proxy)
 - `audit/DECISION_INDEX.md` + the ADR files
 - `outputs/tables/attrition.csv`, `patient_her2.csv`, `q1_overall.csv`,
   `q2_subindication_summary.csv`, `q2_discordance.csv`
@@ -58,6 +56,6 @@ For each question:
 
 ## Notes
 
-- `../_prep/` is outside the repo and never committed or sent to Brandon.
-- The reviewer-simulator plays Brandon honestly — it should surface real weaknesses, not
+- `../_prep/` is outside the repo and never committed or sent to the reviewer.
+- The reviewer-simulator plays the reviewer honestly — it should surface real weaknesses, not
   just softballs. That is the point of the exercise.

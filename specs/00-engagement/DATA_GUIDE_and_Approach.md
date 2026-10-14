@@ -1,7 +1,7 @@
-# ConcertAI Tech Test: Understanding the Data, and How to Approach It
+# Nexus Health Data Feasibility Study: Understanding the Data, and How to Approach It
 
 > ⛔ **HARD RULE: `../external/` (ConcertAI_Assesment/external) is STRICTLY READ-ONLY.**
-> It is the original, unmodified attachment from ConcertAI. Never write, edit, rename, move, delete, unzip into, or create files inside it, and never run any command with it as the working directory that could write output there. Read from it only to verify inputs (e.g. hash checks). All work happens inside `her2-mbc-feasibility/`. Working copies of the data are in `data/raw/` (verified identical by SHA-256).
+> It is the original, unmodified attachment from Nexus Health Data. Never write, edit, rename, move, delete, unzip into, or create files inside it, and never run any command with it as the working directory that could write output there. Read from it only to verify inputs (e.g. hash checks). All work happens inside `her2-mbc-feasibility/`. Working copies of the data are in `data/raw/` (verified identical by SHA-256).
 
 
 Working copies of the data are in `data/raw/`; the original attachment is in `../external/` (read-only). Every number below comes from the actual files.
@@ -17,7 +17,7 @@ We have **150 synthetic patients** from **10 provider organizations** (community
 - **0** means it was pulled automatically from the EHR. These records are messy and less detailed.
 - **1** means a human abstractor reviewed the chart. These records are cleaner and more detailed.
 
-This is how ConcertAI and similar RWD vendors deliver data. The whole task comes down to collapsing many event rows into **one analytic row per patient**, anchored on one date: the day the patient became metastatic.
+This is how Nexus Health Data and similar RWD vendors deliver data. The whole task comes down to collapsing many event rows into **one analytic row per patient**, anchored on one date: the day the patient became metastatic.
 
 ## A2. The data model
 
@@ -80,7 +80,7 @@ There are no encounter IDs, no line-of-therapy fields and no end dates. All link
 | IHC equivocal / Pending / blank + Unknown | incomplete | **Unknown** |
 | *blank* + Negative | only "HER2 negative" | **HER2-negative, subtype unknown** |
 
-- **Key insight: EHR HER2 rows leave the variant blank 46% of the time, while curated rows leave it blank only 1% of the time.** Without curation you can say "HER2-negative" but you can't say low vs ultralow vs null. That is exactly the feasibility story ConcertAI sells: curated data enables HER2-low and ultralow analyses.
+- **Key insight: EHR HER2 rows leave the variant blank 46% of the time, while curated rows leave it blank only 1% of the time.** Without curation you can say "HER2-negative" but you can't say low vs ultralow vs null. That is exactly the feasibility story Nexus Health Data sells: curated data enables HER2-low and ultralow analyses.
 - Conflicts are planted: Positive + IHC 0 (2 rows), Positive + IHC 1+ (2), Unknown + IHC 3+ (2), Positive + IHC 2+/ISH negative (1). Your rule is "the detailed variant beats the coarse result, and curated beats EHR". State it.
 - Patients have 1 HER2 record (43 patients), 2 (40), 3 (54) or 4 (1). Only 4 patients have a true Positive-vs-Negative flip across records, but many have mixed levels, e.g. PAT_001 has 2+/ISH negative, then blank, then 1+ (all of which are HER2-low).
 - **Timing is critical.** Relative to the metastatic diagnosis date, **most HER2 tests happen after it**: 31 rows before, 81 in days 0–90, 73 in days 91–180, 37 after 180 days. A standard window of −365 to +90 days finds HER2 for only **71 of 104** patients. Widening to +180 days finds **95 of 104**. This is your sensitivity analysis waiting to happen.
@@ -244,6 +244,6 @@ Prepare a 30-second answer for each of these:
 |---|---|
 | Tue night | Steps 1–2 (profiling done; write the rules table) |
 | Wed day | Steps 3–6 (build + results) |
-| Wed evening | Step 7 deck + HTML export → **email Brandon** |
+| Wed evening | Step 7 deck + HTML export → **submit deliverables** |
 | Thu morning | Step 8 rehearsal |
 | Thu 3:00 PM ET | Present |

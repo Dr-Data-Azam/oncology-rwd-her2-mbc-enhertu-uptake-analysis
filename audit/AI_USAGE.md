@@ -18,7 +18,7 @@ throughout the analysis.
 - Validated all clinical logic against ASCO/CAP guidelines and Enhertu labels.
 - Read and approved every ADR before the corresponding config values were set.
 - Reviewed all pipeline outputs and confirmed the numbers before they appeared in the deck.
-- Is solely responsible for all conclusions in the submission.
+- Is solely responsible for all conclusions in the deliverables.
 
 ## Why this matters
 

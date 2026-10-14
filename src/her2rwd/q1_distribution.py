@@ -16,6 +16,7 @@ Outputs:
     outputs/tables/q1_overall.csv        — 5 HER2 categories, all 103 patients
     outputs/tables/q1_by_hr.csv          — HER2 x HR status
     outputs/tables/q1_by_disease_type.csv — HER2 x de novo / recurrent
+    outputs/tables/q1_by_source.csv      — HER2 x curated vs EHR source
     outputs/tables/q1_benchmark.csv      — classifiable vs literature ranges
     Returns dict of DataFrames.
 
@@ -52,7 +53,7 @@ def compute_q1(
     out_path.mkdir(parents=True, exist_ok=True)
 
     merged = (
-        her2_df[["patient_id", "her2_category"]]
+        her2_df[["patient_id", "her2_category", "her2_curation_flag"]]
         .merge(hr_df[["patient_id", "hr_status"]], on="patient_id", how="left")
         .merge(cohort_df[["patient_id", "disease_type"]], on="patient_id", how="left")
     )
@@ -90,6 +91,19 @@ def compute_q1(
     by_dt = pd.concat(by_dt_frames, ignore_index=True)
     by_dt.rename(columns={by_dt.columns[1]: "her2_category"}, inplace=True)
     by_dt.to_csv(out_path / "q1_by_disease_type.csv", index=False)
+
+    # ── By source (curated vs EHR) — ADR-008 ─────────────────────────────────
+    by_src_frames = []
+    merged["her2_curation_flag"] = pd.to_numeric(merged["her2_curation_flag"], errors="coerce").fillna(0).astype(int)
+    for src_val, grp in merged.groupby("her2_curation_flag", dropna=True):
+        label = "curated" if int(src_val) == 1 else "ehr"
+        grp_counts = grp.groupby("her2_category", dropna=False).size().reindex(_CAT_ORDER, fill_value=0)
+        dist = build_distribution(grp_counts, len(grp), threshold, z)
+        dist.insert(0, "source", label)
+        by_src_frames.append(dist)
+    by_source = pd.concat(by_src_frames, ignore_index=True)
+    by_source.rename(columns={by_source.columns[1]: "her2_category"}, inplace=True)
+    by_source.to_csv(out_path / "q1_by_source.csv", index=False)
 
     # ── Benchmark comparison ───────────────────────────────────────────────────
     # Three comparisons (all VERIFY — do not state as fact without confirmed citations):
@@ -138,6 +152,7 @@ def compute_q1(
         "overall": overall,
         "by_hr": by_hr,
         "by_disease_type": by_dt,
+        "by_source": by_source,
         "benchmark": benchmark_df,
         "n_total": N,
         "n_classifiable": N_class,

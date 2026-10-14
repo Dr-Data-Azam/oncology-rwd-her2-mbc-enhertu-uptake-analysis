@@ -1,7 +1,7 @@
-# ConcertAI HER2 mBC Assessment: Deliverables, Audit Framework & Repo Structure
+# Nexus Health Data HER2 mBC Feasibility Study: Deliverables, Audit Framework & Repo Structure
 
 > ⛔ **HARD RULE: `../external/` (ConcertAI_Assesment/external) is STRICTLY READ-ONLY.**
-> It is the original, unmodified attachment from ConcertAI. Never write, edit, rename, move, delete, unzip into, or create files inside it, and never run any command with it as the working directory that could write output there. Read from it only to verify inputs (e.g. hash checks). All work happens inside `her2-mbc-feasibility/`. Working copies of the data are in `data/raw/` (verified identical by SHA-256).
+> It is the original, unmodified attachment from Nexus Health Data. Never write, edit, rename, move, delete, unzip into, or create files inside it, and never run any command with it as the working directory that could write output there. Read from it only to verify inputs (e.g. hash checks). All work happens inside `her2-mbc-feasibility/`. Working copies of the data are in `data/raw/` (verified identical by SHA-256).
 
 
 This plan is adapted from the spec-driven setup in `Dr-Data-Azam/shafers-ai-pathology-assistant`. Hand it to Claude Code together with `PROJECT_BRIEF_for_Claude_Code.md` and `DATA_GUIDE_and_Approach.md`.
@@ -11,11 +11,11 @@ This plan is adapted from the spec-driven setup in `Dr-Data-Azam/shafers-ai-path
 ## 1. Deliverables (who, what, when)
 
 **Owner:** Azam, who approves every spec and decision. **Builder:** Claude Code.
-**Hard deadline:** email Brandon **Wed Sep 30, evening ET**. The review is **Thu Oct 1, 3:00 PM ET**.
+**Hard deadline:** submit deliverables **Wed Sep 30, evening ET**. The review is **Thu Oct 1, 3:00 PM ET**.
 
-| # | Deliverable | Format | Sent to Brandon? | Content | Done when |
+| # | Deliverable | Format | Client deliverable? | Content | Done when |
 |---|---|---|---|---|---|
-| **D1** | Source code | zipped repo (`submission.zip`) | ✅ | pipeline package, SQL, tests, `config/analysis_rules.yaml`, README | `uv sync && python -m her2rwd.pipeline` reproduces every output from the raw CSVs |
+| **D1** | Source code | zipped repo (`her2-mbc-analysis.zip`) | ✅ | pipeline package, SQL, tests, `config/analysis_rules.yaml`, README | `uv sync && python -m her2rwd.pipeline` reproduces every output from the raw CSVs |
 | **D2** | Rendered analysis notebook | `analysis_notebook.html` | ✅ | narrative + code + tables for Q1 and Q2 | runs top to bottom with no errors; exported with outputs |
 | **D3** | Slide deck | `.pptx` (plus a PDF copy) | ✅ | 5 slides + 1–2 appendix slides (DQ checks, assumptions) | every number traces to a table in D4 |
 | **D4** | Output tables & figures | CSV/XLSX + PNG | ✅ (inside the zip) | cohort, attrition, per-patient HER2/HR audit, Q1 and Q2 tables, sensitivity, discordance list | produced by the pipeline, never hand-edited |
@@ -54,7 +54,7 @@ Deck outline (D3):
 | `code-reviewer` agent | **Keep, adapt checklist** | adds reproducibility, no hard-coded parameters, SQL/pandas join correctness |
 | `security-reviewer` agent | **Drop → `clinical-logic-reviewer` agent** | there are no secrets or user input here. The risk is **clinically wrong logic**, so review against ASCO/CAP and the labels |
 | `test-writer` agent | **Keep** | retargeted through the adapted skill |
-| — | **New `reviewer-simulator` agent** | plays Brandon: reads the deck and audit pack, fires tough follow-up questions, and writes the D8 Q&A prep |
+| — | **New `reviewer-simulator` agent** | plays the reviewer: reads the deck and audit pack, fires tough follow-up questions, and writes the D8 Q&A prep |
 | `.github/workflows`, `Dockerfile`, `docker-compose`, `infrastructure/` | **Drop** | out of scope; mention them under "how I'd productionize" instead |
 | `.env`, API keys, `chat_history`, vectorDB rules | **Drop** | not relevant |
 | `pyproject.toml` + `uv.lock` + `.python-version` | **Keep** | pinned environment = reproducibility |
@@ -64,7 +64,7 @@ Deck outline (D3):
 
 ## 3. Audit framework (answering "why did you decide that?")
 
-Seven layers. Together they let Azam, or Brandon, trace any number back to raw rows and a written decision.
+Seven layers. Together they let Azam, or the reviewer, trace any number back to raw rows and a written decision.
 
 | Layer | Artifact | Answers |
 |---|---|---|
@@ -192,7 +192,7 @@ her2-mbc-feasibility/
 │   └── run_manifest.json
 │
 ├── reports/                         # GENERATED presentation layer
-│   ├── HER2_mBC_Enhertu_Assessment.pptx (+ .pdf)
+│   ├── HER2_mBC_Enhertu_Analysis.pptx (+ .pdf)
 │   └── analysis_notebook.html
 │
 ├── audit/                           # the audit pack (D5)
@@ -224,7 +224,7 @@ her2-mbc-feasibility/
 ### 5c. What is emailed (`../_submission/`)
 | File | Built from |
 |---|---|
-| `HER2_mBC_Enhertu_Assessment.pptx` + `.pdf` | `reports/` |
+| `HER2_mBC_Enhertu_Analysis.pptx` + `.pdf` | `reports/` |
 | `analysis_notebook.html` | `reports/` |
 | `her2-mbc-feasibility.zip` | the repo, **excluding** `.git/`, `data/interim/`, `.venv/`, caches |
 
@@ -266,14 +266,14 @@ her2-mbc-feasibility/
 | Tue night | scaffold repo + `01` + `02` |
 | Wed morning | `03` + `04` |
 | Wed afternoon | `05` + `06` |
-| Wed evening | `07` → **email Brandon** |
+| Wed evening | `07` → **submit deliverables** |
 | Thu morning | `08` rehearsal |
 
 ---
 
-## 10. The repo itself as a showcase (for Brandon)
+## 10. The repo itself as a showcase
 
-Brandon will look at **how** the work is organized, not only the answers. The repo must explain itself.
+The reviewer will look at **how** the work is organized, not only the answers. The repo must explain itself.
 
 | Doc | Content | Why it matters to a reviewer |
 |---|---|---|

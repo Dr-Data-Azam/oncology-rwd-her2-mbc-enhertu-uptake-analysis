@@ -71,7 +71,7 @@ metastatic index date (line_number = 1).
 - `enhertu_in_her2_null` — 0 patients in this dataset; definition retained in principle
   but produces empty output. Could be added to a sensitivity run.
 - `enhertu_before_her2_test_date` — would require knowing test order vs treatment order;
-  complex to implement and not requested for this assessment.
+  complex to implement and not in scope for this project.
 - `cdk46i_in_hr_negative` — out of scope for Q2 Enhertu focus.
 
 ---

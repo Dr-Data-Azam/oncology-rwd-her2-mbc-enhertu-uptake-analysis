@@ -26,7 +26,7 @@
 | `outputs/run_manifest.json` | `pipeline.py` | all | all | all |
 | `audit/validation_report.md` | `validation.py` | — | — | all outputs |
 | `reports/analysis_notebook.html` | `report.py` (nbconvert) | — | — | notebooks/analysis.ipynb |
-| `reports/HER2_mBC_Enhertu_Assessment.pptx` | `report.py` (python-pptx) | — | — | all q1/q2 outputs |
+| `reports/HER2_mBC_Enhertu_Analysis.pptx` | `report.py` (python-pptx) | — | — | all q1/q2 outputs |
 
 ---
 

@@ -36,7 +36,7 @@ Events within 30 days of death are retained; beyond 30 days are flagged for excl
 ## Rationale
 
 Flagging preserves auditability — every excluded record appears in `dq_log.csv` with its
-reason. Brandon (and any future analyst) can inspect exactly which patients were excluded
+reason. Any analyst can inspect exactly which patients were excluded
 and why. Silent drops are a common RWD pitfall that causes reproducibility failures.
 
 The 30-day grace period reflects standard practice for electronic health records where lab

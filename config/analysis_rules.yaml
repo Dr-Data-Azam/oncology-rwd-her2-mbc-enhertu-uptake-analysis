@@ -157,3 +157,10 @@ benchmarks:
   hr_positive_pct_range: [65, 75]      # SEER Cancer Stat Facts: Female Breast Cancer Subtypes
   her2_ultralow_of_zero_pct: [35, 50]  # Curigliano et al. NEJM 2024 (DB-06) rescoring of IHC-0 cases
   source_citation: "Tarantino et al. JCO 2020 (38:1951-62); Schettini et al. NPJ Breast Cancer 2021 (7:103); Modi et al. NEJM 2022; Curigliano et al. NEJM 2024 (DB-06)"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Reports: PPTX rebuild guard
+# ─────────────────────────────────────────────────────────────────────────────
+reports:
+  rebuild_pptx: false   # Set to true only when a full PPTX regeneration is wanted.
+                        # false = pipeline skips PPTX and preserves manual layout edits.

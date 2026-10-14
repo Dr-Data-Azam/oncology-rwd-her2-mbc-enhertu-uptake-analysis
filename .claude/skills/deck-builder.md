@@ -11,7 +11,7 @@ Build a 5-slide + 3-appendix executive slide deck from pipeline outputs.
 - **Every number on every slide must be sourced from a CSV** in `outputs/tables/`.
   No number is typed by hand. Read the value from the table at build time.
 - **Small cells (n < 11) are displayed as "n<11"**, never as a percentage.
-- State on the first or last slide: "All data are synthetic and for assessment purposes only."
+- State on the first or last slide: "All data are synthetic."
 
 ## Slide structure
 

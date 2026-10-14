@@ -1,9 +1,9 @@
-To: Brandon Nathasingh
-Subject: ConcertAI Assessment Submission: HER2 mBC Feasibility and Enhertu Uptake Analysis
+To: [Hiring Manager]
+Subject: HER2 mBC Feasibility Analysis: Enhertu Uptake in a Synthetic Oncology Cohort
 
-Hi Brandon,
+Hi [Name],
 
-Please find attached my submission for the ConcertAI technical assessment. The analysis covers two questions on the 150 synthetic HER2 mBC patients you provided.
+Please find attached my HER2 mBC feasibility study. The analysis covers two questions on the 150 synthetic HER2 mBC patients you provided.
 
 What is included:
 
@@ -11,11 +11,11 @@ What is included:
 
 2. Rendered analysis notebook (HTML) walking through each stage with live output: DQ findings, attrition, HER2 classification, HR status, treatment lines, Q1 distribution, Q2 uptake, and a fit-for-purpose verdict.
 
-3. Slide deck (5 slides + 3 appendices) addressing both client questions directly. Titles are finding sentences, not topic labels. Every number traces back to a source CSV.
+3. Slide deck (5 slides + 5 appendices) addressing both client questions directly. Titles are finding sentences, not topic labels. Every number traces back to a source CSV.
 
 4. Output tables (17 CSVs) covering cohort, HER2 categories, HR status, treatment lines, Q1 distribution with Wilson CIs, Q2 Enhertu uptake by subindication, discordance lists, and three sensitivity scenarios.
 
-5. Audit pack including 14 Architecture Decision Records (ADRs), a validation report (13/13 invariant checks passing), a session log, and a data lineage document.
+5. Audit pack including 14 Architecture Decision Records (ADRs), a validation report (13/13 invariant checks passing), a requirements traceability matrix mapping every brief bullet to its ADR, module, and output file, a session log, and a data lineage document.
 
 Key findings in brief:
 

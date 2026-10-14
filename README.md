@@ -8,8 +8,32 @@ cohort (150 patients, 10 provider organizations). Answers two client questions:
 2. **Commercial:** How does Enhertu uptake compare with competitor therapies across
    HER2-defined mBC subindications? Is this data asset fit for purpose?
 
-Built as a ConcertAI technical assessment (Associate Director, Solutions Consulting).
-**All data are synthetic and for assessment purposes only.**
+Built to demonstrate structured analytical leadership on an oncology real-world data feasibility
+question, from raw EHR ingestion to client-ready deliverables.
+**All data are synthetic.**
+
+> **Requirement coverage:** every brief bullet mapped to its ADR, module, output file, and
+> result is in [`audit/requirements_traceability.md`](audit/requirements_traceability.md).
+
+---
+
+## If You Received This Zip
+
+The slide deck (`HER2_mBC_Enhertu_Analysis.pptx`) and the rendered analysis notebook
+(`analysis_notebook.html`) are attached separately to the cover email — open those first.
+
+This zip contains everything needed to **reproduce the analysis from scratch**:
+
+| What you want | Where to find it |
+|---|---|
+| Key findings and fit-for-purpose verdict | Slide 1 of the PPTX (separate attachment) |
+| Full narrative with all figures | `analysis_notebook.html` (separate attachment) |
+| Every brief requirement → where it was addressed | `audit/requirements_traceability.md` |
+| All output tables (17 CSVs) | `outputs/tables/` |
+| All figures (16 PNGs) | `outputs/figures/` |
+| Why each rule was chosen | `audit/decisions/ADR-NNN-*.md` (14 ADRs) |
+| Validation proof (13/13 PASS) | `audit/validation_report.md` |
+| Rerun the full pipeline | See Quickstart below |
 
 ---
 
@@ -21,8 +45,74 @@ uv run pytest tests/ -v                          # verify 134 tests pass
 uv run python -m her2rwd.pipeline --reports      # run all 12 stages → outputs/ + reports/
 ```
 
-Open `reports/analysis_notebook.html` in a browser, or open
-`reports/HER2_mBC_Enhertu_Assessment.pptx` for the slide deck.
+The `--reports` flag regenerates `reports/analysis_notebook.html` and
+`reports/HER2_mBC_Enhertu_Analysis.pptx` into a `reports/` folder (not included in the
+zip — sent as separate attachments).
+
+---
+
+## How This Was Built — Decision Hierarchy
+
+Phases were decided first (Plan Mode), ADRs second, config third, code last.
+Nothing in code is a hard-coded value — every rule traces back to an ADR and a config key.
+
+```
+Phases (P00–P07)            ← decided first, in Plan Mode before any code
+    └── ADRs per phase      ← written before each phase's code; lock the rule and rationale
+            └── Config keys ← one key per ADR in config/analysis_rules.yaml
+                    └── Code ← reads from config only; never sets a value directly
+```
+
+## Build Phases
+
+| Phase | Slug | Purpose |
+|---|---|---|
+| P00 | `engagement` | Repo scaffold, CLAUDE.md, specs, engagement plan |
+| P01 | `ingest-and-dq` | DuckDB loader, SHA-256 integrity check, 19 DQ checks |
+| P02 | `cohort-index-date` | 103-patient cohort, metastatic index date, de novo/recurrent |
+| P03 | `biomarker-derivation` | HER2 + HR classification, window, tie-break, audit columns |
+| P04 | `q1-distribution` | HER2 distribution, strata, benchmarks, sensitivity |
+| P05 | `treatment-lines` | Regimen grouping, line-of-therapy approximation, Enhertu flag |
+| P06 | `q2-enhertu-uptake` | Subindications, Enhertu uptake, time-to-first-Enhertu, discordance |
+| P07 | `deliverables` | Validation, HTML notebook, PPTX deck, zip, cover email |
+
+Each phase followed the same lifecycle: `spec → ADRs → build → test → lint → review → commit`
+
+---
+
+## Repo Tour
+
+```
+her2-mbc-feasibility/
+├── config/
+│   └── analysis_rules.yaml      ← every rule in one file; edit here, not in code
+├── src/her2rwd/                 ← 13 Python modules (one per pipeline stage)
+│   ├── pipeline.py              ← end-to-end orchestrator (12 stages)
+│   ├── data_loader.py           ← load CSVs into DuckDB + SHA-256 integrity check
+│   ├── cohort.py                ← metastatic index date, de novo/recurrent, attrition
+│   ├── her2.py                  ← HER2 variant mapping, window, tie-break
+│   ├── treatment.py             ← regimen grouping, line-of-therapy, Enhertu flag
+│   ├── q1_distribution.py       ← HER2 distribution, strata, benchmarks
+│   ├── q2_uptake.py             ← Enhertu uptake, subindications, discordance
+│   ├── sensitivity.py           ← re-runs under 3 alternative rule sets
+│   ├── validation.py            ← 13 pipeline invariants → audit/validation_report.md
+│   └── report.py                ← HTML notebook + 10-slide PPTX
+├── tests/                       ← 134 unit tests, one per decision branch
+├── notebooks/analysis.ipynb     ← rendered analysis (13 sections, 16 figures)
+├── outputs/
+│   ├── tables/                  ← all CSV outputs (never hand-edited)
+│   └── figures/                 ← all 16 PNG figures
+├── reports/                     ← GENERATED by pipeline; not in zip; sent as separate attachments
+│   ├── analysis_notebook.html   ← self-contained HTML export
+│   └── HER2_mBC_Enhertu_Analysis.pptx  ← 10-slide deck (5 content + Appendix A-E)
+├── audit/
+│   ├── decisions/                    ← 14 ADRs (the "why" behind every rule)
+│   ├── requirements_traceability.md  ← every brief requirement mapped to ADR → module → output → result
+│   ├── validation_report.md          ← 13 invariants, all PASS
+│   └── SESSION_LOG.md                ← one row per phase commit
+├── specs/                       ← analysis + tech specs (phase gate documents)
+└── data/raw/                    ← READ-ONLY input CSVs (never modified)
+```
 
 ---
 
@@ -30,11 +120,11 @@ Open `reports/analysis_notebook.html` in a browser, or open
 
 ### 1a. Before Plan Mode — What We Started With
 
-The starting point was a blank folder and the original ConcertAI email attachment:
+The starting point was a blank folder and the original Nexus Health Data email attachment:
 
 ```
 external/                                ← READ-ONLY original files as received
-├── candidate_facing_instructions.docx   ← the official assessment brief
+├── candidate_facing_instructions.docx   ← the original project brief
 ├── data_dictionary.xlsx                 ← column definitions for all 5 tables
 └── synthetic_breast_her2_dataset_csv.zip ← 150-patient synthetic oncology dataset
 ```
@@ -68,15 +158,15 @@ approved by Azam. The plan established:
 
 **Deliverables committed:**
 
-| ID | Deliverable | Format | Recipient |
-|----|-------------|--------|-----------|
-| D1 | Reproducible source code | zipped repo | Brandon |
-| D2 | Rendered analysis notebook | HTML | Brandon |
-| D3 | Slide deck (5 slides + Appendix A/B/C) | .pptx | Brandon |
-| D4 | Output tables and figures | CSV / PNG | Brandon (inside zip) |
-| D5 | Audit pack | Markdown + CSV | Brandon (inside zip) |
-| D6 | README + repo docs | Markdown | Brandon (inside zip) |
-| D7 | Cover email (no dashes) | text | Brandon |
+| ID | Deliverable | Format | Client deliverable? |
+|----|-------------|--------|---------------------|
+| D1 | Reproducible source code | zipped repo | Yes |
+| D2 | Rendered analysis notebook | HTML | Yes |
+| D3 | Slide deck (5 slides + Appendix A/B/C/D/E) | .pptx | Yes |
+| D4 | Output tables and figures | CSV / PNG | Yes (inside zip) |
+| D5 | Audit pack | Markdown + CSV | Yes (inside zip) |
+| D6 | README + repo docs | Markdown | Yes (inside zip) |
+| D7 | Cover email | text | Yes |
 | D8 | Talk track + Q&A prep | Markdown | Internal only (_prep/) |
 
 **Build phases planned:**
@@ -165,7 +255,7 @@ groups (HER2-null, HER2-unknown) serve as control arms and commercial signal det
 In a synthetic dataset with 60% unknown HER2, these cases likely reflect data incompleteness
 rather than true off-label prescribing. But the commercial insight is real: this asset can
 identify which providers have untested patients who may benefit from biomarker testing. That
-is a direct ConcertAI value proposition for a pharma commercial team tracking Enhertu access.
+is a commercially actionable signal for a pharma team tracking Enhertu access and biomarker testing gaps.
 
 ---
 
@@ -261,7 +351,7 @@ stratified cross-tabs (by HR status, by disease type de novo/recurrent, by curat
 curated/uncurated/no-test-in-window); computes Wilson 95% confidence intervals and flags
 cells with n<11 per ADR-012; compares against published literature benchmarks per ADR-014;
 writes `outputs/tables/q1_overall.csv`, `q1_by_hr.csv`, `q1_by_disease_type.csv`,
-`q1_benchmark.csv`, and two PNG figures.
+`q1_by_source.csv` (curated vs EHR strata), `q1_benchmark.csv`, and two PNG figures.
 
 #### Stage 9 — Q2 Enhertu uptake (`q2_uptake.py`)
 Assigns each patient to a subindication (HER2+, HR+/HER2-low, HR+/HER2-ultralow,
@@ -293,12 +383,17 @@ PASS/FAIL per check; the pipeline aborts if any check FAILs.
 
 #### Stage 12 — Report generation (`report.py`) — `--reports` flag only
 Exports `notebooks/analysis.ipynb` to `reports/analysis_notebook.html` via nbconvert
-(executes all cells top-to-bottom; no outputs are hard-coded); builds
-`reports/HER2_mBC_Enhertu_Assessment.pptx` via python-pptx with 5 content slides
+(executes all cells top-to-bottom; no outputs are hard-coded); the notebook contains
+13 sections with 10 embedded matplotlib plots covering HER2 test timing, 100% stacked
+stratum bars, sensitivity dot plot, swimmer plot, Enhertu uptake CI bars, CONSORT flow,
+DQ bar chart, primary-to-metastatic gap histogram, time-to-Enhertu, and discordant timelines.
+Builds `reports/HER2_mBC_Enhertu_Analysis.pptx` via python-pptx with 5 content slides
 (executive summary, cohort flow, Q1 HER2 distribution, Q2 Enhertu uptake, sensitivity +
 fit-for-purpose verdict) plus Appendix A (DQ checks), B (assumptions and tie-break rules),
-and C (validation results); all numbers on slides are sourced directly from
-`outputs/tables/*.csv` — nothing is typed by hand.
+C (validation results), D (HER2 test timing evidence), and E (patient treatment timelines);
+all numbers on slides are sourced directly from `outputs/tables/*.csv` — nothing is typed by hand.
+If `config/analysis_rules.yaml → reports.rebuild_pptx` is `false`, the PPTX step is skipped
+to preserve any manual layout edits; run `pptx_patch.py` for surgical figure-level updates.
 
 #### After all stages — Run manifest
 Writes `outputs/run_manifest.json` recording: UTC timestamp, SHA-256 hash of every input
@@ -375,13 +470,12 @@ her2-mbc-feasibility/
 │   ├── statistics.py            ← Wilson 95% CI and n<11 small-cell flagging (used by q1/q2)
 │   ├── validation.py            ← Stage 11: 13 invariant checks → validation_report.md
 │   ├── report.py                ← Stage 12: matplotlib figures, nbconvert HTML, python-pptx deck
+│   ├── pptx_patch.py            ← one-shot surgical patch: swap upgraded figures + append Appendix D/E
 │   └── pipeline.py              ← orchestrates Stages 1–12, writes run_manifest.json
 │
 ├── notebooks/
 │   └── analysis.ipynb           ← narrative notebook; imports src/; no logic of its own;
 │                                   exported to reports/analysis_notebook.html by Stage 12
-│
-├── sql/                         ← DuckDB SQL helpers called by src/ modules
 │
 ├── tests/                       ← 134 pytest unit tests; all use in-memory DuckDB fixtures;
 │   ├── test_data_loader.py         no real patient data is ever read during test runs
@@ -402,10 +496,22 @@ her2-mbc-feasibility/
 │   ├── dq/
 │   │   ├── dq_log.csv           ← one row per DQ violation: check, table, rows affected, action
 │   │   └── dq_summary.csv       ← aggregated DQ pass/fail counts
-│   ├── figures/
-│   │   ├── q1_her2_distribution.png      ← HER2 category bar chart
-│   │   ├── q1_benchmark_comparison.png   ← our distribution vs literature
-│   │   └── q2_enhertu_uptake.png         ← Enhertu % by subindication
+│   ├── figures/                          ← 16 PNG figures (all generated, never hand-edited)
+│   │   ├── q1_her2_distribution.png           ← HER2 category bar chart
+│   │   ├── q1_benchmark_comparison.png        ← our distribution vs literature
+│   │   ├── q1_stacked_bars_by_stratum.png     ← 100% stacked bars: 6 strata incl. curated/EHR
+│   │   ├── q2_enhertu_uptake.png              ← Enhertu % by subindication (plain bars)
+│   │   ├── enhertu_uptake_ci.png              ← Enhertu % with Wilson 95% CI error bars
+│   │   ├── sensitivity_table.png              ← sensitivity results table image
+│   │   ├── sensitivity_dot_plot.png           ← sensitivity dot plot (baseline vs S1/S2/S3)
+│   │   ├── consort_flow.png                   ← CONSORT-style attrition flow chart
+│   │   ├── dq_bar_chart.png                   ← records flagged per DQ check
+│   │   ├── primary_met_gap.png                ← primary-to-metastatic gap histogram
+│   │   ├── m1_stage_dx_gap.png                ← M1 staging vs diagnosis date histogram
+│   │   ├── her2_timing.png                    ← HER2 test timing vs index date (window bands)
+│   │   ├── swimmer_plot.png                   ← patient treatment timelines (~15 patients)
+│   │   ├── time_to_enhertu.png                ← days from index to first Enhertu by subindication
+│   │   └── discordant_timelines.png           ← timelines for 3 illustrative discordant patients
 │   └── tables/
 │       ├── cohort.csv                    ← 103 patients with index_date, disease_type, age
 │       ├── attrition.csv                 ← 4 exclusion steps with n_in / n_excluded / n_remaining
@@ -425,9 +531,11 @@ her2-mbc-feasibility/
 │       ├── sensitivity_her2_distribution.csv ← HER2 distribution baseline vs S1/S2/S3
 │       └── sensitivity_uptake.csv        ← Enhertu uptake baseline vs S1/S2/S3
 │
-├── reports/                     ← GENERATED presentation layer; git-ignored
-│   ├── analysis_notebook.html   ← full executed notebook rendered as HTML (D2)
-│   └── HER2_mBC_Enhertu_Assessment.pptx ← 8-slide deck (5 content + Appendix A/B/C) (D3)
+├── reports/                     ← GENERATED by pipeline; git-ignored; NOT included in zip
+│   │                               (sent as separate email attachments)
+│   ├── analysis_notebook.html   ← full executed notebook rendered as HTML (D2); 13 sections,
+│   │                               10 embedded plots, ToC, run timestamp, ADR index, env info
+│   └── HER2_mBC_Enhertu_Analysis.pptx ← 10-slide deck (5 content + Appendix A/B/C/D/E) (D3)
 │
 ├── audit/                       ← the audit pack (D5); committed to git
 │   ├── DECISION_INDEX.md        ← master table of all 14 ADRs with status, phase, config key
@@ -453,7 +561,6 @@ her2-mbc-feasibility/
 │
 ├── docs/                        ← long-form technical documentation (D6)
 │   ├── ARCHITECTURE.md          ← pipeline diagram, module map, design principles
-│   ├── DEVELOPMENT_PROCESS.md   ← spec-driven lifecycle, phase gates, agent/command list
 │   ├── DATA_LINEAGE.md          ← table: each output → module → config keys → ADRs → raw source
 │   └── DATA_DICTIONARY.md       ← readable render of data_dictionary.xlsx + derived-field notes
 │
@@ -463,13 +570,12 @@ her2-mbc-feasibility/
 │       ├── PROJECT_BRIEF_for_Claude_Code.md    ← full brief handed to Claude in plan mode
 │       ├── ASSESSMENT_PLAN_and_Repo_Structure.md ← deliverables, phases, audit framework, folder plan
 │       ├── DATA_GUIDE_and_Approach.md          ← data facts, clinical reference logic, open decisions
-│       ├── HANDOVER_PROMPT.md                  ← session handover context
 │       └── source/
-│           ├── candidate_facing_instructions.docx ← original brief (copy; external/ is the master)
+│           ├── candidate_facing_instructions.docx ← original brief (byte-identical copy)
 │           └── candidate_facing_instructions.md   ← plain-text extraction
 │
 ├── deliverables/
-│   └── cover_email.txt          ← D7: cover email draft for Brandon (no dashes per style preference)
+│   └── cover_email.txt          ← D7: cover email draft
 │
 └── .claude/                     ← Claude Code workspace configuration
     ├── settings.json            ← permission rules (deny list for external/ and data/raw/)
@@ -543,14 +649,15 @@ The same five steps work for any number on any slide. The chain is always:
 
 ---
 
-## Note on `../external/`
+## Note on Raw Data and Integrity
 
-The folder `../external/` (one level above this repo) holds the original, unmodified
-ConcertAI email attachment exactly as received. It is **STRICTLY READ-ONLY** — this repo
-never writes, edits, or deletes anything there.
+`data/raw/` contains the 5 input CSVs and data dictionary. These are the only inputs the
+pipeline ever reads. They are **read-only** — no pipeline step modifies them.
 
-`data/raw/` contains byte-identical working copies, verified by SHA-256 at every pipeline
-run (Stage 1). If the hashes do not match, the pipeline stops immediately.
+Every pipeline run (Stage 1) computes SHA-256 hashes of all 5 CSVs and compares them
+against pre-recorded values in `config/analysis_rules.yaml`. If any file has changed,
+the pipeline stops immediately. The hash values are also captured in `outputs/run_manifest.json`
+so any reviewer can verify the inputs were not altered between runs.
 
 ---
 

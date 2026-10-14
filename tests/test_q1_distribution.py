@@ -45,7 +45,9 @@ def _make_patients(
     total = n_pos + n_low + n_ultra + n_null + n_unk
     pids = list(range(1, total + 1))
     cats = ["positive"] * n_pos + ["low"] * n_low + ["ultralow"] * n_ultra + ["null"] * n_null + ["unknown"] * n_unk
-    her2_df = pd.DataFrame({"patient_id": pids, "her2_category": cats})
+    # Alternate curated (1) / EHR (0) flags so both strata are represented
+    curation_flags = [i % 2 for i in range(total)]
+    her2_df = pd.DataFrame({"patient_id": pids, "her2_category": cats, "her2_curation_flag": curation_flags})
 
     hr_statuses = ["positive"] * n_hr_pos + ["negative"] * n_hr_neg + ["unknown"] * n_hr_unk
     hr_df = pd.DataFrame({"patient_id": pids, "hr_status": hr_statuses})
@@ -114,6 +116,7 @@ class TestComputeQ1:
             "q1_overall.csv",
             "q1_by_hr.csv",
             "q1_by_disease_type.csv",
+            "q1_by_source.csv",
             "q1_benchmark.csv",
         ]
         for fname in expected:

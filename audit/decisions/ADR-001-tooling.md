@@ -8,7 +8,7 @@
 
 ## Context
 
-The assessment requires a reproducible, production-minded pipeline on 150 synthetic patients.
+The project requires a reproducible, production-minded pipeline on 150 synthetic patients.
 The evaluator will inspect the code for clean separation of logic, testability, and
 config-driven parameterization.
 
